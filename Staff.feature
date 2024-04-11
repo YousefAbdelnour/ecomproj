@@ -2,21 +2,25 @@ Feature: Staff Account Management and Reservation Settings
 
   Scenario: Create an account
     Given the staff member applies with good qualifications
-    When they submit their application and admin accepts
-    Then the account will be created
+    When they submit their application 
+    Then the request will be sent to admin
 
   Scenario: Modify profile
     Given the staff member is logged in
-    When the staff member modifies their profile and hits save
+    When the staff member modifies their profile 
+    and hits save
     Then the profile page will be updated
 
   Scenario: Update payment information
     Given the staff member has a new bank account
-    When they log in, navigate to the account settings, and update their payment information
+    When they log in 
+    and navigate to the account settings
+    and update their payment information
     Then their payment details are updated, ensuring future earnings are deposited into the new account
 
   Scenario: Accepts booking
-    Given staff member selects booking and agrees to time
+    Given staff member selects booking 
+    and agrees to time
     When staff hits accept booking button
     Then the reservation should be created and displayed to both customer and staff
 
