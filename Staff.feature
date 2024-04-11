@@ -1,9 +1,9 @@
 Feature: Staff Account Management and Reservation Settings
 
   Scenario: Create an account
-    Given the staff member applies with good qualifications
+    Given the staff member applies as "Johnny" "Appleseed" with good qualifications
     When they submit their application 
-    Then the request will be sent to admin
+    Then the admin can see the request from "Johnny" "Appleseed"
 
   Scenario: Modify profile
     Given the staff member is logged in
