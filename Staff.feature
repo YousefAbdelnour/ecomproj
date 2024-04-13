@@ -8,19 +8,19 @@ Feature: Staff Account Management and Reservation Settings
   Scenario: Modify profile
     Given the staff member is logged in
     When the staff member modifies their profile 
-    and hits save
+    And hits save
     Then the profile page will be updated
 
   Scenario: Update payment information
     Given the staff member has a new bank account
     When they log in 
-    and navigate to the account settings
-    and update their payment information
+    And navigate to the account settings
+    And update their payment information
     Then their payment details are updated, ensuring future earnings are deposited into the new account
 
   Scenario: Accepts booking
     Given staff member selects booking 
-    and agrees to time
+    And agrees to time
     When staff hits accept booking button
     Then the reservation should be created and displayed to both customer and staff
 
