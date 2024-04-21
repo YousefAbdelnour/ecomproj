@@ -57,7 +57,6 @@ body, ul {
     width: 100%;
     height: 70px;
 }
-
 .title_div {
     width: 100%;
     height: 250px;
@@ -77,3 +76,91 @@ body, ul {
     background-color: black;
     position:relative;
 }
+
+body, ul {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#book_form_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 7%;
+}
+
+#book_form {
+    background-color: #333;
+    padding: 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border: 5px solid rgb(219, 194, 54);
+    border-radius: 10px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 25px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid rgb(216, 216, 216);
+    background-color: rgb(216, 216, 216);
+    color: white;
+    padding: 5px;
+}
+
+.submit-button {
+    align-self: center;
+    padding: 10px 20px;
+    width: 16%;
+    font-size: 20px;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: greenyellow;
+    color: white;
+}
+
+#textarea_div label{
+    margin-bottom: 5px;
+    color: white;
+    font-size: 25px;   
+}
+
+#textarea_div textarea {
+    width: 90%;
+    height: 150px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: rgb(216, 216, 216);
+    color: rgb(0, 0, 0); 
+    font-family: Arial, sans-serif; 
+    font-size: 16px; 
+    resize: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: border-color 0.3s ease-in-out; 
+}
+
