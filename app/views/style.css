@@ -266,4 +266,47 @@ input[type="button"].task_decline {
 /*Task CSS END*/
 
 /*Reservation history CSS*/
+.schedule_day {
+    display: flex;
+    flex-direction: column; 
+    width: 100%; 
+}
 
+.schedule_row {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 100%;
+}
+
+.schedule_date, .schedule_address {
+    flex-grow: 1;
+    padding-left: 2%;
+}
+
+.schedule_time_size {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.schedule_time, .schedule_size {
+    margin-left: 10px;
+    padding-right: 2%;
+}
+
+.schedule_buttons {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    padding: 10px 0;
+}
+
+input[type="button"].task_decline {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+}
