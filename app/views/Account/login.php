@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include('../navbar.php'); ?>
+    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Login</h1>
         <h2>Not registered? <a href="">Sign up</a> </h2>
