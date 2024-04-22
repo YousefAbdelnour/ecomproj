@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include('../navbar.php'); ?>
+    <?php include ('../navbar.php'); ?>
     <div class="title_div">
         <h1>Schedule</h1>
         <h2>Don't worry, we got you covered!</h2>

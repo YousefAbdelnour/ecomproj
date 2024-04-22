@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include('../navbar.php'); ?>
+    <?php include ('../navbar.php'); ?>
     <div class="title_div">
         <h1>Maid Tasks</h1>
         <h2>Accept or Deny</h2>

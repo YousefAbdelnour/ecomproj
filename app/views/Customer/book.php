@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css?v=1">
     <title>Service Booking</title>
 </head>
+
 <body>
-    <?php include('../navbar.php'); ?>
+    <?php include ('../navbar.php'); ?>
     <div class="title_div">
         <h1>Service Booking</h1>
         <h2>Ready to serve</h2>
@@ -49,6 +51,7 @@
         </form>
     </div>
 </body>
+
 </html>
 
 

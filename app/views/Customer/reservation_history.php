@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include('../navbar.php'); ?>
+    <?php include ('../navbar.php'); ?>
     <div class="title_div">
         <h1>Reservation History</h1>
         <h2>View Details or Report</h2>
