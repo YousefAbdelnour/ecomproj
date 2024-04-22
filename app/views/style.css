@@ -244,7 +244,7 @@ ul {
     display: flex;
     flex-direction: column;
     padding: 2%;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     gap: 10px;
 }
@@ -263,23 +263,25 @@ input[type="button"].task_decline {
 input[type="button"].task_decline {
     background-color: #f44336;
 }
+
 /*Task CSS END*/
 
 /*Reservation history CSS*/
 .schedule_day {
     display: flex;
-    flex-direction: column; 
-    width: 100%; 
+    flex-direction: column;
+    width: 100%;
 }
 
 .schedule_row {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-.schedule_date, .schedule_address {
+.schedule_date,
+.schedule_address {
     flex-grow: 1;
     padding-left: 2%;
 }
@@ -289,14 +291,15 @@ input[type="button"].task_decline {
     justify-content: flex-end;
 }
 
-.schedule_time, .schedule_size {
+.schedule_time,
+.schedule_size {
     margin-left: 10px;
     padding-right: 2%;
 }
 
 .schedule_buttons {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     width: 100%;
     padding: 10px 0;
 }
@@ -309,4 +312,51 @@ input[type="button"].task_decline {
     background-color: #f44336;
     color: white;
     font-size: 16px;
+}
+
+#register_form,
+#login_form {
+    align-items: center;
+    text-align: center;
+    padding: 4%;
+}
+
+.form_column {
+    margin-bottom: 20px;
+}
+
+
+.form_column label {
+    display: block;
+    padding: 2%;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+
+.form_column input[type="text"],
+.form_column input[type="password"],
+#register_form input[type="submit"],
+#login_form input[type="submit"] {
+    width: 30%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+#register_form input[type="submit"],
+#login_form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+#register_form input[type="submit"]:hover,
+#login_form input[type="submit"]:hover {
+    background-color: #45a049;
 }
