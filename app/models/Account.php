@@ -23,7 +23,6 @@ class Account extends \app\core\Model
             'is_active' => $this->IsActive,
             'is_admin' => $this->IsAdmin
         ];
-        // Execute
         $STMT->execute($data);
     }
     public function getAll()
@@ -34,19 +33,19 @@ class Account extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
-    public function getByUsername($username)
+    public function getByUsername()
     {
         $SQL = 'SELECT * FROM Account WHERE Username = :username';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['username' => $username]);
+        $STMT->execute(['username' => $this->Username]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetch();
     }
-    public function getById($id)
+    public function getById()
     {
         $SQL = 'SELECT * FROM Account WHERE AccountId = :id';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['id' => $id]);
+        $STMT->execute(['id' => $this->AccountId]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetch();
     }
@@ -101,5 +100,4 @@ class Account extends \app\core\Model
         $data = ['AccountId' => $this->AccountId, 'IsActive' => 1];
         $STMT->execute($data);
     }
-
 }

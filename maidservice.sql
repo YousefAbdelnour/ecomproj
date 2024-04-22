@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2024 at 08:46 PM
+-- Generation Time: Apr 23, 2024 at 12:57 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -134,7 +134,7 @@ CREATE TABLE `Job` (
 CREATE TABLE `Message` (
   `MessageId` int(11) NOT NULL,
   `SenderId` int(11) NOT NULL,
-  `RecieverId` int(11) NOT NULL,
+  `ReceiverId` int(11) NOT NULL,
   `Message_Text` varchar(1000) NOT NULL,
   `Title` varchar(1000) NOT NULL,
   `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp()
@@ -212,7 +212,7 @@ ALTER TABLE `Job`
 ALTER TABLE `Message`
   ADD PRIMARY KEY (`MessageId`),
   ADD KEY `Message_To_Account_Sender_FK` (`SenderId`),
-  ADD KEY `Message_To_Account_Reciever_FK` (`RecieverId`);
+  ADD KEY `Message_To_Account_Reciever_FK` (`ReceiverId`);
 
 --
 -- Indexes for table `Payment_Log`
