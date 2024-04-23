@@ -11,7 +11,7 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Addres List</h1>
+        <h1>Address List</h1>
         <h2>Is this were you live?</h2>
     </div>
     <div class="divider"></div>
@@ -33,7 +33,7 @@
                             <p class="view_zipcode"><?php echo "$address->ZipCode" ?></p>
                         </div>
                         <div class="address_buttons">
-                            <a href="/Address/delete" class="button-style-delete">Delete</a>
+                            <?php echo "<a href='/Address/delete/$address->AddressId' class='button-style-delete'>Delete</a>"?>
                         </div>
                     </div>
 

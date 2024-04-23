@@ -4,9 +4,15 @@ namespace app\controllers;
 
 class Address extends \app\core\Controller
 {
-    function delete()
+    function delete($id)
     {
-        $this->view('Address/display');
+        $address = new \app\models\Address();
+        $address->AddressId = $id;
+        $address = $address->getById();
+        if ($address !== null) {
+            $address->delete();
+        }
+        $this->display();
     }
 
     function add()
