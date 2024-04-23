@@ -268,14 +268,16 @@ input[type="button"].task_decline {
 
 /*Reservation history CSS*/
 .schedule_day,
-.view_address {
+.view_address,
+#view_profile {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 .schedule_row,
-.view_address_row {
+.view_address_row,
+#view_profile_row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -285,7 +287,9 @@ input[type="button"].task_decline {
 .schedule_date,
 .schedule_address,
 .view_country,
-.view_address {
+.view_address,
+#view_name,
+#view_phone {
     flex-grow: 1;
     padding-left: 2%;
 }
@@ -298,13 +302,15 @@ input[type="button"].task_decline {
 .schedule_time,
 .schedule_size,
 .view_state,
-.view_zipcode {
+.view_zipcode,
+#view_username {
     margin-left: 10px;
     padding-right: 2%;
 }
 
 .schedule_buttons,
-.address_buttons {
+.address_buttons
+.profile_buttons {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -318,6 +324,16 @@ input[type="button"].address_delete {
     border-radius: 5px;
     border: none;
     background-color: #f44336;
+    color: white;
+    font-size: 16px;
+}
+
+ input[type="button"].profile_edit {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: greenyellow;
     color: white;
     font-size: 16px;
 }

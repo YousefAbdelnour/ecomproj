@@ -14,7 +14,8 @@
         <ul id="menu">
             <li><a href="/home.php">Home</a></li>
             <li><a href="/about.php">Book</a></li>
-            <li><a href="/contact.php">Contact Us</a></li>
+            <li><a href="/contact.php">Address</a></li>
+            <li><a href="/contact.php">Profile</a></li>
         </ul>
     </nav>
     <div id="nav_background"></div>
