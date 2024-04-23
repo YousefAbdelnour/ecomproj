@@ -20,8 +20,8 @@
         <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin">
         </div>
         <div class="form_column">
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password" name="password">
+        <label for="passwordLogin">Password</label>
+        <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin">
         </div>
         <p><a href="">Forgot password?</a><p>
         <p><a href="loginStaff">Staff member?</a><p>
