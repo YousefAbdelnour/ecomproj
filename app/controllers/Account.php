@@ -59,7 +59,7 @@ class Account extends \app\core\Controller
             $account->insert();
             header('location:/Account/login');
         } else {
-            $this->view('Account/registration');
+            $this->view('Account/register');
         }
     }
 

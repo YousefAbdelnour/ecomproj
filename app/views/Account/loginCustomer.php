@@ -12,7 +12,7 @@
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Login</h1>
-        <h2>Not registered? <a href="">Sign up</a> </h2>
+        <h2>Not registered? <a href="register">Sign up</a> </h2>
     </div>
     <form id="login_form">
         <div class="form_column">
@@ -24,7 +24,7 @@
         <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin">
         </div>
         <p><a href="">Forgot password?</a><p>
-        <p><a href="">Staff member?</a><p>
+        <p><a href="loginStaff">Staff member?</a><p>
         <input type="submit" value="Log in">
     </form>
 </body>
