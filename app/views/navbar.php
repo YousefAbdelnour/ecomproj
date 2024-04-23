@@ -16,7 +16,7 @@
             <li><a href="/Customer/book">Book</a></li>
             <li><a href="/Address/display">Address</a></li>
             <li><a href="/Profile/show">Profile</a></li>
-            <li><a href="logout">Logout</a></li>
+            <li><a href="/Customer/logout">Logout</a></li>
         </ul>
     </nav>
     <div id="nav_background"></div>
