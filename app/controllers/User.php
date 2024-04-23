@@ -48,7 +48,9 @@ class User extends \app\core\Controller
                 $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
                 $account->IsActive = 0;
                 $account->insert();
-                header('location:/User/loginCustomer');
+                $account = $account->getByUsername($account->Username);
+                $_SESSION['CustomerId'] = $account->CustomerId;
+                header('location:/Customer/profile_create');
             } else {
                 header('location:/User/register');
             }

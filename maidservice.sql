@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 08:22 PM
+-- Generation Time: Apr 23, 2024 at 11:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -82,6 +82,13 @@ CREATE TABLE `Address` (
   `Country` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `Address`
+--
+
+INSERT INTO `Address` (`AddressId`, `Customer_ProfileId`, `Building_Number`, `Street_Name`, `ZipCode`, `State`, `Country`) VALUES
+(9, 1, '117', 'Buckingham', 'H9R 1K9', 'Quebec', 'Canada');
+
 -- --------------------------------------------------------
 
 --
@@ -100,7 +107,8 @@ CREATE TABLE `Customer` (
 --
 
 INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`) VALUES
-(2, 'DonutMan', '$2y$10$IrGYec1RR1MKa.aPIWb2u.gwvrdqurtVnjeT9ADkn0kpWRk/4pbje', 0);
+(2, 'DonutMan', '$2y$10$IrGYec1RR1MKa.aPIWb2u.gwvrdqurtVnjeT9ADkn0kpWRk/4pbje', 0),
+(3, 'DonutMan2', '$2y$10$9jFizh0i.uLwWaM0Yhm5bOKW4rc4wpV0X89zz.Z/tusQsJzewC91.', 0);
 
 -- --------------------------------------------------------
 
@@ -110,10 +118,17 @@ INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`) V
 
 CREATE TABLE `Customer_Profile` (
   `Customer_ProfileId` int(11) NOT NULL,
-  `Name` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
   `Phone_Number` varchar(10) NOT NULL,
   `CustomerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Customer_Profile`
+--
+
+INSERT INTO `Customer_Profile` (`Customer_ProfileId`, `Name`, `Phone_Number`, `CustomerId`) VALUES
+(1, 'Cristian Gasper', '5142281683', 3);
 
 -- --------------------------------------------------------
 
@@ -204,6 +219,7 @@ ALTER TABLE `Customer`
 -- Indexes for table `Customer_Profile`
 --
 ALTER TABLE `Customer_Profile`
+  ADD PRIMARY KEY (`Customer_ProfileId`),
   ADD KEY `Customer_Profile_To_Customer_FK` (`CustomerId`);
 
 --
@@ -249,13 +265,19 @@ ALTER TABLE `Account_Profile`
 -- AUTO_INCREMENT for table `Address`
 --
 ALTER TABLE `Address`
-  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `Customer_Profile`
+--
+ALTER TABLE `Customer_Profile`
+  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Job`
@@ -296,7 +318,7 @@ ALTER TABLE `Account_Profile`
 -- Constraints for table `Address`
 --
 ALTER TABLE `Address`
-  ADD CONSTRAINT `Address_To_CustomerProfile_FK` FOREIGN KEY (`Customer_ProfileId`) REFERENCES `Customer_Profile` (`CustomerId`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Address_To_CustomerProfile_FK` FOREIGN KEY (`Customer_ProfileId`) REFERENCES `Customer_Profile` (`Customer_ProfileId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `Customer_Profile`

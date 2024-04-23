@@ -43,13 +43,13 @@ class Customer_Profile extends \app\core\Model
         return $STMT->fetch();
     }
 
-    public function getByCustomerId()
+    public function getByCustomerId($customer_id)
     {
         $SQL = 'SELECT * FROM Customer_Profile WHERE CustomerId = :customer_id';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['customer_id' => $this->CustomerId]);
+        $STMT->execute(['customer_id' => $customer_id]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
-        return $STMT->fetchAll();
+        return $STMT->fetch();
     }
 
     public function update()

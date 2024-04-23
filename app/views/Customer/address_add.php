@@ -14,7 +14,7 @@
         <h1>Address Creation</h1>
         <h2>Let us make booking easier for you!</h2>
     </div>
-    <form id="address_add_form">
+    <form id="address_add_form" method="POST" action="address_add">
         <div class="form_column">
             <label for="addCountry">Country</label>
             <input type="text" placeholder="Canada" id="addCountry" name="addCountry">
