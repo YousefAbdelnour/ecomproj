@@ -14,7 +14,7 @@
         <h1>Register</h1>
         <h2>Already Register? <a href="loginCustomer">Login</a> </h2>
     </div>
-    <form id="register_form">
+    <form id="register_form" method="POST" action="register">
         <div class="form_column">
             <label for="usernameReg">Username</label>
             <input type="text" placeholder="DonutMan" id="usernameReg" name="usernameReg">
@@ -26,10 +26,6 @@
         <div class="form_column">
             <label for="passwordConfirm">Retype Password</label>
             <input type="password" placeholder="Password" id="passwordConfirm" name="passwordConfirm">
-        </div>
-        <div class="form_column">
-            <label for="accountType">Account Type</label>
-            <input type="password" placeholder="account" id="accountType" name="accountType">
         </div>
         <input type="submit" value="Sign-Up">
     </form>

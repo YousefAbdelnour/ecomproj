@@ -16,6 +16,7 @@
             <li><a href="book">Book</a></li>
             <li><a href="address_display">Address</a></li>
             <li><a href="profile_view">Profile</a></li>
+            <li><a href="logout">Logout</a></li>
         </ul>
     </nav>
     <div id="nav_background"></div>

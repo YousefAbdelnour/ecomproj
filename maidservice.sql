@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 12:57 AM
+-- Generation Time: Apr 23, 2024 at 08:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -90,10 +90,17 @@ CREATE TABLE `Address` (
 
 CREATE TABLE `Customer` (
   `CustomerId` int(11) NOT NULL,
-  `Username` int(11) NOT NULL,
+  `Username` varchar(30) NOT NULL,
   `Password_Hash` varchar(60) NOT NULL,
   `IsActive` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Customer`
+--
+
+INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`) VALUES
+(2, 'DonutMan', '$2y$10$IrGYec1RR1MKa.aPIWb2u.gwvrdqurtVnjeT9ADkn0kpWRk/4pbje', 0);
 
 -- --------------------------------------------------------
 
@@ -243,6 +250,12 @@ ALTER TABLE `Account_Profile`
 --
 ALTER TABLE `Address`
   MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `Customer`
+--
+ALTER TABLE `Customer`
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Job`

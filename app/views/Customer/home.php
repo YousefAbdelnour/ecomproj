@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css">
+    <link rel="stylesheet" href="/app/views/style.css?v=14">
     <title>Home</title>
 </head>
 
@@ -49,7 +49,7 @@
                 <!--column for right side (Service, Notifications/ Pending orders)-->
                 <div class="home_container_right_column_top_row">
                     <div id="service_history">
-                        <p id="history_title"><a href="reservation_history">Service History</a></p>
+                        <p id="history_title"><a href="reservation_history" id="history_title_link">Service History</a></p>
                         <div class="history_spacer">
                             <div class="history_first_background">
                                 <div class="history_second_background">
@@ -80,7 +80,7 @@
                 <div class="home_container_right_column_bottom_row">
                     <div id="pending">
                         <div id="pending_background">
-                            <p><a href="pending_orders">Pending Orders</a></p>
+                            <p><a href="pending_orders" id="pending_orders_link">Pending Orders</a></p>
                             <p>4639 Buckhannan Avenue</p>
 
                             <div id="pending_information">

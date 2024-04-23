@@ -11,7 +11,7 @@ class User extends \app\core\Controller
     change I made is in the views, I put both login pages and register page in a new folder separated from the 
     Customer one and Account one. I will comment out the initial login and register methods in the Account controller.
     In addition, I have realized that, making a User automatically register as a Customer would be a more secure way and
-    simple method to handle the permissions as the admin would change his account status to account. Maybe we find a etter solution.*/ 
+    simple method to handle the permissions as the admin would change his account status to account. Maybe we find a etter solution.*/
 
     function loginStaff()
     {
@@ -29,7 +29,7 @@ class User extends \app\core\Controller
                 $_SESSION['CustomerId'] = $account->CustomerId;
                 header('location:/Customer/home');
             } else {
-                header('location:/Customer/home');
+                header('location:/User/loginCustomer');
             }
         } else {
             $this->view('User/loginCustomer');
@@ -39,16 +39,21 @@ class User extends \app\core\Controller
     function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (empty(trim($_POST['usernameReg']))) {
+                header('location:/User/register');
+            }
             $account = new \app\models\Customer();
-            $account->Username = $_POST['username'];
-            $account->Password_Hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $account->IsActive = 0;
-            $account->insert();
-            header('location:/Account/login');
+            $account->Username = $_POST['usernameReg'];
+            if ($_POST['passwordReg'] === $_POST['passwordConfirm'] && !empty(trim($_POST['passwordReg']))) {
+                $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
+                $account->IsActive = 0;
+                $account->insert();
+                header('location:/User/loginCustomer');
+            } else {
+                header('location:/User/register');
+            }
         } else {
             $this->view('User/register');
         }
     }
-
-
 }

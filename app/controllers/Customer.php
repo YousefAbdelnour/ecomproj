@@ -4,6 +4,11 @@ namespace app\controllers;
 
 class Customer extends \app\core\Controller
 {
+    function logout()
+    {
+        session_destroy();
+        header('location:/User/loginCustomer');
+    }
 
     function home()
     {

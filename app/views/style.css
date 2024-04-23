@@ -655,23 +655,30 @@ input[type="submit"].profile_edit {
     cursor: pointer;
     margin-top: 20px;
     margin-bottom: 30px;
-    /* Adds space at the bottom */
     margin-left: auto;
-    /* Centers the button */
     margin-right: auto;
-    /* Centers the button */
     border-radius: 20px;
     background-color: greenyellow;
     color: white;
     display: block;
-    /* Makes the input block-level for margin auto to work */
 }
 
 .address_buttons {
     width: 100%;
-    /* Ensures the container takes full width */
     text-align: center;
-    /* Helps with centering if needed for inline or inline-block elements */
+}
+
+#history_title_link,
+#history_title_link:visited,
+#pending_orders_link,
+#pending_orders_link:visited {
+    color: white;
+    text-decoration: none;
+}
+
+#history_title_link:hover,
+#pending_orders_link:hover {
+    color: greenyellow;
 }
 
 /*Create Profile CSS END*/
