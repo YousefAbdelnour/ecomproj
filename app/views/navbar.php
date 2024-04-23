@@ -12,10 +12,10 @@
         <input type="checkbox" id="menu-toggle" class="menu-toggle" />
         <label for="menu-toggle" class="hamburger">&#9776;</label>
         <ul id="menu">
-            <li><a href="home">Home</a></li>
-            <li><a href="book">Book</a></li>
-            <li><a href="address_display">Address</a></li>
-            <li><a href="profile_view">Profile</a></li>
+            <li><a href="/Customer/home">Home</a></li>
+            <li><a href="/Customer/book">Book</a></li>
+            <li><a href="/Address/display">Address</a></li>
+            <li><a href="/Profile/show">Profile</a></li>
             <li><a href="logout">Logout</a></li>
         </ul>
     </nav>

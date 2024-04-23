@@ -31,6 +31,15 @@ class Address extends \app\core\Model
         $STMT->execute($data);
     }
 
+    public function getAllByCustomerProfileId($customer_profile_id)
+    {
+        $SQL = 'SELECT * FROM Address WHERE Customer_ProfileId = :customer_profile_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_profile_id' => $customer_profile_id]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        return $STMT->fetchAll();
+    }
+
     public function getAll()
     {
         $SQL = 'SELECT * FROM Address';

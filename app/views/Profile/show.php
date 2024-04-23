@@ -1,9 +1,3 @@
-<?php 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    header('location:/Customer/profile_edit');
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                     <div id="view_address_row">
                         <p id="view_phone">514-111-1111</p>
                     </div>
-                    <form method="POST" action="">
+                    <form method="POST" action="/Profile/edit">
                         <div class="profile_buttons">
                             <input type="submit" class="profile_edit" value="Edit">
                         </div>

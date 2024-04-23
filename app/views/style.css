@@ -327,6 +327,16 @@ input[type="button"].address_delete {
     font-size: 16px;
 }
 
+input[type="submit"].address_delete {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #f44336;
+    color: white;
+    font-size: 16px;
+}
+
 input[type="submit"].profile_edit {
     align-items: center;
     padding: 10px 20px;
