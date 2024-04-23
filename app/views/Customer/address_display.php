@@ -1,20 +1,33 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    header('location:/Customer/address_add');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css?v=7">
+    <link rel="stylesheet" href="/app/views/style.css?v=12">
     <title>Service Booking</title>
 </head>
 
 <body>
-    <?php include('../../navbar.php'); ?>
+    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Schedule</h1>
-        <h2>Don't worry, we got you covered!</h2>
+        <h1>Addres List</h1>
+        <h2>Is this were you live?</h2>
     </div>
     <div class="divider"></div>
+    <form method="POST" action="">
+        <div class="address_buttons">
+            <input type="submit" class="address_add" value="ADD">
+        </div>
+    </form>
     <div class="wrapper">
         <div id="task_container">
             <!-- This is the template for a job-->

@@ -1,15 +1,21 @@
+<?php 
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    header('location:/Customer/profile_edit');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css?v=9">
+    <link rel="stylesheet" href="/app/views/style.css">
     <title>Profile</title>
 </head>
 
 <body>
-    <?php include('../../navbar.php'); ?>
+    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Profile</h1>
         <h2>This is you!</h2>
@@ -27,9 +33,11 @@
                     <div id="view_address_row">
                         <p id="view_phone">514-111-1111</p>
                     </div>
-                    <div class="profile_buttons">
-                        <input type="button" class="profile_edit" value="Edit">
-                    </div>
+                    <form method="POST" action="">
+                        <div class="profile_buttons">
+                            <input type="submit" class="profile_edit" value="Edit">
+                        </div>
+                    </form>
                 </div>
 
             </div>

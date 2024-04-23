@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../style.css?v=1">
+    <link rel="stylesheet" href="/app/views/style.css">
     <title>Create Profile</title>
 </head>
 
 <body>
-    <?php include('../../navbar.php'); ?>
+    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Profile Creation</h1>
         <h2>Describe yourself! Don't be shy! </h2>

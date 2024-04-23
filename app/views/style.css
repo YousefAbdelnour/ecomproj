@@ -309,8 +309,7 @@ input[type="button"].task_decline {
 }
 
 .schedule_buttons,
-.address_buttons
-.profile_buttons {
+.address_buttons .profile_buttons {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -328,7 +327,8 @@ input[type="button"].address_delete {
     font-size: 16px;
 }
 
- input[type="button"].profile_edit {
+input[type="submit"].profile_edit {
+    align-items: center;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
@@ -647,6 +647,31 @@ input[type="button"].address_delete {
     justify-content: space-between;
     align-items: center;
     text-align: center;
+}
+
+.address_add {
+    width: 30%;
+    height: 45px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    /* Adds space at the bottom */
+    margin-left: auto;
+    /* Centers the button */
+    margin-right: auto;
+    /* Centers the button */
+    border-radius: 20px;
+    background-color: greenyellow;
+    color: white;
+    display: block;
+    /* Makes the input block-level for margin auto to work */
+}
+
+.address_buttons {
+    width: 100%;
+    /* Ensures the container takes full width */
+    text-align: center;
+    /* Helps with centering if needed for inline or inline-block elements */
 }
 
 /*Create Profile CSS END*/

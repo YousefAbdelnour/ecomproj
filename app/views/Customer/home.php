@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css?v=5">
+    <link rel="stylesheet" href="/app/views/style.css">
     <title>Home</title>
 </head>
 
 <body id="home">
-    <?php include('../navbar.php'); ?>
+    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Home</h1>
         <h2>Welcome, make yourself comfortable!</h2>
@@ -49,7 +49,7 @@
                 <!--column for right side (Service, Notifications/ Pending orders)-->
                 <div class="home_container_right_column_top_row">
                     <div id="service_history">
-                        <p id="history_title">Service History</p>
+                        <p id="history_title"><a href="reservation_history">Service History</a></p>
                         <div class="history_spacer">
                             <div class="history_first_background">
                                 <div class="history_second_background">
@@ -80,7 +80,7 @@
                 <div class="home_container_right_column_bottom_row">
                     <div id="pending">
                         <div id="pending_background">
-                            <p>Pending Orders</p>
+                            <p><a href="pending_orders">Pending Orders</a></p>
                             <p>4639 Buckhannan Avenue</p>
 
                             <div id="pending_information">
