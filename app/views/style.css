@@ -267,13 +267,15 @@ input[type="button"].task_decline {
 /*Task CSS END*/
 
 /*Reservation history CSS*/
-.schedule_day {
+.schedule_day,
+.view_address {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.schedule_row {
+.schedule_row,
+.view_address_row {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -281,7 +283,9 @@ input[type="button"].task_decline {
 }
 
 .schedule_date,
-.schedule_address {
+.schedule_address,
+.view_country,
+.view_address {
     flex-grow: 1;
     padding-left: 2%;
 }
@@ -292,19 +296,23 @@ input[type="button"].task_decline {
 }
 
 .schedule_time,
-.schedule_size {
+.schedule_size,
+.view_state,
+.view_zipcode {
     margin-left: 10px;
     padding-right: 2%;
 }
 
-.schedule_buttons {
+.schedule_buttons,
+.address_buttons {
     display: flex;
     justify-content: center;
     width: 100%;
     padding: 10px 0;
 }
 
-input[type="button"].task_decline {
+input[type="button"].task_decline,
+input[type="button"].address_delete {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 5px;
@@ -315,7 +323,10 @@ input[type="button"].task_decline {
 }
 
 #register_form,
-#login_form {
+#login_form,
+#profile_create_form,
+#profile_edit_form,
+#address_add_form {
     align-items: center;
     text-align: center;
     padding: 4%;
@@ -334,11 +345,13 @@ input[type="button"].task_decline {
     color: #333;
 }
 
-
 .form_column input[type="text"],
 .form_column input[type="password"],
 #register_form input[type="submit"],
-#login_form input[type="submit"] {
+#login_form input[type="submit"],
+#profile_create_form input[type="submit"],
+#profile_edit_form input[type="submit"],
+#address_add_form input[type="submit"] {
     width: 30%;
     padding: 8px;
     box-sizing: border-box;
@@ -348,7 +361,10 @@ input[type="button"].task_decline {
 
 
 #register_form input[type="submit"],
-#login_form input[type="submit"] {
+#login_form input[type="submit"],
+#profile_create_form input[type="submit"],
+#profile_edit_form input[type="submit"],
+#address_add_form input[type="submit"] {
     background-color: #4CAF50;
     color: white;
     font-weight: bold;
@@ -357,7 +373,10 @@ input[type="button"].task_decline {
 }
 
 #register_form input[type="submit"]:hover,
-#login_form input[type="submit"]:hover {
+#login_form input[type="submit"]:hover,
+#profile_create_form input[type="submit"]:hover,
+#profile_edit_form input[type="submit"]:hover,
+#address_add_form input[type="submit"]:hover {
     background-color: #45a049;
 }
 
@@ -489,7 +508,7 @@ input[type="button"].task_decline {
     align-items: center;
 }
 
-.history_spacer{
+.history_spacer {
     width: 100%;
     padding-top: 3%;
     display: flex;
@@ -572,7 +591,6 @@ input[type="button"].task_decline {
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* Center the text */
     background-color: #6c6b6b;
     border-radius: 40px;
     padding: 10px;
@@ -603,3 +621,16 @@ input[type="button"].task_decline {
 #home {
     height: 100vh;
 }
+
+/*Home page CSS END*/
+
+/*Create Profile CSS*/
+.createButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+/*Create Profile CSS END*/
