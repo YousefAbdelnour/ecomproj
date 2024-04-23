@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css?v=14">
+    <link rel="stylesheet" href="/app/views/style.css?v=15">
     <title>Service Booking</title>
 </head>
 
@@ -15,11 +15,9 @@
         <h2>Is this were you live?</h2>
     </div>
     <div class="divider"></div>
-    <form method="POST" action="/Address/add">
-        <div class="address_buttons">
-            <input type="submit" class="address_add" value="ADD">
-        </div>
-    </form>
+    <div class="address_buttons">
+        <a href="/Address/add" class="button-style">ADD</a>
+    </div>
     <div class="wrapper">
         <div id="task_container">
             <!-- This is the template for a job-->
@@ -34,11 +32,9 @@
                             <p class="view_address"><?php echo "$address->Building_Number $address->Street_Name" ?></p>
                             <p class="view_zipcode"><?php echo "$address->ZipCode" ?></p>
                         </div>
-                        <form method="POST" action="/Address/delete">
-                            <div class="address_buttons">
-                                <input type="submit" class="address_delete" value="Delete">
-                            </div>
-                        </form>
+                        <div class="address_buttons">
+                            <a href="/Address/delete" class="button-style-delete">Delete</a>
+                        </div>
                     </div>
 
                 </div>

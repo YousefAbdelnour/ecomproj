@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css">
+    <link rel="stylesheet" href="/app/views/style.css?v=17">
     <title>Profile</title>
 </head>
 
@@ -27,11 +27,9 @@
                     <div id="view_address_row">
                         <p id="view_phone">514-111-1111</p>
                     </div>
-                    <form method="POST" action="/Profile/edit">
                         <div class="profile_buttons">
-                            <input type="submit" class="profile_edit" value="Edit">
+                        <a href="/Profile/edit" class="button-style">Edit</a>
                         </div>
-                    </form>
                 </div>
 
             </div>
