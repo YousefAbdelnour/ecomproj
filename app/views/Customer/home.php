@@ -81,7 +81,7 @@
                     <div id="pending">
                         <div id="pending_background">
                             <p><a href="pending_orders" id="pending_orders_link">Pending Orders</a></p>
-                            <p>4639 Buckhannan Avenue</p>
+                            <p><?php var_dump($data)?></p>
 
                             <div id="pending_information">
                                 <div id="pending_buttons">
