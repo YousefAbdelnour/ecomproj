@@ -5,7 +5,7 @@ $this->addRoute('User/loginCustomer', 'User,loginCustomer');
 $this->addRoute('User/register', 'User,register');
 $this->addRoute('Customer/home', 'Customer,home');
 $this->addRoute('Customer/reservation_history', 'Customer,reservation_history');
-$this->addRoute('Customer/book', 'Customer,book');
+$this->addRoute('Job/book', 'Job,book');
 $this->addRoute('Customer/pending_orders', 'Customer,pending_orders');
 $this->addRoute('Address/display', 'Address,display');
 $this->addRoute('Address/add', 'Address,add');

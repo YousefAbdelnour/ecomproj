@@ -16,7 +16,7 @@
     </div>
     <div class="divider"></div>
     <div id="book_form_div">
-        <form id="book_form">
+        <form id="book_form" method="POST" action="">
             <div class="form-row">
                 <div class="form-group">
                     <label for="address">Address</label>
@@ -29,18 +29,18 @@
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="spots">Maid Preference</label>
-                    <input type="text" id="spots" name="spots">
+                    <label for="maid">Maid Preference</label>
+                    <input type="text" id="maid" name="maid">
                 </div>
                 <div class="form-group">
-                    <label for="maid_name">Maids</label>
-                    <input type="text" id="maid_name" name="maid_name">
+                    <label for="spots">Maids</label>
+                    <input type="text" id="spots" name="spots">
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
                     <label for="date">Date</label>
-                    <input type="text" id="date" name="date">
+                    <input type="text" placeholder="YYYY-MM-DD HH:MI:SS" id="date" name="date">
                 </div>
             </div>
             <div id="textarea_div">

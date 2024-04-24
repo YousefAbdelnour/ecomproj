@@ -15,11 +15,6 @@ class Customer extends \app\core\Controller
         $this->view('Customer/home');
     }
 
-    function book()
-    {
-        $this->view('Customer/book');
-    }
-
     function reservation_history()
     {
         $this->view('Customer/reservation_history');

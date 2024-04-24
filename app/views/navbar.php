@@ -13,7 +13,7 @@
         <label for="menu-toggle" class="hamburger">&#9776;</label>
         <ul id="menu">
             <li><a href="/Customer/home">Home</a></li>
-            <li><a href="/Customer/book">Book</a></li>
+            <li><a href="/Job/book">Book</a></li>
             <li><a href="/Address/display">Address</a></li>
             <li><a href="/Profile/show">Profile</a></li>
             <li><a href="/Customer/logout">Logout</a></li>
