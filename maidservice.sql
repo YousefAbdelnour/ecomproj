@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 11:25 PM
+-- Generation Time: Apr 24, 2024 at 02:36 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -82,13 +82,6 @@ CREATE TABLE `Address` (
   `Country` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `Address`
---
-
-INSERT INTO `Address` (`AddressId`, `Customer_ProfileId`, `Building_Number`, `Street_Name`, `ZipCode`, `State`, `Country`) VALUES
-(9, 1, '117', 'Buckingham', 'H9R 1K9', 'Quebec', 'Canada');
-
 -- --------------------------------------------------------
 
 --
@@ -128,7 +121,7 @@ CREATE TABLE `Customer_Profile` (
 --
 
 INSERT INTO `Customer_Profile` (`Customer_ProfileId`, `Name`, `Phone_Number`, `CustomerId`) VALUES
-(1, 'Cristian Gasper', '5142281683', 3);
+(1, 'Uzi Canozi', '1111111111', 3);
 
 -- --------------------------------------------------------
 
@@ -265,7 +258,7 @@ ALTER TABLE `Account_Profile`
 -- AUTO_INCREMENT for table `Address`
 --
 ALTER TABLE `Address`
-  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `Customer`
