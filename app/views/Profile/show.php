@@ -21,15 +21,15 @@
             <div class="task">
                 <div id="view_profile">
                     <div id="view_profile_row">
-                        <p id="view_name">Ronald Rafael</p>
-                        <p id="view_username">Username</p>
+                        <p id="view_name"><?php echo $data['customer_profile']->Name ?></p>
+                        <p id="view_username"><?php echo $data['customer']->Username ?></p>
                     </div>
                     <div id="view_address_row">
-                        <p id="view_phone">514-111-1111</p>
+                        <p id="view_phone"><?php echo $data['customer_profile']->Phone_Number; ?></p>
                     </div>
-                        <div class="profile_buttons">
+                    <div class="profile_buttons">
                         <a href="/Profile/edit" class="button-style">Edit</a>
-                        </div>
+                    </div>
                 </div>
 
             </div>

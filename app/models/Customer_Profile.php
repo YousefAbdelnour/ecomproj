@@ -54,14 +54,13 @@ class Customer_Profile extends \app\core\Model
 
     public function update()
     {
-        $SQL = 'UPDATE Customer_Profile SET Name = :name, Phone_Number = :phone_number, CustomerId = :customer_id 
+        $SQL = 'UPDATE Customer_Profile SET Name = :name, Phone_Number = :phone_number
                 WHERE Customer_ProfileId = :customer_profile_id';
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute([
             'name' => $this->Name,
             'phone_number' => $this->Phone_Number,
-            'customer_id' => $this->CustomerId,
             'customer_profile_id' => $this->Customer_ProfileId
         ]);
     }
