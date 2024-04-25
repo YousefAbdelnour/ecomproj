@@ -80,7 +80,7 @@
                 <div class="home_container_right_column_bottom_row">
                     <div id="pending">
                         <div id="pending_background">
-                            <p><a href="pending_orders" id="pending_orders_link">Pending Orders</a></p>
+                            <p><a href="/Job/display" id="pending_orders_link">Pending Orders</a></p>
                             <p><?php var_dump($data)?></p>
 
                             <div id="pending_information">
