@@ -33,11 +33,11 @@ class Account extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
-    public function getByUsername()
+    public function getByUsername($username)
     {
         $SQL = 'SELECT * FROM Account WHERE Username = :username';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['username' => $this->Username]);
+        $STMT->execute(['username' => $username]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetch();
     }

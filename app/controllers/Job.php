@@ -31,4 +31,23 @@ class Job extends \app\core\Controller
         }
         $this->view('Job/book');
     }
+    //NOT FUNCTIONAL
+    function display()
+    {
+        $jobModel = new \app\models\Job();
+        $bookings = $jobModel->getAllByCustomerProfileId($_SESSION['CustomerId']);
+
+        // Initialize the $data array
+        $data = [];
+
+        if (empty($bookings)) {
+            // Handle case where no bookings are found
+            $data['message'] = "No bookings found for the current customer profile.";
+        } else {
+            $data['bookings'] = $bookings;
+        }
+
+        $this->view('Job/display', $data);
+        var_dump($data);
+    }
 }

@@ -14,7 +14,7 @@
         <h1>Profile Creation</h1>
         <h2>Describe yourself! Don't be shy! </h2>
     </div>
-    <form id="profile_create_form" method="POST" action="profile_create">
+    <form id="profile_create_form" method="POST" action="">
         <div class="form_column">
             <label for="createName">Name</label>
             <input type="text" placeholder="First Last" id="createName" name="createName">

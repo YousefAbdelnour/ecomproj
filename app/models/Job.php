@@ -95,4 +95,18 @@ class Job extends \app\core\Model
         $data = ['job_id' => $this->JobId];
         $STMT->execute($data);
     }
+    //NOT FUNCTIONAL
+    //Getting all jobs by CustomerProfileId connected to it 
+    public function getAllByCustomerProfileId($customer_profile_id)
+    {
+    $SQL = 'SELECT Job.* 
+            FROM Job 
+            INNER JOIN Address ON Job.AddressId = Address.AddressId 
+            WHERE Address.Customer_ProfileId = :customer_profile_id';
+
+    $STMT = self::$_conn->prepare($SQL);
+    $STMT->execute(['customer_profile_id' => $customer_profile_id]);
+    $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+    return $STMT->fetchAll();
+    }
 }

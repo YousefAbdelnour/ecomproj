@@ -5,9 +5,18 @@ namespace app\controllers;
 class Account extends \app\core\Controller
 {
 
+    function home_admin()
+    {
+        $this->view('Account/home_admin');
+    }
+
+    function home_maid()
+    {
+        $this->view('Account/home_maid');
+    }
     //Added these two but fell free to change em however you want
 
-   /* function login()
+    /* function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];

@@ -12,9 +12,9 @@
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Login Staff</h1>
-        <h2>Not registered? <a href="register">Sign up</a> </h2>
+        <h2>Not registered? <a href="registerAdmin">Sign up</a> </h2>
     </div>
-    <form id="login_form">
+    <form id="login_form" method="POST" action="loginStaff">
         <div class="form_column">
             <label for="usernameLogin">Username</label>
             <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin">

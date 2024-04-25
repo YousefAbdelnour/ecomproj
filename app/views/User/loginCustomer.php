@@ -12,7 +12,7 @@
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Login</h1>
-        <h2>Not registered? <a href="register">Sign up</a> </h2>
+        <h2>Not registered? <a href="registerCustomer">Sign up</a> </h2>
     </div>
     <form id="login_form" method="POST" action="loginCustomer">
         <div class="form_column">
