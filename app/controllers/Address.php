@@ -6,11 +6,16 @@ class Address extends \app\core\Controller
 {
     function delete($id)
     {
-        $address = new \app\models\Address();
-        $address->AddressId = $id;
-        $address = $address->getById();
-        if ($address !== null) {
-            $address->delete();
+        $jobs = new \app\models\Job();
+        $jobs->AddressId = $id;
+        $jobs = $jobs->getByAddressId();
+        if ($jobs == null) {
+            $address = new \app\models\Address();
+            $address->AddressId = $id;
+            $address = $address->getById();
+            if ($address !== null) {
+                $address->delete();
+            }
         }
         $this->display();
     }
