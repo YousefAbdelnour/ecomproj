@@ -35,7 +35,10 @@ class Job extends \app\core\Controller
     function display()
     {
         $jobModel = new \app\models\Job();
-        $bookings = $jobModel->getAllByCustomerProfileId($_SESSION['CustomerId']);
+        $customer_profile = new \app\models\Customer_Profile();
+        $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
+        $customer_profile_id = $customer_profile->Customer_ProfileId;
+        $bookings = $jobModel->getAllByCustomerProfileId($customer_profile_id);
 
         // Initialize the $data array
         $data = [];
@@ -46,8 +49,8 @@ class Job extends \app\core\Controller
         } else {
             $data['bookings'] = $bookings;
         }
-
-        $this->view('Job/display', $data);
         var_dump($data);
+        $this->view('Job/display', $data);
+        
     }
 }

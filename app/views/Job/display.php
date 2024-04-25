@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <?php include('app/views/navbar.php'); ?>
-    <div class="title_div">
+    <?php //include('app/views/navbar.php'); ?>
+    <div class="">
         <h1>Booking List</h1>
         <h2>Your Scheduled Services</h2>
     </div>
