@@ -5,43 +5,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app/views/style.css?v=20">
-    <title>Service Booking</title>
+    <title>Admin Home</title>
 </head>
 
 <body>
-    <?php include('app/views/navbar.php'); ?>
+    <?php include('app/views/navbarAdmin.php'); ?>
     <div class="title_div">
-        <h1>Maid Tasks</h1>
-        <h2>Accept or Deny</h2>
+        <h1>Welcome Admin</h1>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
-        <div class="filter_div">
-
+        <div class="profile_buttons">
+            <a href="/Account/display/1" class="button-style">CUSTOMER</a>
+        </div>
+        <div class="profile_buttons">
+            <a href="/Account/display/2" class="button-style">STAFF</a>
+        </div>
+        <div class="profile_buttons">
+            <a href="/Account/display/3" class="button-style">BOOKING</a>
         </div>
         <div id="task_container">
-            <!-- This is the template for a job-->
-            <div class="task">
-                <div class="task_info">
-                    <p class="task_title">Roanld Garcia</p>
-                    <p class="task_location">Qc Montreal</p>
-                    <p class="task_date">2024/06/10</p>
-                    <p class="task_size">Medium</p>
-                </div>
-
-                <div class="task_description">
-                    <div class="task_description_frame">
-                        <p>Do not forget to clean the toilet seat! Thank you!</p>
+            <?php foreach ($data as $info) : ?>
+                <div class="task">
+                    <div id="view_profile">
+                        <div id="view_profile_row">
+                            <p id="view_name"><?php if ($info->CustomerId === null) {
+                                                    echo $info->AccountId;
+                                                } else {
+                                                    echo $info->CustomerId;
+                                                } ?></p>
+                            <p id="view_username"><?php echo $info->Username ?></p>
+                        </div>
+                        <div id="view_address_row">
+                            <p id="view_phone"><?php if ($info->IsActive === 0) {
+                                                    echo "Active";
+                                                } else {
+                                                    echo "Deactivated";
+                                                } ?></p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="task_buttons">
-                    <input type="button" class="task_accept" value="Accept">
-                    <input type="button" class="task_decline" value="Decline">
                 </div>
-
-            </div>
-            <!-- END OF TEMPLATE-->
+            <?php endforeach; ?>
         </div>
     </div>
 

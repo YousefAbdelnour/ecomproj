@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include('app/views/navbar.php'); ?>
+    <?php include('app/views/navbarAdmin.php'); ?>
     <div class="title_div">
         <h1>Profile</h1>
         <h2>This is you!</h2>
@@ -21,14 +21,14 @@
             <div class="task">
                 <div id="view_profile">
                     <div id="view_profile_row">
-                        <p id="view_name"><?php echo $data['customer_profile']->Name ?></p>
-                        <p id="view_username"><?php echo $data['customer']->Username ?></p>
+                        <p id="view_name"><?php echo $data['account_profile']->Name ?></p>
+                        <p id="view_username"><?php echo $data['account']->Username ?></p>
                     </div>
                     <div id="view_address_row">
-                        <p id="view_phone"><?php echo $data['customer_profile']->Phone_Number; ?></p>
+                        <p id="view_phone"><?php echo $data['account_profile']->Phone_Number; ?></p>
                     </div>
                     <div class="profile_buttons">
-                        <a href="/Profile/edit" class="button-style">Edit</a>
+                        <a href="/Profile/edit_Admin" class="button-style">Edit</a>
                     </div>
                 </div>
 

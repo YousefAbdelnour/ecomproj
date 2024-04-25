@@ -42,7 +42,7 @@ class Profile extends \app\core\Controller
         }
     }
 
-    function show()
+    function show_Customer()
     {
         $customer_profile = new \app\models\Customer_Profile();
         $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
@@ -51,10 +51,23 @@ class Profile extends \app\core\Controller
         $customer = $customer->getById();
         $data['customer'] = $customer;
         $data['customer_profile'] = $customer_profile;
-        $this->view('Profile/show', $data);
+        $this->view('Profile/show_Customer', $data);
     }
 
-    function edit()
+    function show_Admin()
+    {
+        $account_profile = new \app\models\Account_Profile();
+        $account_profile->AccountId = $_SESSION['AccountId'];
+        $account_profile = $account_profile->getByAccountId();
+        $account = new \app\models\Account();
+        $account->AccountId = $_SESSION['AccountId'];
+        $account = $account->getById();
+        $data['account'] = $account;
+        $data['account_profile'] = $account_profile;
+        $this->view('Profile/show_Admin', $data);
+    }
+
+    function edit_Customer()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['editName'];
@@ -65,9 +78,27 @@ class Profile extends \app\core\Controller
                 $customer_profile->Name = $name;
                 $customer_profile->Phone_Number = $phone_number;
                 $customer_profile->update();
-                header('location:/Profile/show');
+                header('location:/Profile/show_Customer');
             }
         }
-        $this->view('Profile/edit');
+        $this->view('Profile/edit_Customer');
+    }
+
+    function edit_Admin()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['editName'];
+            $phone_number = $_POST['editPhoneNumber'];
+            if (!empty($name) && !empty($phone_number)) {
+                $account_profile = new \app\models\Account_Profile();
+                $account_profile->AccountId = $_SESSION['AccountId'];
+                $account_profile = $account_profile->getByAccountId();
+                $account_profile->Name = $name;
+                $account_profile->Phone_Number = $phone_number;
+                $account_profile->update();
+                header('location:/Profile/show_Admin');
+            }
+        }
+        $this->view('Profile/edit_Admin');
     }
 }

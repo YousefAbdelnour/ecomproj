@@ -5,6 +5,22 @@ namespace app\controllers;
 class Account extends \app\core\Controller
 {
 
+    function display($type)
+    {
+        if ($type === 2) {
+            $staff = new \app\models\Account();
+            $staff = $staff->getAll();
+            $data = $staff;
+            $this->view('Account/home_admin', $data);
+        } else if ($type === 3) {
+        } else {
+            $customer = new \app\models\Customer();
+            $customer = $customer->getAll();
+            $data = $customer;
+            $this->view('/Account/home_admin', $data);
+        }
+    }
+
     function home_admin()
     {
         $this->view('Account/home_admin');
