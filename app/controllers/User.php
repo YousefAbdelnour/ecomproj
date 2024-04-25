@@ -15,7 +15,20 @@ class User extends \app\core\Controller
 
     function loginStaff()
     {
-        $this->view('User/loginStaff');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['usernameLogin'];
+            $account = new \app\models\Account();
+            $account = $account->getByUsername($username);
+            $password = $_POST['passwordLogin'];
+            if ($account && $account->IsActive == 0 && password_verify($password, $account->Password_Hash)) {
+                $_SESSION['AccountId'] = $account->CustomerId;
+                header('location:/Account/home');
+            } else {
+                header('location:/User/loginStaff');
+            }
+        } else {
+            $this->view('User/loginStaff');
+        }
     }
 
     function loginCustomer()

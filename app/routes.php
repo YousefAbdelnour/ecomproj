@@ -14,3 +14,5 @@ $this->addRoute('Profile/edit', 'Profile,edit');
 $this->addRoute('Profile/create', 'Profile,create');
 $this->addRoute('Customer/logout', 'Customer,logout');
 $this->addRoute('Address/delete/{id}', 'Address,delete');
+
+$this->addRoute('Staff/home', 'Staff,home');
