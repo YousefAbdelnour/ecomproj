@@ -19,6 +19,7 @@ class Account extends \app\core\Controller
             $this->view('/Account/home_admin', $accounts);
         }
     }
+    
     //Added these two but fell free to change em however you want
 
     /* function login()

@@ -22,10 +22,12 @@ class User extends \app\core\Controller
             $password = $_POST['passwordLogin'];
             if ($account && $account->IsActive == 0 && password_verify($password, $account->Password_Hash)) {
                 $_SESSION['AccountId'] = $account->AccountId;
-                if($account->IsAdmin === 1){
+                if ($account->IsAdmin === 1) {
+                    $_SESSION['isAdmin'] = true;
                     header('location:/Account/home_admin');
-                }else{
-                    header('location:/Account/home_maid');  
+                } else {
+                    $_SESSION['isAdmin'] = false;
+                    header('location:/Account/home_maid');
                 }
             } else {
                 header('location:/User/loginStaff');
@@ -100,4 +102,3 @@ class User extends \app\core\Controller
         }
     }
 }
-

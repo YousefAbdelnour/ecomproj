@@ -53,4 +53,5 @@ class Job extends \app\core\Controller
         $this->view('Job/display', $data);
         
     }
+    
 }
