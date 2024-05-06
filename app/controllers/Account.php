@@ -7,28 +7,17 @@ class Account extends \app\core\Controller
 
     function display($type)
     {
-        if ($type === 2) {
-            $staff = new \app\models\Account();
-            $staff = $staff->getAll();
-            $data = $staff;
-            $this->view('Account/home_admin', $data);
-        } else if ($type === 3) {
+        $accounts = new \app\models\Account();
+        if ($type === 1) {
+            $accounts = $accounts->getStaffAccounts();
+            $this->view('Account/home_admin', $accounts);
+        } else if ($type === 0) {
+            $accounts = $accounts->getAll();
+            $this->view('/Account/home_admin', $accounts);
         } else {
-            $customer = new \app\models\Customer();
-            $customer = $customer->getAll();
-            $data = $customer;
-            $this->view('/Account/home_admin', $data);
+            $accounts = $accounts->getCustomerAccounts();
+            $this->view('/Account/home_admin', $accounts);
         }
-    }
-
-    function home_admin()
-    {
-        $this->view('Account/home_admin');
-    }
-
-    function home_maid()
-    {
-        $this->view('Account/home_maid');
     }
     //Added these two but fell free to change em however you want
 

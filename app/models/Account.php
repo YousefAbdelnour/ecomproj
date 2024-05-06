@@ -81,6 +81,14 @@ class Account extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
+    public function getCustomerAccounts()
+    {
+        $SQL = 'SELECT * FROM Customer';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute();
+        $STMT->setFetchMode(PDO::FETCH_CLASS, new \app\models\Customer());
+        return $STMT->fetchAll();
+    }
     public function update()
     {
         $SQL = 'UPDATE Account SET Username = :Username, Password_Hash = :Password_Hash, IsActive = :IsActive, IsAdmin = :IsAdmin WHERE AccountId = :AccountId';
