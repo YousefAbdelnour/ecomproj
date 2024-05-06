@@ -1,0 +1,203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-06 15:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/views/Account/home_admin.php:8
+msgid "Admin Home"
+msgstr ""
+
+#: app/views/Account/home_admin.php:14
+msgid "Welcome Admin"
+msgstr ""
+
+#: app/views/Account/home_admin.php:19
+msgid "CUSTOMER"
+msgstr ""
+
+#: app/views/Account/home_admin.php:22
+msgid "STAFF"
+msgstr ""
+
+#: app/views/Account/home_admin.php:25
+msgid "BOOKING"
+msgstr ""
+
+#: app/views/Account/home_admin.php:41
+msgid "Active"
+msgstr ""
+
+#: app/views/Account/home_admin.php:43
+msgid "Deactivated"
+msgstr ""
+
+#: app/views/Account/home_maid.php:8 app/views/Account/schedule.php:8
+#: app/views/Account/task.php:8 app/views/Address/display.php:8
+msgid "Service Booking"
+msgstr ""
+
+#: app/views/Account/home_maid.php:14 app/views/Account/task.php:14
+msgid "Maid Tasks"
+msgstr ""
+
+#: app/views/Account/home_maid.php:15 app/views/Account/task.php:15
+msgid "Accept or Deny"
+msgstr ""
+
+#: app/views/Account/home_maid.php:26 app/views/Account/task.php:26
+msgid "Roanld Garcia"
+msgstr ""
+
+#: app/views/Account/home_maid.php:27 app/views/Account/task.php:27
+msgid "Qc Montreal"
+msgstr ""
+
+#: app/views/Account/home_maid.php:28 app/views/Account/task.php:28
+msgid "2024/06/10"
+msgstr ""
+
+#: app/views/Account/home_maid.php:29 app/views/Account/task.php:29
+msgid "Medium"
+msgstr ""
+
+#: app/views/Account/home_maid.php:34 app/views/Account/task.php:34
+msgid "Do not forget to clean the toilet seat! Thank you!"
+msgstr ""
+
+#: app/views/Account/home_maid.php:39 app/views/Account/task.php:39
+msgid "Accept"
+msgstr ""
+
+#: app/views/Account/home_maid.php:40 app/views/Account/task.php:40
+msgid "Decline"
+msgstr ""
+
+#: app/views/Account/schedule.php:14
+msgid "Schedule"
+msgstr ""
+
+#: app/views/Account/schedule.php:15
+msgid "Don't worry, we got you covered!"
+msgstr ""
+
+#: app/views/Account/schedule.php:24
+msgid "15th Monday"
+msgstr ""
+
+#: app/views/Account/schedule.php:25
+msgid "10:15 AM"
+msgstr ""
+
+#: app/views/Account/schedule.php:28
+msgid "1405 Av Crickson Montreal Qc"
+msgstr ""
+
+#: app/views/Account/schedule.php:29
+msgid "Small"
+msgstr ""
+
+#: app/views/Account/schedule.php:32
+msgid "Cancel"
+msgstr ""
+
+#: app/views/Address/add.php:8 app/views/Address/add.php:14
+msgid "Address Creation"
+msgstr ""
+
+#: app/views/Address/add.php:15
+msgid "Let us make booking easier for you!"
+msgstr ""
+
+#: app/views/Address/add.php:19
+msgid "Country"
+msgstr ""
+
+#: app/views/Address/add.php:20
+msgid "Canada"
+msgstr ""
+
+#: app/views/Address/add.php:23
+msgid "State"
+msgstr ""
+
+#: app/views/Address/add.php:24
+msgid "Quebec"
+msgstr ""
+
+#: app/views/Address/add.php:27
+msgid "Street"
+msgstr ""
+
+#: app/views/Address/add.php:28
+msgid "Street name"
+msgstr ""
+
+#: app/views/Address/add.php:31
+msgid "Residence Number"
+msgstr ""
+
+#: app/views/Address/add.php:32
+msgid "000"
+msgstr ""
+
+#: app/views/Address/add.php:35
+msgid "Zip Code"
+msgstr ""
+
+#: app/views/Address/add.php:36
+msgid "XXX XXX"
+msgstr ""
+
+#: app/views/Address/add.php:39
+msgid "Add"
+msgstr ""
+
+#: app/views/Address/display.php:14
+msgid "Address List"
+msgstr ""
+
+#: app/views/Address/display.php:15
+msgid "Is this where you live?"
+msgstr ""
+
+#: app/views/Address/display.php:19
+msgid "ADD"
+msgstr ""
+
+#: app/views/Address/display.php:36
+msgid "Delete"
+msgstr ""
+
+#: app/views/navbar.php:15 app/views/navbarAdmin.php:15
+msgid "Home"
+msgstr ""
+
+#: app/views/navbar.php:16
+msgid "Book"
+msgstr ""
+
+#: app/views/navbar.php:17
+msgid "Address"
+msgstr ""
+
+#: app/views/navbar.php:18 app/views/navbarAdmin.php:16
+msgid "Profile"
+msgstr ""
+
+#: app/views/navbar.php:19 app/views/navbarAdmin.php:17
+msgid "Logout"
+msgstr ""

@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app/views/style.css?v=19">
-    <title>Service Booking</title>
+    <title><?= __('Service Booking') ?></title>
 </head>
 
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Maid Tasks</h1>
-        <h2>Accept or Deny</h2>
+        <h1> <?= __('Maid Tasks') ?> </h1>
+        <h2> <?= __('Accept or Deny') ?> </h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
@@ -23,21 +23,21 @@
             <!-- This is the template for a job-->
             <div class="task">
                 <div class="task_info">
-                    <p class="task_title">Roanld Garcia</p>
-                    <p class="task_location">Qc Montreal</p>
-                    <p class="task_date">2024/06/10</p>
-                    <p class="task_size">Medium</p>
+                    <p class="task_title"> <?= __('Roanld Garcia') ?> </p>
+                    <p class="task_location"> <?= __('Qc Montreal') ?> </p>
+                    <p class="task_date"> <?= __('2024/06/10') ?> </p>
+                    <p class="task_size"> <?= __('Medium') ?> </p>
                 </div>
 
                 <div class="task_description">
                     <div class="task_description_frame">
-                        <p>Do not forget to clean the toilet seat! Thank you!</p>
+                        <p> <?= __('Do not forget to clean the toilet seat! Thank you!') ?> </p>
                     </div>
                 </div>
 
                 <div class="task_buttons">
-                    <input type="button" class="task_accept" value="Accept">
-                    <input type="button" class="task_decline" value="Decline">
+                    <input type="button" class="task_accept" value="<?= __("Accept") ?>">
+                    <input type="button" class="task_decline" value="<?= __("Decline") ?>">
                 </div>
 
             </div>

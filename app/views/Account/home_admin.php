@@ -5,24 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app/views/style.css?v=20">
-    <title>Admin Home</title>
+    <title><?= __('Admin Home') ?></title>
 </head>
 
 <body>
     <?php include('app/views/navbarAdmin.php'); ?>
     <div class="title_div">
-        <h1>Welcome Admin</h1>
+        <h1><?= __('Welcome Admin') ?></h1>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
         <div class="profile_buttons">
-            <a href="/Account/display/1" class="button-style">CUSTOMER</a>
+            <a href="/Account/display/1" class="button-style"> <?= __('CUSTOMER') ?> </a>
         </div>
         <div class="profile_buttons">
-            <a href="/Account/display/2" class="button-style">STAFF</a>
+            <a href="/Account/display/2" class="button-style"> <?= __('STAFF') ?> </a>
         </div>
         <div class="profile_buttons">
-            <a href="/Account/display/3" class="button-style">BOOKING</a>
+            <a href="/Account/display/3" class="button-style"> <?= __('BOOKING') ?> </a>
         </div>
         <div id="task_container">
             <?php foreach ($data as $info) : ?>
@@ -38,9 +38,9 @@
                         </div>
                         <div id="view_address_row">
                             <p id="view_phone"><?php if ($info->IsActive === 0) {
-                                                    echo "Active";
+                                                    echo __("Active");
                                                 } else {
-                                                    echo "Deactivated";
+                                                    echo __("Deactivated");
                                                 } ?></p>
                         </div>
                     </div>
