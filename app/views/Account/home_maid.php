@@ -41,6 +41,32 @@
                 </div>
 
             </div>
+
+        <!-- TO BE TESTED WITH REAL BOOKINGS --> 
+        <!-- <div id="task_container">
+        <?php foreach ($bookings as $booking): ?>
+        <div class="task">
+            <div class="task_info">
+                <p class="task_title"><?= $booking->AddressId ?></p>
+                <p class="task_location"><?= $booking->AddressId ?></p>
+                <p class="task_date"><?= $booking->Time_Of_Job ?></p>
+                <p class="task_size"><?= $booking->House_Size ?></p>
+            </div>
+
+                <div class="task_description">
+                    <div class="task_description_frame">
+                        <p><?= $booking->Description ?></p>
+                    </div>
+                </div>
+
+                <div class="task_buttons">
+                    <input type="button" class="task_accept" value="<?= __("Accept") ?>">
+                    <input type="button" class="task_decline" value="<?= __("Decline") ?>">
+                </div>
+                </div>
+            <?php endforeach; ?>
+        </div> -->
+
             <!-- END OF TEMPLATE-->
         </div>
     </div>

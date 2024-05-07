@@ -5,6 +5,25 @@ namespace app\controllers;
 class Account extends \app\core\Controller
 {
 
+    //Home page that admin user is sent 
+    function home_admin()
+    {
+        if (!isset($_SESSION['AccountId'])) {
+            header('location:/Account/login');
+            return;
+        }
+        echo 'Welcome to your dashboard.';
+    }
+
+    function home_maid()
+    {
+        $bookings = new \app\models\Job();
+        $bookings = $bookings->getByMaidId($_SESSION['AccountId']);
+        $this->view('/Account/home_maid', $bookings);
+        
+    }
+
+    //Method that displays all information 
     function display($type)
     {
         $accounts = new \app\models\Account();
@@ -47,14 +66,7 @@ class Account extends \app\core\Controller
         header('location:/Account/login');
     }
 
-    function dashboard()
-    {
-        if (!isset($_SESSION['AccountId'])) {
-            header('location:/Account/login');
-            return;
-        }
-        echo 'Welcome to your dashboard.';
-    }
+    
 
     /*function register()
     {
