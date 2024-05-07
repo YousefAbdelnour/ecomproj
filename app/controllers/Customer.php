@@ -12,46 +12,72 @@ class Customer extends \app\core\Controller
 
     function home()
     {
-        $customer_profile = new \app\models\Customer_Profile();
-        $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
-        $address = new \app\models\Address();
-        $address->Customer_ProfileId = $customer_profile->Customer_ProfileId;
-        $address = $address->getByCustomerProfileId();
-        $data = [];
-        foreach ($address as $location) :
-            $job = new \app\models\Job();
-            $job->AddressId = $location->AddressId;
-            $job = $job->getByAddressId();
-            if ($job !== null) {
-                $data[] = $job;
-            }
-        endforeach;
-        $earliestJob = null;
-        $earliestTime = new \DateTime();
-        $earliestTime->add(new \DateInterval('P100Y'));
+        // Initialize data array for view
+        $data = [
+            'earliestJob' => null,
+            'address' => null
+        ];
 
-        foreach ($data as $job) {
-            $jobTime = \DateTime::createFromFormat('Y-m-d H:i:s', $job->Time_Of_Job); // Use the global namespace prefix here
-            if ($jobTime < $earliestTime) {
-                $earliestTime = $jobTime;
-                $earliestJob = $job;
+        // Get customer profile based on the session customer ID
+        $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
+        if ($customerProfile) {
+            // Get addresses associated with the customer profile using the correct method name from the model
+            $addresses = (new \app\models\Address())->getAllByCustomerProfileId($customerProfile->Customer_ProfileId);
+            if (!empty($addresses)) {
+                // Fetch all jobs for these addresses using a method designed to fetch jobs based on customer profile ID
+                $jobs = (new \app\models\Job())->getAllByCustomerProfileId($customerProfile->Customer_ProfileId);
+
+                // Find the earliest job
+                $earliestJob = null;
+                $earliestTime = null;
+                foreach ($jobs as $job) {
+                    $jobTime = \DateTime::createFromFormat('Y-m-d H:i:s', $job->Time_Of_Job);
+                    if ($earliestTime === null || $jobTime < $earliestTime) {
+                        $earliestTime = $jobTime;
+                        $earliestJob = $job;
+                    }
+                }
+
+                // If an earliest job is found, fetch its address using the method provided by the Address model
+                if ($earliestJob) {
+                    $jobAddress = new \app\models\Address();
+                    $jobAddress->AddressId = $earliestJob->AddressId;
+                    $jobAddress = $jobAddress->getById();
+                    if ($jobAddress) {
+                        $data['address'] = $jobAddress;
+                    }
+                }
+
+                $data['earliestJob'] = $earliestJob;
             }
         }
-        $data['earliestJob'] = $earliestJob;
-        $job_address = new \app\models\Address();
-        $job_address->AddressId = $earliestJob->AddressId;
-        $job_address->getById();
-        $data['address'] = $job_address;
+
+        // Render view with data array (which may contain nulls if info wasn't found)
         $this->view('Customer/home', $data);
     }
 
+
+
     function reservation_history()
     {
-        $this->view('Customer/reservation_history');
+        $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
+        if ($customerProfile) {
+            $completedJobs = (new \app\models\Job())->getJobsByStatusAndProfileId($customerProfile->Customer_ProfileId, 2);
+            $this->view('Customer/reservation_history', ['jobs' => $completedJobs]);
+        } else {
+            $this->view('Customer/reservation_history', ['error' => 'No customer profile found.']);
+        }
     }
-
     function pending_orders()
     {
-        $this->view('Customer/pending_orders');
+        $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
+        if ($customerProfile) {
+            $pendingJobs = (new \app\models\Job())->getJobsByStatusAndProfileId($customerProfile->Customer_ProfileId, 0);
+            $inProgressJobs = (new \app\models\Job())->getJobsByStatusAndProfileId($customerProfile->Customer_ProfileId, 1);
+            $allPendingJobs = array_merge($pendingJobs, $inProgressJobs);
+            $this->view('Customer/pending_orders', ['jobs' => $allPendingJobs]);
+        } else {
+            $this->view('Customer/pending_orders', ['error' => 'No customer profile found.']);
+        }
     }
 }

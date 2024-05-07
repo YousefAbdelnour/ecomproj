@@ -21,7 +21,7 @@
         </div>
         <div class="form_column">
             <label for="createPhoneNumber">Phone Number</label>
-            <input type="password" placeholder="xxxxxxxxxx" id="createPhoneNumber" name="createPhoneNumber">
+            <input type="text" placeholder="xxxxxxxxxx" id="createPhoneNumber" name="createPhoneNumber">
         </div>
         <div class="createButtons">
             <br>

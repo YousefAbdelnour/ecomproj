@@ -3,6 +3,7 @@
 namespace app\models;
 
 use PDO;
+use PDOException;
 
 class Job extends \app\core\Model
 {
@@ -18,9 +19,10 @@ class Job extends \app\core\Model
     public function insert()
     {
         $SQL = 'INSERT INTO Job (AddressId, Time_Of_Job, Status, House_Size, Spots_Left, Description, MaidId) 
-                VALUES (:address_id, :time_of_job, :status, :house_size, :spots_left, :description, :maid_id)';
-
+            VALUES (:address_id, :time_of_job, :status, :house_size, :spots_left, :description, :maid_id)';
         $STMT = self::$_conn->prepare($SQL);
+        // Convert empty string for MaidId to null
+        $maidId = $this->MaidId !== '' ? $this->MaidId : null;
         $data = [
             'address_id' => $this->AddressId,
             'time_of_job' => $this->Time_Of_Job,
@@ -28,10 +30,17 @@ class Job extends \app\core\Model
             'house_size' => $this->House_Size,
             'spots_left' => $this->Spots_Left,
             'description' => $this->Description,
-            'maid_id' => $this->MaidId
+            'maid_id' => $maidId  // Use the converted value
         ];
-        $STMT->execute($data);
+        // Execute the statement and handle possible errors
+        try {
+            $STMT->execute($data);
+        } catch (PDOException $e) {
+            // Handle exception (e.g., log to file, display error message)
+            throw new \Exception("Error inserting job: " . $e->getMessage());
+        }
     }
+
 
     public function getAll()
     {
@@ -99,14 +108,29 @@ class Job extends \app\core\Model
     //Getting all jobs by CustomerProfileId connected to it 
     public function getAllByCustomerProfileId($customer_profile_id)
     {
-    $SQL = 'SELECT Job.* 
+        $SQL = 'SELECT Job.* 
             FROM Job 
             INNER JOIN Address ON Job.AddressId = Address.AddressId 
             WHERE Address.Customer_ProfileId = :customer_profile_id';
 
-    $STMT = self::$_conn->prepare($SQL);
-    $STMT->execute(['customer_profile_id' => $customer_profile_id]);
-    $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
-    return $STMT->fetchAll();
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_profile_id' => $customer_profile_id]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        return $STMT->fetchAll();
+    }
+    public function getJobsByStatusAndProfileId($customer_profile_id, $status)
+    {
+        $SQL = 'SELECT Job.* 
+                FROM Job 
+                JOIN Address ON Job.AddressId = Address.AddressId 
+                WHERE Address.Customer_ProfileId = :customer_profile_id AND Job.Status = :status';
+
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'customer_profile_id' => $customer_profile_id,
+            'status' => $status
+        ]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        return $STMT->fetchAll();
     }
 }

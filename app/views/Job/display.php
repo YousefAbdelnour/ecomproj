@@ -20,29 +20,34 @@
     </div>
     <div class="wrapper">
         <div id="task_container">
-            <!-- This is the template for a booking-->
-            <?php foreach ($data['bookings'] as $booking) : ?>
-                <div class="task">
-                    <div class="view_booking">
-                        <div class="view_booking_row">
-                            <p class="view_service"><?php echo "$booking->Time_Of_Job" ?></p>
-                            <p class="view_date"><?php echo "$booking->Status" ?></p>
-                        </div>
-                        <div class="view_booking_row">
-                            <p class="view_customer"><?php echo "$booking->House_Size" ?></p>
-                            <p class="view_status"><?php echo "$booking->Spots_Left" ?></p>
-                        </div>
-                        <div class="view_booking_row">
-                            <p class="view_customer"><?php echo "$booking->Description" ?></p>
-                            <p class="view_status"><?php echo "$booking->MaidId" ?></p>
-                        </div>
-                        <div class="booking_buttons">
-                            <?php echo "<a href='/Booking/cancel/$booking->JobId' class='button-style-delete'>Cancel</a>"?>
+            <!-- Check if there are bookings -->
+            <?php if (!empty($data['bookings'])) : ?>
+                <!-- Iterate through each booking and display its details -->
+                <?php foreach ($data['bookings'] as $booking) : ?>
+                    <div class="task">
+                        <div class="view_booking">
+                            <div class="view_booking_row">
+                                <p class="view_service">Scheduled Time: <?php echo date("Y-m-d H:i", strtotime($booking->Time_Of_Job)); ?></p>
+                                <p class="view_date">Status: <?php echo $booking->Status == 0 ? 'Pending' : 'Confirmed'; ?></p>
+                            </div>
+                            <div class="view_booking_row">
+                                <p class="view_customer">House Size: <?php echo $booking->House_Size; ?> sqm</p>
+                                <p class="view_status">Spots Left: <?php echo $booking->Spots_Left; ?></p>
+                            </div>
+                            <div class="view_booking_row">
+                                <p class="view_description">Description: <?php echo $booking->Description; ?></p>
+                                <p class="view_maid">Maid ID: <?php echo $booking->MaidId; ?></p>
+                            </div>
+                            <div class="booking_buttons">
+                                <a href="/Booking/cancel/<?php echo $booking->JobId; ?>" class="button-style-delete">Cancel</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-            <!-- END OF TEMPLATE-->
+                <?php endforeach; ?>
+            <?php else : ?>
+                <!-- Message to display if no bookings are found -->
+                <p>No bookings found. Please book a service to see it listed here.</p>
+            <?php endif; ?>
         </div>
     </div>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 24, 2024 at 02:36 AM
+-- Generation Time: May 07, 2024 at 06:30 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -82,6 +82,13 @@ CREATE TABLE `Address` (
   `Country` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `Address`
+--
+
+INSERT INTO `Address` (`AddressId`, `Customer_ProfileId`, `Building_Number`, `Street_Name`, `ZipCode`, `State`, `Country`) VALUES
+(12, 2, '1', '136, Rue Renaud', 'J7V 6C2', 'Québec', 'Canada');
+
 -- --------------------------------------------------------
 
 --
@@ -101,7 +108,8 @@ CREATE TABLE `Customer` (
 
 INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`) VALUES
 (2, 'DonutMan', '$2y$10$IrGYec1RR1MKa.aPIWb2u.gwvrdqurtVnjeT9ADkn0kpWRk/4pbje', 0),
-(3, 'DonutMan2', '$2y$10$9jFizh0i.uLwWaM0Yhm5bOKW4rc4wpV0X89zz.Z/tusQsJzewC91.', 0);
+(3, 'DonutMan2', '$2y$10$9jFizh0i.uLwWaM0Yhm5bOKW4rc4wpV0X89zz.Z/tusQsJzewC91.', 0),
+(4, 'customeruzi', '$2y$10$BfQWDnl/MroZah603/xro.AT63Wuvj0Morc8AEoqGw4.Ga2b3wJvy', 0);
 
 -- --------------------------------------------------------
 
@@ -121,7 +129,8 @@ CREATE TABLE `Customer_Profile` (
 --
 
 INSERT INTO `Customer_Profile` (`Customer_ProfileId`, `Name`, `Phone_Number`, `CustomerId`) VALUES
-(1, 'Uzi Canozi', '1111111111', 3);
+(1, 'Uzi Canozi', '1111111111', 3),
+(2, 'yousef', '4384381111', 4);
 
 -- --------------------------------------------------------
 
@@ -137,8 +146,15 @@ CREATE TABLE `Job` (
   `House_Size` tinyint(4) NOT NULL,
   `Spots_Left` int(11) NOT NULL,
   `Description` text NOT NULL,
-  `MaidId` int(11) NOT NULL
+  `MaidId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Job`
+--
+
+INSERT INTO `Job` (`JobId`, `AddressId`, `Time_Of_Job`, `Status`, `House_Size`, `Spots_Left`, `Description`, `MaidId`) VALUES
+(1, 12, '2024-05-24 12:20:00', 0, 6, 1, 'jacob puked in my car', NULL);
 
 -- --------------------------------------------------------
 
@@ -258,25 +274,25 @@ ALTER TABLE `Account_Profile`
 -- AUTO_INCREMENT for table `Address`
 --
 ALTER TABLE `Address`
-  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Customer_Profile`
 --
 ALTER TABLE `Customer_Profile`
-  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Job`
 --
 ALTER TABLE `Job`
-  MODIFY `JobId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `JobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Message`

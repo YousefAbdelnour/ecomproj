@@ -16,36 +16,46 @@
     </div>
     <div class="divider"></div>
     <div id="book_form_div">
-        <form id="book_form" method="POST" action="">
+        <form id="book_form" method="POST" action="/Job/book">
             <div class="form-row">
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" id="address" name="address">
+                    <select id="address" name="address" required>
+                        <?php if (!empty($addresses)) : ?>
+                            <?php foreach ($addresses as $address) : ?>
+                                <option value="<?php echo $address->AddressId; ?>">
+                                    <?php echo htmlspecialchars($address->Building_Number . ' ' . $address->Street_Name . ', ' . $address->State); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <option value="">No addresses available</option>
+                        <?php endif; ?>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="House_Size">House size</label>
-                    <input type="text" id="House_Size" name="House_Size">
+                    <label for="House_Size">House size (in sq ft)</label>
+                    <input type="number" id="House_Size" name="House_Size" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="maid">Maid Preference</label>
-                    <input type="text" id="maid" name="maid">
+                    <label for="maid">Maid ID (Optional)</label>
+                    <input type="text" id="maid" name="maid"> <!-- Removed 'required' attribute -->
                 </div>
                 <div class="form-group">
-                    <label for="spots">Maids</label>
-                    <input type="text" id="spots" name="spots">
+                    <label for="spots">Number of Maids Required</label>
+                    <input type="number" id="spots" name="spots" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group">
-                    <label for="date">Date</label>
-                    <input type="text" placeholder="YYYY-MM-DD HH:MI:SS" id="date" name="date">
+                    <label for="date">Date and Time</label>
+                    <input type="datetime-local" id="date" name="date" required>
                 </div>
             </div>
             <div id="textarea_div">
                 <label for="dsc">Description</label><br><br>
-                <textarea id="dsc" name="dsc"></textarea>
+                <textarea id="dsc" name="dsc" required></textarea>
             </div>
             <input type="submit" value="Book" class="submit-button">
         </form>
@@ -53,10 +63,3 @@
 </body>
 
 </html>
-
-
-
-<!-- Important -->
-
-<!-- We need to add a text varriable to database for description -->
-<!-- The Maid number is here so we know how many maids the person wants to hire (that is the way it is implememnted in the DB) -->
