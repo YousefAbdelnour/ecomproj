@@ -18,7 +18,8 @@ class Account extends \app\core\Controller
     function home_maid()
     {
         $bookings = new \app\models\Job();
-        $bookings = $bookings->getByMaidId($_SESSION['AccountId']);
+        $bookings->MaidId = $_SESSION['AccountId'];
+        $bookings = $bookings->getByMaidId();
         $this->view('/Account/home_maid', $bookings);
         
     }
@@ -91,7 +92,8 @@ class Account extends \app\core\Controller
         }
 
         $account = new \app\models\Account();
-        $account = $account->getById($_SESSION['AccountId']);
+        $account->AccountId = $_SESSION['AccountId'];
+        $account = $account->getById();
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $account->Username = $_POST['username'];
@@ -113,7 +115,8 @@ class Account extends \app\core\Controller
         }
 
         $account = new \app\models\Account();
-        $account = $account->getById($_SESSION['AccountId']);
+        $account->AccountId = $_SESSION['AccountId'];
+        $account = $account->getById();
         $account->delete();
         header('location:/Account/logout');
     }
