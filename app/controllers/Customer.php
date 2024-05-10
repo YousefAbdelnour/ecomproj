@@ -10,6 +10,20 @@ class Customer extends \app\core\Controller
         header('location:/User/loginCustomer');
     }
 
+    function support()
+    {
+        $this->view('Customer/support');
+    }
+
+    function payment()
+    {
+        $this->view('Customer/payment');
+    }
+    function pay()
+    {
+        $this->view('Customer/pay');
+    }
+
     function home()
     {
         // Initialize data array for view
