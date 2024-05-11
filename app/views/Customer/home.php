@@ -18,17 +18,17 @@
 
     <div class="home_container">
         <div class="home_container_left">
-            <?php if (isset($data['earliestJob'])) : ?>
+            <?php if (isset($data['latestJob'])) : ?>
                 <div id="last_service">
                     <p id="service_title">Latest Service</p>
-                    <p id="service_date"><?php echo date('Y/m/d', strtotime($data['earliestJob']->Time_Of_Job)); ?></p>
+                    <p id="service_date"><?php echo date('Y/m/d', strtotime($data['latestJob']->Time_Of_Job)); ?></p>
 
                     <div id="maid_background">
-                        <p class="job_maids"><?php echo $data['earliestJob']->MaidId; ?></p>
-                        <p id="title"><?php echo $data['earliestJob']->Description; ?></p>
+                        <p class="job_maids"><?php echo $data['latestJob']->MaidId; ?></p>
+                        <p id="title">Description</p>
 
                         <div id="job_description_background">
-                            <p id="job_description">Description</p>
+                            <p id="job_description"><?php echo $data['latestJob']->Description; ?></p>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@
                     <div id="pending">
                         <div id="pending_background">
                             <p><a href="/Job/display" id="pending_orders_link">Pending Orders</a></p>
-                            <p><?php var_dump($data) ?></p> <!-- This line is for debugging; remove in production -->
+                            <p></p> <!-- This line is for debugging; remove in production -->
 
                             <?php if (isset($data['earliestJob'])) : ?>
                                 <div id="pending_information">
@@ -68,15 +68,15 @@
                                         <p><?php echo date('Y/m/d', strtotime($data['earliestJob']->Time_Of_Job)); ?></p>
                                         <p><?php echo date('H:i A', strtotime($data['earliestJob']->Time_Of_Job)); ?> - Estimated End Time</p>
                                     </div>
+                                    <div id="pending_first_background">
+                                        <p id="pending_title">Description:</p>
+                                        <div id="pending_second_background">
+                                            <p id="notes_description"><?php echo $data['earliestJob']->Description?></p>
+                                        </div>
+                                    </div>
                                 </div>
                             <?php endif; ?>
 
-                            <div id="pending_first_background">
-                                <p id="pending_title">Notes:</p>
-                                <div id="pending_second_background">
-                                    <p id="notes_description">Change the bed sheets as well, please!</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

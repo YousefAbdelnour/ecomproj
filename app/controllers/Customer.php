@@ -28,8 +28,10 @@ class Customer extends \app\core\Controller
     {
         // Initialize data array for view
         $data = [
+            'earliestAddress' => null,
             'earliestJob' => null,
-            'address' => null
+            'latestAddress' => null,
+            'latestJob' => null
         ];
 
         // Get customer profile based on the session customer ID
@@ -41,27 +43,55 @@ class Customer extends \app\core\Controller
                 // Fetch all jobs for these addresses using a method designed to fetch jobs based on customer profile ID
                 $jobs = (new \app\models\Job())->getAllByCustomerProfileId($customerProfile->Customer_ProfileId);
 
+                // Find the latest job
+                $latestJob = null;
+                $latestTime = null;
+                foreach ($jobs as $job) {
+                    if ($job->Status === 1) {
+                        $latestJobTime = \DateTime::createFromFormat('Y-m-d H:i:s', $job->Time_Of_Job);
+                        if ($latestTime === null || $latestJobTime < $latestTime) {
+                            $latestTime = $latestJobTime;
+                            $latestJob = $job;
+                        }
+                    }
+                }
+
+                // If an latest job is found, fetch its address using the method provided by the Address model
+                if ($latestJob) {
+                    $latestJobAddress = new \app\models\Address();
+                    $latestJobAddress->AddressId = $latestJob->AddressId;
+                    $latestJobAddress = $latestJobAddress->getById();
+                    if ($latestJobAddress) {
+                        $data['latestAddress'] = $latestJobAddress;
+                    }
+                }
+
                 // Find the earliest job
                 $earliestJob = null;
                 $earliestTime = null;
                 foreach ($jobs as $job) {
-                    $jobTime = \DateTime::createFromFormat('Y-m-d H:i:s', $job->Time_Of_Job);
-                    if ($earliestTime === null || $jobTime < $earliestTime) {
-                        $earliestTime = $jobTime;
-                        $earliestJob = $job;
+                    if ($job->Status === 0) {
+                        $jobTime = \DateTime::createFromFormat('Y-m-d H:i:s', $job->Time_Of_Job);
+                        if ($earliestTime === null || $jobTime < $earliestTime) {
+                            $earliestTime = $jobTime;
+                            $earliestJob = $job;
+                        }
                     }
                 }
 
-                // If an earliest job is found, fetch its address using the method provided by the Address model
+                // If an latest job is found, fetch its address using the method provided by the Address model
                 if ($earliestJob) {
-                    $jobAddress = new \app\models\Address();
-                    $jobAddress->AddressId = $earliestJob->AddressId;
-                    $jobAddress = $jobAddress->getById();
-                    if ($jobAddress) {
-                        $data['address'] = $jobAddress;
+                    $earliestJobAddress = new \app\models\Address();
+                    $earliestJobAddress->AddressId = $earliestJob->AddressId;
+                    $earliestJobAddress = $earliestJobAddress->getById();
+                    if ($earliestJobAddress) {
+                        $data['earliestAddress'] = $earliestJobAddress;
                     }
                 }
 
+                // Find the earliest job
+
+                $data['latestJob'] = $latestJob;
                 $data['earliestJob'] = $earliestJob;
             }
         }

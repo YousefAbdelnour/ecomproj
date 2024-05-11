@@ -57,12 +57,17 @@ class Job extends \app\core\Controller
 
         // Initialize the $data array
         $data = [];
-
+        $pending = [];
         if (empty($bookings)) {
             // Handle case where no bookings are found
             $data['message'] = "No bookings found for the current customer profile.";
         } else {
-            $data['bookings'] = $bookings;
+            foreach ($bookings as $booking) {
+                if ($booking->Status === 0) {
+                    $pending[] = $booking;
+                }
+            }
+            $data['bookings'] = $pending;
         }
         $this->view('Job/display', $data);
     }
