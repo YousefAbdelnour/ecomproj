@@ -17,6 +17,7 @@ $this->addRoute('Profile/edit_Admin', 'Profile,edit_Admin');
 $this->addRoute('Profile/create_Customer', 'Profile,create_Customer');
 $this->addRoute('Profile/create_Admin', 'Profile,create_Admin');
 $this->addRoute('Customer/payment', 'Customer,payment');
+$this->addRoute('Customer/cancel/{id}', 'Customer,cancel');
 $this->addRoute('Customer/pay', 'Customer,pay');
 $this->addRoute('Customer/support', 'Customer,support');
 $this->addRoute('Customer/logout', 'Customer,logout');

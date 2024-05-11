@@ -717,6 +717,19 @@ input[type="submit"].profile_edit {
     border: none;
 }
 
+.button-style-red{
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+
 .button-style:hover {
     background-color: #45a049;
 }

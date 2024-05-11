@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css?v=14">
+    <link rel="stylesheet" href="/app/views/style.css?v=25">
     <title>Home</title>
 </head>
 
@@ -60,8 +60,12 @@
                             <?php if (isset($data['earliestJob'])) : ?>
                                 <div id="pending_information">
                                     <div id="pending_buttons">
-                                        <input type="button" id="pending_support" value="Support">
-                                        <input type="button" id="pending_cancel" value="Cancel">
+                                        <div class="profile_buttons">
+                                            <a href="/Customer/support" class="button-style">Support</a>
+                                        </div>
+                                        <div class="profile_buttons">
+                                            <a href='/Customer/cancel/<?= $data['earliestJob']->JobId ?>' class="button-style-red">Cancel</a>
+                                        </div>
                                     </div>
 
                                     <div id="pending_time">
@@ -71,7 +75,7 @@
                                     <div id="pending_first_background">
                                         <p id="pending_title">Description:</p>
                                         <div id="pending_second_background">
-                                            <p id="notes_description"><?php echo $data['earliestJob']->Description?></p>
+                                            <p id="notes_description"><?php echo $data['earliestJob']->Description ?></p>
                                         </div>
                                     </div>
                                 </div>

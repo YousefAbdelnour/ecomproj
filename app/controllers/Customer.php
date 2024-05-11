@@ -24,6 +24,16 @@ class Customer extends \app\core\Controller
         $this->view('Customer/pay');
     }
 
+    function cancel($id)
+    {
+        $job = new \app\models\Job();
+        $job->JobId = $id;
+        $job = $job->getById();
+        $job->Status = 2;
+        $job->update();
+        header('location:/Customer/home');;
+    }
+
     function home()
     {
         // Initialize data array for view
