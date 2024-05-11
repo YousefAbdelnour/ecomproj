@@ -86,7 +86,7 @@ class Account extends \app\core\Model
         $SQL = 'SELECT * FROM Customer';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
-        $STMT->setFetchMode(PDO::FETCH_CLASS, new \app\models\Customer());
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Customer');
         return $STMT->fetchAll();
     }
     public function update()

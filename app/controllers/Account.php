@@ -11,8 +11,9 @@ class Account extends \app\core\Controller
         if (!isset($_SESSION['AccountId'])) {
             header('location:/Account/login');
             return;
+        } else {
+            $this->view('/Account/home_admin');
         }
-        echo 'Welcome to your dashboard.';
     }
 
     function home_maid()
@@ -21,7 +22,6 @@ class Account extends \app\core\Controller
         $bookings->MaidId = $_SESSION['AccountId'];
         $bookings = $bookings->getByMaidId();
         $this->view('/Account/home_maid', $bookings);
-        
     }
 
     //Method that displays all information 
@@ -29,17 +29,23 @@ class Account extends \app\core\Controller
     {
         $accounts = new \app\models\Account();
         if ($type === 1) {
+            // Fetch and display customer accounts
+            $accounts = $accounts->getCustomerAccounts();
+            $this->view('Account/home_admin', $accounts);
+            var_dump($accounts);
+        } else if ($type === 2) {
+            // Fetch and display staff accounts
             $accounts = $accounts->getStaffAccounts();
             $this->view('Account/home_admin', $accounts);
-        } else if ($type === 0) {
-            $accounts = $accounts->getAll();
-            $this->view('/Account/home_admin', $accounts);
+            var_dump($accounts);
         } else {
-            $accounts = $accounts->getCustomerAccounts();
-            $this->view('/Account/home_admin', $accounts);
+            // Fetch and display admin accounts (if exists)
+            $accounts = $accounts->getAdminAccounts();  // Assuming this method exists
+            $this->view('Account/home_admin', $accounts);
         }
     }
-    
+
+
     //Added these two but fell free to change em however you want
 
     /* function login()
@@ -67,7 +73,7 @@ class Account extends \app\core\Controller
         header('location:/Account/login');
     }
 
-    
+
 
     /*function register()
     {
