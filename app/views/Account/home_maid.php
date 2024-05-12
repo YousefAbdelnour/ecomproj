@@ -18,13 +18,22 @@
     <div class="wrapper">
         <div class="filter_div"></div>
         <div id="task_container">
-            <?php foreach ($data as $booking) : ?>
+            <?php foreach ($data as $booking) :
+                $addressObject = $booking->getAddressById();
+                $address = $addressObject->Building_Number . ' ' .
+                    $addressObject->Street_Name . ', ' .
+                    $addressObject->ZipCode . ' ' .
+                    $addressObject->State . ' ' .
+                    $addressObject->Country;
+                $customerProfile = $addressObject->getCustomerProfile();
+                $customer = $customerProfile->Name . ', ' . $customerProfile->Phone_Number
+            ?>
                 <div class="task">
                     <div class="task_info">
-                        <p class="task_title"><?= $booking->JobId ?></p>
-                        <p class="task_location"><?= $booking->AddressId ?></p>
+                        <p class="task_title"><?= $customer ?></p>
+                        <p class="task_location"><?= $address ?></p>
                         <p class="task_date"><?= $booking->Time_Of_Job ?></p>
-                        <p class="task_size"><?= $booking->House_Size ?></p>
+                        <p class="task_size"><?= 'Spots left: ' . $booking->Spots_Left ?></p>
                     </div>
 
                     <div class="task_description">

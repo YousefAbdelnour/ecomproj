@@ -40,7 +40,12 @@ class Account extends \app\core\Controller
         $data = [];
         $bookingModel = new \app\models\Job();
         $bookingModel->Status = 0;
-        $data = $bookingModel->getJobsByStatus();
+        $bookingModel = $bookingModel->getJobsByStatus();
+        foreach ($bookingModel as $job) {
+            if ($job->Spots_Left > 0) {
+                $data[] = $job;
+            }
+        }
         $this->view('/Account/home_maid', $data);
     }
 

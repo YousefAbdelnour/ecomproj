@@ -40,6 +40,16 @@ class Address extends \app\core\Model
         return $STMT->fetchAll();
     }
 
+    public function getCustomerProfile()
+    {
+
+        $SQL = 'SELECT * FROM Customer_Profile WHERE Customer_ProfileId = :customer_profile_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_profile_id' => $this->Customer_ProfileId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Customer_Profile');
+        return $STMT->fetch();
+    }
+
     public function getAll()
     {
         $SQL = 'SELECT * FROM Address';
