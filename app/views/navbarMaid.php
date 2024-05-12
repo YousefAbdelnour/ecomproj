@@ -12,9 +12,9 @@
         <input type="checkbox" id="menu-toggle" class="menu-toggle" />
         <label for="menu-toggle" class="hamburger">&#9776;</label>
         <ul id="menu">
-            <li><a href="/Account/display/1"><?= __("Home") ?></a></li>
-            <li><a href="/Account/booking/1">Bookings</a></li>
-            <li><a href="/Profile/show_Admin"><?= __("Profile") ?></a></li>
+            <li><a href="/Account/home_maid"><?= __("Home") ?></a></li>
+            <li><a href="/Account/schedule">Schedule</a></li>
+            <li><a href="/Profile/show_Maid"><?= __("Profile") ?></a></li>
             <li><a href="/Account/logout"><?= __("Logout") ?></a></li>
         </ul>
     </nav>

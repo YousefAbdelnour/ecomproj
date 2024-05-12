@@ -67,6 +67,20 @@ class Profile extends \app\core\Controller
         $this->view('Profile/show_Admin', $data);
     }
 
+    function show_Maid()
+    {
+        $account_profile = new \app\models\Account_Profile();
+        $account_profile->AccountId = $_SESSION['AccountId'];
+        $account_profile = $account_profile->getByAccountId();
+        $account = new \app\models\Account();
+        $account->AccountId = $_SESSION['AccountId'];
+        $account = $account->getById();
+        $data['account'] = $account;
+        $data['account_profile'] = $account_profile;
+        $this->view('Profile/show_Maid', $data);
+    }
+
+
     function edit_Customer()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -100,5 +114,23 @@ class Profile extends \app\core\Controller
             }
         }
         $this->view('Profile/edit_Admin');
+    }
+
+    function edit_Maid()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['editName'];
+            $phone_number = $_POST['editPhoneNumber'];
+            if (!empty($name) && !empty($phone_number)) {
+                $account_profile = new \app\models\Account_Profile();
+                $account_profile->AccountId = $_SESSION['AccountId'];
+                $account_profile = $account_profile->getByAccountId();
+                $account_profile->Name = $name;
+                $account_profile->Phone_Number = $phone_number;
+                $account_profile->update();
+                header('location:/Profile/show_Maid');
+            }
+        }
+        $this->view('Profile/edit_Maid');
     }
 }

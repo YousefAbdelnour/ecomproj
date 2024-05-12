@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css?v=3">
+    <link rel="stylesheet" href="/app/views/style.css?v=20">
     <title><?= __('Service Booking') ?></title>
 </head>
 
 <body>
-    <?php include ('../navbarAdmin.php'); ?>
+    <?php include('app/views/navbarMaid.php'); ?>
     <div class="title_div">
         <h1><?= __('Schedule') ?></h1>
         <h2><?= __("Don't worry, we got you covered!") ?></h2>
@@ -21,12 +21,12 @@
             <div class="task">
                 <div class="schedule_day">
                     <div class="schedule_row">
-                        <p class="schedule_date">> <?= __('15th Monday') ?> <</p>
-                        <p class="schedule_time">> <?= __('10:15 AM') ?> <</p>
+                        <p class="schedule_date">> <?= __('15th Monday') ?> << /p>
+                                <p class="schedule_time">> <?= __('10:15 AM') ?> << /p>
                     </div>
                     <div class="schedule_row">
-                        <p class="schedule_address">> <?= __('1405 Av Crickson Montreal Qc') ?> <</p>
-                        <p class="schedule_size">> <?= __('Small') ?> <</p>
+                        <p class="schedule_address">> <?= __('1405 Av Crickson Montreal Qc') ?> << /p>
+                                <p class="schedule_size">> <?= __('Small') ?> << /p>
                     </div>
                     <div class="schedule_buttons">
                         <input type="button" class="task_decline" value="<?= __("Cancel") ?>">

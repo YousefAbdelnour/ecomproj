@@ -37,10 +37,19 @@ class Account extends \app\core\Controller
 
     function home_maid()
     {
+        $data = [];
+        $bookingModel = new \app\models\Job();
+        $bookingModel->Status = 0;
+        $data = $bookingModel->getJobsByStatus();
+        $this->view('/Account/home_maid', $data);
+    }
+
+    function schedule()
+    {
         $bookings = new \app\models\Job();
         $bookings->MaidId = $_SESSION['AccountId'];
         $bookings = $bookings->getByMaidId();
-        $this->view('/Account/home_maid', $bookings);
+        $this->view('/Account/schedule', $bookings);
     }
 
     //Method that displays all information 
@@ -99,7 +108,7 @@ class Account extends \app\core\Controller
     function logout()
     {
         session_destroy();
-        header('location:/Account/login');
+        header('location:/User/loginStaff');
     }
 
 
