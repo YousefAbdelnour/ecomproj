@@ -16,25 +16,25 @@
     <div class="divider"></div>
     <div class="wrapper">
         <div class="profile_buttons">
-            <a href="/Account/display/1" class="button-style"> <?= __('CUSTOMER') ?> </a>
+            <a href="/Account/booking/1" class="button-style"> <?= __('ACTIVE') ?> </a>
         </div>
         <div class="profile_buttons">
-            <a href="/Account/display/3" class="button-style"> <?= __('STAFF') ?> </a>
+            <a href="/Account/booking/2" class="button-style"> <?= __('FINISHED') ?> </a>
         </div>
         <div class="profile_buttons">
-            <a href="/Account/display/2" class="button-style"> <?= __('ADMIN') ?> </a>
+            <a href="/Account/booking/3" class="button-style"> <?= __('CANCELED') ?> </a>
         </div>
         <div id="task_container">
-            <?php if (!empty($user)) {
-                foreach ($user as $info) : ?>
+            <?php if (!empty($job)) {
+                foreach ($job as $info) : ?>
                     <div class="task">
                         <div id="view_profile">
                             <div id="view_profile_row">
-                                <p id="view_name"><?= ($type === 1) ? $info->CustomerId : $info->AccountId; ?></p>
-                                <p id="view_username"><?= $info->Username ?></p>
+                                <p id="view_name"><?= $info->Time_Of_Job ?></p>
+                                <p id="view_username"><?= $info->JobId ?></p>
                             </div>
                             <div id="view_address_row">
-                                <p id="view_phone"><?= ($info->IsActive == 0) ? __("Active") : __("Deactivated"); ?></p>
+                                <p id="view_phone"><?= $info->Description ?></p>
                             </div>
                         </div>
                     </div>

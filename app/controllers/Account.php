@@ -6,9 +6,33 @@ class Account extends \app\core\Controller
 {
 
     //Home page that admin user is sent 
-    function booking()
+    function booking($type)
     {
-        $this->view('/Account/booking');
+        $bookingModel = new \app\models\Job();
+        $data = [];
+        switch ($type) {
+            case 1:
+                $bookingModel->Status = 0;
+                $job = $bookingModel->getJobsByStatus();
+                $type = 1;
+                break;
+            case 2:
+                $bookingModel->Status = 1;
+                $job = $bookingModel->getJobsByStatus();
+                $type = 2;
+                break;
+            case 3:
+                $bookingModel->Status = 2;
+                $job = $bookingModel->getJobsByStatus();
+                $type = 3;
+                break;
+            default:
+                // Handle invalid type case
+                $job = [];
+                $type = 0;
+                break;
+        }
+        $this->view('/Account/booking', compact('job', 'type'));
     }
 
     function home_maid()

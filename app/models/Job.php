@@ -51,6 +51,15 @@ class Job extends \app\core\Model
         return $STMT->fetchAll();
     }
 
+    public function getJobsByStatus()
+    {
+        $SQL = 'SELECT * FROM Job WHERE Status = :status';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['status' => $this->Status]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
+        return $STMT->fetchAll();
+    }
+
     public function getById()
     {
         $SQL = 'SELECT * FROM Job WHERE JobId = :job_id';

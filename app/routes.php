@@ -24,6 +24,6 @@ $this->addRoute('Customer/logout', 'Customer,logout');
 $this->addRoute('Address/delete/{id}', 'Address,delete');
 $this->addRoute('Account/display/{type}', 'Account,display');
 $this->addRoute('Account/home_maid', 'Account,home_maid');
-$this->addRoute('Account/booking', 'Account,booking');
+$this->addRoute('Account/booking/{type}', 'Account,booking');
 $this->addRoute('Account/home_admin', 'Account,home_admin');
 $this->addRoute('Job/display', 'Job,display');
