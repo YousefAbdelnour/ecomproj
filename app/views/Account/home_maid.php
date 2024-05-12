@@ -43,7 +43,9 @@
                     </div>
 
                     <div class="task_buttons">
-                        <input type="button" class="task_accept" value="<?= __("Accept") ?>">
+                        <div class="profile_buttons">
+                            <a href="/Job/accept/<?= $booking->JobId ?>" class="button-style">Accept</a>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>

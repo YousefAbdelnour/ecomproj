@@ -31,3 +31,4 @@ $this->addRoute('Account/schedule', 'Account,schedule');
 $this->addRoute('Profile/show_Maid', 'Profile,show_Maid');
 $this->addRoute('Account/home_admin', 'Account,home_admin');
 $this->addRoute('Job/display', 'Job,display');
+$this->addRoute('Job/accept/{id}', 'Job,accept');

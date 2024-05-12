@@ -37,6 +37,24 @@ class Job extends \app\core\Controller
         }
     }
 
+    function accept($id)
+    {
+        $job = new \app\models\Job();
+        $job->JobId = $id;
+        $job->getById();
+        if ($job->Spots_Left > 0) {
+            $job->Spots_Left--;  // Decrement the spots left
+            $job->update();  // Update the job in the database
+    
+            $accountJob = new \app\models\Account_Job();
+            $accountJob->AccountId = $_SESSION['AccountId'];
+            $accountJob->JobId = $id;
+            $accountJob->insert();  // Link the account and the job
+        }
+        header('Location: /Account/schedule');
+        exit;  // Ensure no further code is run after redirection
+    }
+    
     private function prepareDataForForm()
     {
         $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
