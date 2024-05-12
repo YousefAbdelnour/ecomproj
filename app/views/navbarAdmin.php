@@ -13,6 +13,7 @@
         <label for="menu-toggle" class="hamburger">&#9776;</label>
         <ul id="menu">
             <li><a href="/Account/home_admin"><?= __("Home") ?></a></li>
+            <li><a href="/Account/booking">Bookings</a></li>
             <li><a href="/Profile/show_Admin"><?= __("Profile") ?></a></li>
             <li><a href="/Customer/logout"><?= __("Logout") ?></a></li>
         </ul>

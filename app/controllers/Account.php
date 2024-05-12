@@ -6,14 +6,9 @@ class Account extends \app\core\Controller
 {
 
     //Home page that admin user is sent 
-    function home_admin()
+    function booking()
     {
-        if (!isset($_SESSION['AccountId'])) {
-            header('location:/Account/login');
-            return;
-        } else {
-            $this->view('/Account/home_admin');
-        }
+        $this->view('/Account/booking');
     }
 
     function home_maid()
@@ -27,23 +22,33 @@ class Account extends \app\core\Controller
     //Method that displays all information 
     function display($type)
     {
-        $accounts = new \app\models\Account();
-        if ($type === 1) {
-            // Fetch and display customer accounts
-            $accounts = $accounts->getCustomerAccounts();
-            $this->view('Account/home_admin', $accounts);
-            var_dump($accounts);
-        } else if ($type === 2) {
-            // Fetch and display staff accounts
-            $accounts = $accounts->getStaffAccounts();
-            $this->view('Account/home_admin', $accounts);
-            var_dump($accounts);
-        } else {
-            // Fetch and display admin accounts (if exists)
-            $accounts = $accounts->getAdminAccounts();  // Assuming this method exists
-            $this->view('Account/home_admin', $accounts);
+        $accountsModel = new \app\models\Account();
+        $data = [];
+        switch ($type) {
+            case 1:
+                // Fetch and display customer accounts
+                $user = $accountsModel->getCustomerAccounts();
+                $type = 1;
+                break;
+            case 2:
+                // Fetch and display staff accounts
+                $user = $accountsModel->getStaffAccounts();
+                $type = 2;
+                break;
+            case 3:
+                // Fetch and display admin accounts (assuming this method exists)
+                $user = $accountsModel->getAdminAccounts();
+                $type = 3;
+                break;
+            default:
+                // Handle invalid type case
+                $user = [];
+                $type = 0;
+                break;
         }
+        $this->view('Account/home_admin', compact('user', 'type'));
     }
+
 
 
     //Added these two but fell free to change em however you want

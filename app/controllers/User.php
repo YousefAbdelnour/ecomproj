@@ -24,7 +24,7 @@ class User extends \app\core\Controller
                 $_SESSION['AccountId'] = $account->AccountId;
                 if ($account->IsAdmin === 1) {
                     $_SESSION['isAdmin'] = true;
-                    header('location:/Account/home_admin');
+                    header('location:/Account/display/1');
                 } else {
                     $_SESSION['isAdmin'] = false;
                     header('location:/Account/home_maid');
