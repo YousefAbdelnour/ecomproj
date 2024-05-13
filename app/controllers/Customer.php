@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use \app\models\Message;
+
+
 class Customer extends \app\core\Controller
 {
     function logout()
@@ -10,9 +13,14 @@ class Customer extends \app\core\Controller
         header('location:/User/loginCustomer');
     }
 
-    function support()
+    public function support()
     {
-        $this->view('Customer/support');
+        // Fetch related accounts
+        $messageModel = new \app\models\Message();
+        $relatedAccounts = $messageModel->getRelatedAccounts($_SESSION['CustomerId']);
+
+        // Render the view
+        $this->view('Customer/support', ['relatedAccounts' => $relatedAccounts]);
     }
 
     function payment()
@@ -134,4 +142,6 @@ class Customer extends \app\core\Controller
             $this->view('Customer/pending_orders', ['error' => 'No customer profile found.']);
         }
     }
+
+   
 }

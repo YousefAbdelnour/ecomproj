@@ -16,26 +16,30 @@
     </div>
     <div class="divider"></div>
     <div id="book_form_div">
-        <form id="book_form" method="POST" action="">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="reciever">To:</label>
-                    <select id="reciever" name="reciever"></select>
-                </div>
+    <form id="book_form" method="POST" action="/Message/create">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="receiver">To:</label>
+                <select id="receiver" name="receiver">
+                    <?php foreach ($relatedAccounts as $account) : ?>
+                        <option value="<?php echo htmlspecialchars($account->AccountId); ?>"><?php echo htmlspecialchars($account->Username); ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id='title' name='title'>
-                </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
             </div>
-            <div id="textarea_div">
-                <label for="dsc">Description</label><br><br>
-                <textarea id="dsc" name="dsc" required></textarea>
-            </div>
-            <input type="submit" value="Send" class="submit-button">
-        </form>
-    </div>
+        </div>
+        <div id="textarea_div">
+            <label for="dsc">Description</label><br><br>
+            <textarea id="dsc" name="dsc" required></textarea>
+        </div>
+        <input type="submit" value="Send" class="submit-button">
+    </form>
+</div>
 </body>
 
 </html>

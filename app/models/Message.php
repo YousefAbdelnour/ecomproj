@@ -13,8 +13,9 @@ class Message extends \app\core\Model
     public $Title;
     public $TimeStamp;
 
-    public function insert()
-    {
+    public function send_message()
+{
+    $this->TimeStamp = date('Y-m-d H:i:s'); // Set current date and time
         $SQL = 'INSERT INTO Message (SenderId, ReceiverId, Message_Text, Title, TimeStamp) 
                 VALUES (:sender_id, :receiver_id, :message_text, :title, :timestamp)';
 
@@ -28,6 +29,34 @@ class Message extends \app\core\Model
         ];
         $STMT->execute($data);
     }
+
+
+
+    //Through an absolute cluster-fuck subquery I'm grabbing 
+    //which account are related to the user so that in the drop 
+    //down menu all the accounts with relationships are accessible
+    public function getRelatedAccounts($customerId)
+    {
+    $SQL = 'SELECT a.AccountId, a.Username 
+            FROM Account a
+            INNER JOIN Account_Job aj ON a.AccountId = aj.AccountId
+            INNER JOIN Job j ON aj.JobId = j.JobId
+            INNER JOIN Address ad ON j.AddressId = ad.AddressId
+            INNER JOIN Customer_Profile cp ON ad.Customer_ProfileId = cp.Customer_ProfileId
+            WHERE cp.CustomerId = :customerId
+
+            UNION
+
+            SELECT AccountId, Username
+            FROM Account
+            WHERE AccountId = 1'; // Assuming admin's AccountId is always 1
+
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customerId' => $customerId]);
+        return $STMT->fetchAll(PDO::FETCH_OBJ); // Fetch as associative array
+    }
+
+
 
     public function getAll()
     {
@@ -76,18 +105,19 @@ class Message extends \app\core\Model
 
     public function update()
     {
-        $SQL = 'UPDATE Message SET SenderId = :sender_id, ReceiverId = :receiver_id, Message_Text = :message_text, 
-                Title = :title, TimeStamp = :timestamp WHERE MessageId = :message_id';
+    $this->TimeStamp = date('Y-m-d H:i:s'); // Update current date and time
+    $SQL = 'UPDATE Message SET SenderId = :sender_id, ReceiverId = :receiver_id, Message_Text = :message_text, 
+            Title = :title, TimeStamp = :timestamp WHERE MessageId = :message_id';
 
-        $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute([
-            'sender_id' => $this->SenderId,
-            'receiver_id' => $this->ReceiverId,
-            'message_text' => $this->Message_Text,
-            'title' => $this->Title,
-            'timestamp' => $this->TimeStamp,
-            'message_id' => $this->MessageId
-        ]);
+    $STMT = self::$_conn->prepare($SQL);
+    $STMT->execute([
+        'sender_id' => $this->SenderId,
+        'receiver_id' => $this->ReceiverId,
+        'message_text' => $this->Message_Text,
+        'title' => $this->Title,
+        'timestamp' => $this->TimeStamp,
+        'message_id' => $this->MessageId
+    ]);
     }
 
     public function delete()

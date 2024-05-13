@@ -22,6 +22,7 @@ $this->addRoute('Customer/cancel/{id}', 'Customer,cancel');
 $this->addRoute('Customer/pay', 'Customer,pay');
 $this->addRoute('Customer/support', 'Customer,support');
 $this->addRoute('Customer/logout', 'Customer,logout');
+
 $this->addRoute('Address/delete/{id}', 'Address,delete');
 $this->addRoute('Account/display/{type}', 'Account,display');
 $this->addRoute('Account/logout', 'Account,logout');
@@ -32,3 +33,6 @@ $this->addRoute('Profile/show_Maid', 'Profile,show_Maid');
 $this->addRoute('Account/home_admin', 'Account,home_admin');
 $this->addRoute('Job/display', 'Job,display');
 $this->addRoute('Job/accept/{id}', 'Job,accept');
+
+//Messages 
+$this->addRoute('Message/create', 'Message,create');
