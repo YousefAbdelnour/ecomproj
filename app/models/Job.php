@@ -73,7 +73,7 @@ class Job extends \app\core\Model
         $SQL = 'SELECT * FROM Job WHERE JobId = :job_id';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['job_id' => $this->JobId]);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $STMT->setFetchMode(PDO::FETCH_INTO, $this);
         return $STMT->fetch();
     }
 

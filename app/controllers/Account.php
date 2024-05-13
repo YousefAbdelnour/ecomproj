@@ -39,11 +39,23 @@ class Account extends \app\core\Controller
     {
         $data = [];
         $bookingModel = new \app\models\Job();
+        $account_job = new \app\models\Account_Job();
         $bookingModel->Status = 0;
         $bookingModel = $bookingModel->getJobsByStatus();
         foreach ($bookingModel as $job) {
             if ($job->Spots_Left > 0) {
-                $data[] = $job;
+                $account_job->AccountId = $_SESSION['AccountId'];
+                $account_job = $account_job->getAllByAccountId();
+                $flag = 0;
+                foreach ($account_job as $test) {
+                    if ($test->JobId === $job->JobId) {
+                        $flag = 1;
+                        break;
+                    }
+                }
+                if ($flag === 0) {
+                    $data[] = $job;
+                }
             }
         }
         $this->view('/Account/home_maid', $data);

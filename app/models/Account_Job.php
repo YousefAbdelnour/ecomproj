@@ -19,6 +19,15 @@ class Account_Job extends \app\core\Model
         ]);
     }
 
+    function getAllByAccountId()
+    {
+        $SQL = 'SELECT * FROM Account_Job WHERE AccountId = :account_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['account_id' => $this->AccountId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Account_Job');
+        return $STMT->fetchAll();
+    }
+
     function deleteByAccountId()
     {
         $SQL = 'DELETE FROM Account_Job WHERE AccountId = :account_id';
@@ -33,4 +42,3 @@ class Account_Job extends \app\core\Model
         $STMT->execute(['job_id' => $this->JobId]);
     }
 }
-
