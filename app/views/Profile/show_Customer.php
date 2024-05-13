@@ -15,27 +15,24 @@
         <h2>This is you!</h2>
     </div>
     <div class="divider"></div>
-    <div class="wrapper">
-        <div id="task_container">
-            <!-- This is the template for a job-->
-            <div class="task">
-                <div id="view_profile">
-                    <div id="view_profile_row">
-                        <p id="view_name"><?php echo $data['customer_profile']->Name ?></p>
-                        <p id="view_username"><?php echo $data['customer']->Username ?></p>
-                    </div>
-                    <div id="view_address_row">
-                        <p id="view_phone"><?php echo $data['customer_profile']->Phone_Number; ?></p>
-                    </div>
-                    <div class="profile_buttons">
-                        <a href="/Profile/edit_Customer" class="button-style">Edit</a>
-                    </div>
-                </div>
-
-            </div>
-            <!-- END OF TEMPLATE-->
-        </div>
+    <div class="form-container">
+    <div class="form-group">
+        <label for="view_name">Name:</label>
+        <input type="text" id="view_name" name="view_name" value="<?php echo $data['customer_profile']->Name ?>" disabled>
     </div>
+    <div class="form-group">
+        <label for="view_username">Username:</label>
+        <input type="text" id="view_username" name="view_username" value="<?php echo $data['customer']->Username ?>" disabled>
+    </div>
+    <div class="form-group">
+        <label for="view_phone">Phone Number:</label>
+        <input type="tel" id="view_phone" name="view_phone" value="<?php echo $data['customer_profile']->Phone_Number ?>" disabled>
+    </div>
+    <div class="form-group">
+        <a href="/Profile/edit_Customer" class="button-style">Edit</a>
+    </div>
+</div>
+
 
 </body>
 

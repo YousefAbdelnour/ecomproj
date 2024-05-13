@@ -82,21 +82,29 @@ class Profile extends \app\core\Controller
 
 
     function edit_Customer()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $name = $_POST['editName'];
-            $phone_number = $_POST['editPhoneNumber'];
-            if (!empty($name) && !empty($phone_number)) {
-                $customer_profile = new \app\models\Customer_Profile();
-                $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
-                $customer_profile->Name = $name;
-                $customer_profile->Phone_Number = $phone_number;
-                $customer_profile->update();
-                header('location:/Profile/show_Customer');
-            }
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['editName'];
+        $phone_number = $_POST['editPhoneNumber'];
+        if (!empty($name) && !empty($phone_number)) {
+            $customer_profile = new \app\models\Customer_Profile();
+            $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
+            $customer_profile->Name = $name;
+            $customer_profile->Phone_Number = $phone_number;
+            $customer_profile->update();
+            header('location:/Profile/show_Customer');
         }
-        $this->view('Profile/edit_Customer');
+    } else {
+        // Fetch customer details from the database
+        $customer_profile = new \app\models\Customer_Profile();
+        $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
+
+        // Pass the customer details to the view
+        $data['customer_profile'] = $customer_profile;
+        $this->view('Profile/edit_Customer', $data);
     }
+}
+
 
     function edit_Admin()
     {

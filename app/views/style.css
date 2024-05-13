@@ -61,6 +61,8 @@ ul {
     background-color: #333;
     width: 100%;
     height: 70px;
+    position: fixed;
+    z-index: 1; /* Ensure it's above other content */
 }
 
 /*Nav bar CSS END*/
@@ -282,6 +284,68 @@ input[type="button"].task_decline {
 }
 
 /*Task CSS END*/
+
+/*Profile View/Edit */
+
+.form-container {
+    background-color: grey;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Add this line */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"] {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 5px;
+    font-size: 16px;
+}
+
+
+
+.button-style {
+    padding: 10px 20px;
+    background-color: greenyellow;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-style:hover {
+    background-color: #45a049;
+}
+
+
+
+
+/*Profile Vew/Edit END*/
+
 
 /*Reservation history CSS*/
 .schedule_day,
