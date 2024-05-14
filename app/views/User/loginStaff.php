@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Login Staff</h1>
         <h2>Not registered? <a href="registerAdmin">Sign up</a> </h2>

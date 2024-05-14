@@ -21,12 +21,12 @@
             <div class="task">
                 <div class="schedule_day">
                     <div class="schedule_row">
-                        <p class="schedule_date">> <?= __('15th Monday') ?> << /p>
-                                <p class="schedule_time">> <?= __('10:15 AM') ?> << /p>
+                        <p class="schedule_date">> <?= __('15th Monday') ?> 
+                                <p class="schedule_time"> <?= __('10:15 AM') ?> 
                     </div>
                     <div class="schedule_row">
-                        <p class="schedule_address">> <?= __('1405 Av Crickson Montreal Qc') ?> << /p>
-                                <p class="schedule_size">> <?= __('Small') ?> << /p>
+                        <p class="schedule_address"> <?= __('1405 Av Crickson Montreal Qc') ?> << /p>
+                                <p class="schedule_size"> <?= __('Small') ?> 
                     </div>
                     <div class="schedule_buttons">
                         <input type="button" class="task_decline" value="<?= __("Cancel") ?>">

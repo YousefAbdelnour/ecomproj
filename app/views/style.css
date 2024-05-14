@@ -62,7 +62,7 @@ ul {
     width: 100%;
     height: 70px;
     position: fixed;
-    z-index: 1; /* Ensure it's above other content */
+    z-index: 1; 
 }
 
 /*Nav bar CSS END*/

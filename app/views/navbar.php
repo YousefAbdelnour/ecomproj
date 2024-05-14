@@ -19,10 +19,17 @@
             <li><a href="/Customer/payment">Payments</a></li>
             <li><a href="/Customer/support">Support</a></li>
             <li><a href="/Customer/logout"><?= __("Logout") ?></a></li>
-            
+        
+            <select id="languageSelect">
+                <option value="?lang=en">English</option> 
+                <option value="?lang=fr">French</option> 
+            </select>
         </ul>
     </nav>
     <div id="nav_background"></div>
+
+
+
 </body>
 
 </html>

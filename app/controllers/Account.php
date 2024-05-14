@@ -39,16 +39,15 @@ class Account extends \app\core\Controller
     {
         $data = [];
         $bookingModel = new \app\models\Job();
-        $account_job = new \app\models\Account_Job();
+        $account_job_model = new \app\models\Account_Job(); // Use a different variable name
         $bookingModel->Status = 0;
-        $bookingModel = $bookingModel->getJobsByStatus();
-        foreach ($bookingModel as $job) {
+        $bookingJobs = $bookingModel->getJobsByStatus(); // Rename variable for clarity
+        foreach ($bookingJobs as $job) {
             if ($job->Spots_Left > 0) {
-                $account_job->AccountId = $_SESSION['AccountId'];
-                $account_job = $account_job->getAllByAccountId();
+                $account_jobs = $account_job_model->getAllByAccountId($_SESSION['AccountId']); // Use the new variable
                 $flag = 0;
-                foreach ($account_job as $test) {
-                    if ($test->JobId === $job->JobId) {
+                foreach ($account_jobs as $account_job) {
+                    if ($account_job->JobId === $job->JobId) {
                         $flag = 1;
                         break;
                     }
@@ -60,6 +59,7 @@ class Account extends \app\core\Controller
         }
         $this->view('/Account/home_maid', $data);
     }
+
 
     function schedule()
     {
