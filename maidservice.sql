@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2024 at 06:30 PM
+-- Generation Time: May 15, 2024 at 04:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `Account` (
   `AccountId` int(11) NOT NULL,
   `Username` varchar(255) NOT NULL,
-  `Password_Hash` varchar(60) NOT NULL,
+  `Password_Hash` varchar(1000) NOT NULL,
   `IsActive` tinyint(1) NOT NULL DEFAULT 1,
   `IsAdmin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -40,7 +40,9 @@ CREATE TABLE `Account` (
 --
 
 INSERT INTO `Account` (`AccountId`, `Username`, `Password_Hash`, `IsActive`, `IsAdmin`) VALUES
-(1, 'RootAdmin', '$2y$10$wN57PQn1UeugG/EUFX1l0OV7y2frJk.UJEq0h/H0vwG1BLyYJaf0S', 0, 1);
+(1, 'RootAdmin', '$2y$10$hpuO0L3/HRKeSfCQfSPKGOoN18QxTldg9uEoz4a2FVEH04NkIGVhi', 0, 1),
+(2, 'staff', '$2y$10$UvNtf8hfREJO.aBNPSL3uugtKRZH7i5eNZY1EES08VqD7aTX6Py3C', 0, 0),
+(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -52,6 +54,13 @@ CREATE TABLE `Account_Job` (
   `AccountId` int(11) NOT NULL,
   `JobId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Account_Job`
+--
+
+INSERT INTO `Account_Job` (`AccountId`, `JobId`) VALUES
+(2, 1);
 
 -- --------------------------------------------------------
 
@@ -65,6 +74,13 @@ CREATE TABLE `Account_Profile` (
   `Phone_Number` varchar(10) NOT NULL,
   `AccountId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Account_Profile`
+--
+
+INSERT INTO `Account_Profile` (`ProfileId`, `Name`, `Phone_Number`, `AccountId`) VALUES
+(1, 'staff', '4388312030', 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +170,7 @@ CREATE TABLE `Job` (
 --
 
 INSERT INTO `Job` (`JobId`, `AddressId`, `Time_Of_Job`, `Status`, `House_Size`, `Spots_Left`, `Description`, `MaidId`) VALUES
-(1, 12, '2024-05-24 12:20:00', 0, 6, 1, 'jacob puked in my car', NULL);
+(1, 12, '2024-05-24 12:20:00', 0, 6, 0, 'jacob puked in my car', NULL);
 
 -- --------------------------------------------------------
 
@@ -262,13 +278,13 @@ ALTER TABLE `Payment_Log`
 -- AUTO_INCREMENT for table `Account`
 --
 ALTER TABLE `Account`
-  MODIFY `AccountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AccountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Account_Profile`
 --
 ALTER TABLE `Account_Profile`
-  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Address`
