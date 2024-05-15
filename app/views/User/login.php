@@ -13,7 +13,7 @@
         <h1>Login</h1>
         <h2>Not registered? <a href="registerCustomer">Sign up</a> </h2>
     </div>
-    <form id="login_form" method="POST" action="loginCustomer">
+    <form id="login_form" method="POST" action="">
         <div class="form_column">
         <label for="usernameLogin">Username</label>
         <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin">
