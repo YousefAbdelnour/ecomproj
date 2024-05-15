@@ -820,3 +820,82 @@ input[type="submit"].profile_edit {
 .button-style-delete:hover {
     background-color: #8B0000;
 }
+/* Full width calendar */
+#calendar {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 0 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+/* Calendar title and buttons */
+.fc-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.fc-toolbar h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.fc-toolbar .fc-button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.fc-toolbar .fc-button {
+    background-color: #3788d8;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.fc-toolbar .fc-button:hover {
+    background-color: #2a6fa5;
+}
+
+/* Calendar header */
+.fc-col-header-cell {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Calendar cells */
+.fc-daygrid-day {
+    height: 100px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fc-daygrid-day:hover {
+    background-color: #f1f9ff;
+}
+
+/* Event styling */
+.fc-event {
+    background-color: #3788d8;
+    border: none;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+

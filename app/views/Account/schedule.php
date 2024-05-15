@@ -5,39 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app/views/style.css?v=20">
-    <title><?= __('Service Booking') ?></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.min.css">
+    <title>Service Booking</title>
 </head>
 
 <body>
     <?php include('app/views/navbarMaid.php'); ?>
     <div class="title_div">
-        <h1><?= __('Schedule') ?></h1>
-        <h2><?= __("Don't worry, we got you covered!") ?></h2>
+        <h1>Schedule</h1>
+        <h2>Don't worry, we got you covered!</h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
-        <div id="task_container">
-            <!-- This is the template for a job-->
-            <div class="task">
-                <div class="schedule_day">
-                    <div class="schedule_row">
-                        <p class="schedule_date">> <?= __('15th Monday') ?> 
-                                <p class="schedule_time"> <?= __('10:15 AM') ?> 
-                    </div>
-                    <div class="schedule_row">
-                        <p class="schedule_address"> <?= __('1405 Av Crickson Montreal Qc') ?> << /p>
-                                <p class="schedule_size"> <?= __('Small') ?> 
-                    </div>
-                    <div class="schedule_buttons">
-                        <input type="button" class="task_decline" value="<?= __("Cancel") ?>">
-                    </div>
-                </div>
-
-            </div>
-            <!-- END OF TEMPLATE-->
-        </div>
+        <div id="calendar"></div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.global.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    <?php foreach ($data['bookings'] as $booking) : ?> {
+                            title: '<?= $booking->Description ?>',
+                            start: '<?= date('c', strtotime($booking->Time_Of_Job)) ?>'
+                        },
+                    <?php endforeach; ?>
+                ]
+            });
+            calendar.render();
+        });
+    </script>
 </body>
 
 </html>

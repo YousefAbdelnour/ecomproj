@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="app/views/style.css"> <!-- Correct path to CSS file -->
 </head>
+<?php
+// Available languages
+$supportedLocales = ['fr', 'en'];
+
+// Current locale
+$locale = $_COOKIE['lang'] ?? 'fr';
+?>
 
 <body>
     <nav>
@@ -19,11 +26,18 @@
             <li><a href="/Customer/payment">Payments</a></li>
             <li><a href="/Customer/support">Support</a></li>
             <li><a href="/Customer/logout"><?= __("Logout") ?></a></li>
-        
-            <select id="languageSelect">
-                <option value="?lang=en">English</option> 
-                <option value="?lang=fr">French</option> 
-            </select>
+
+            <li>
+                <form action="/setLanguage.php" method="POST" id="language-form">
+                    <select name="language" onchange="document.getElementById('language-form').submit()">
+                        <?php foreach ($supportedLocales as $lang) : ?>
+                            <option value="<?php echo $lang; ?>" <?php echo $lang === $locale ? 'selected' : ''; ?>>
+                                <?php echo strtoupper($lang); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </form>
+            </li>
         </ul>
     </nav>
     <div id="nav_background"></div>

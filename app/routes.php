@@ -1,7 +1,7 @@
 <?php
 //defined a few routes "url"=>"controller,method"
 $this->addRoute('User/loginStaff', 'User,loginStaff');
-$this->addRoute('User/loginCustomer', 'User,loginCustomer');
+$this->addRoute('User/login', 'User,login');
 $this->addRoute('User/registerCustomer', 'User,registerCustomer');
 $this->addRoute('User/registerAdmin', 'User,registerAdmin');
 $this->addRoute('Customer/home', 'Customer,home');

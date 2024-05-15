@@ -6,6 +6,7 @@ class Account extends \app\core\Controller
 {
 
     //Home page that admin user is sent 
+    #[\app\filters\Admin]
     function booking($type)
     {
         $bookingModel = new \app\models\Job();
@@ -34,7 +35,7 @@ class Account extends \app\core\Controller
         }
         $this->view('/Account/booking', compact('job', 'type'));
     }
-
+    #[\app\filters\Staff]
     function home_maid()
     {
         $data = [];
@@ -44,7 +45,8 @@ class Account extends \app\core\Controller
         $bookingJobs = $bookingModel->getJobsByStatus(); // Rename variable for clarity
         foreach ($bookingJobs as $job) {
             if ($job->Spots_Left > 0) {
-                $account_jobs = $account_job_model->getAllByAccountId($_SESSION['AccountId']); // Use the new variable
+                $account_job_model->AccountId = $_SESSION['AccountId'];
+                $account_jobs = $account_job_model->getAllByAccountId(); // Use the new variable
                 $flag = 0;
                 foreach ($account_jobs as $account_job) {
                     if ($account_job->JobId === $job->JobId) {
@@ -60,16 +62,32 @@ class Account extends \app\core\Controller
         $this->view('/Account/home_maid', $data);
     }
 
-
+    #[\app\filters\Staff]
     function schedule()
     {
-        $bookings = new \app\models\Job();
-        $bookings->MaidId = $_SESSION['AccountId'];
-        $bookings = $bookings->getByMaidId();
-        $this->view('/Account/schedule', $bookings);
+        $accountJobModel = new \app\models\Account_Job();
+        $accountJobModel->AccountId = $_SESSION['AccountId'];
+        $accountJobs = $accountJobModel->getAllByAccountId();
+
+        $jobIds = array_map(function ($accountJob) {
+            return $accountJob->JobId;
+        }, $accountJobs);
+
+        $jobs = [];
+        if (!empty($jobIds)) {
+            $jobModel = new \app\models\Job();
+            foreach ($jobIds as $jobId) {
+                $jobModel->JobId = $jobId;
+                $jobs[] = $jobModel->getById();
+            }
+        }
+
+        $this->view('/Account/schedule', ['bookings' => $jobs]);
     }
 
     //Method that displays all information 
+    #[\app\filters\Admin]
+
     function display($type)
     {
         $accountsModel = new \app\models\Account();
@@ -145,6 +163,7 @@ class Account extends \app\core\Controller
         }
     }*/
 
+    //???
     function update()
     {
         if (!isset($_SESSION['AccountId'])) {
@@ -168,6 +187,7 @@ class Account extends \app\core\Controller
         }
     }
 
+    #[\app\filters\Admin]
     function delete()
     {
         if (!isset($_SESSION['AccountId'])) {

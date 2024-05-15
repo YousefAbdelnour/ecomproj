@@ -27,12 +27,11 @@ class Profile extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer_profile = new \app\models\Account_Profile();
-            $customer_profile->AccountId = $_SESSION['Id'];
+            $customer_profile->AccountId = $_SESSION['AccountId'];
             if (!empty($_POST['createName']) && !empty($_POST['createPhoneNumber'])) {
                 $customer_profile->Phone_Number = $_POST['createPhoneNumber'];
                 $customer_profile->Name = $_POST['createName'];
                 $customer_profile->insert();
-                session_destroy();
                 header('location:/User/loginStaff');
             } else {
                 header('location:/Profile/create_Admin');

@@ -5,19 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/app/views/style.css">
-    <title>Register</title>
+    <title>Register Account</title>
 </head>
 
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Register</h1>
-        <h2>Already Register? <a href="loginStaff">Login</a> </h2>
+        <h1>Register Account</h1>
     </div>
     <form id="register_form" method="POST" action="">
         <div class="form_column">
             <label for="usernameReg">Username</label>
-            <input type="text" placeholder="DonutMan" id="usernameReg" name="usernameReg">
+            <input type="text" placeholder="Username" id="usernameReg" name="usernameReg">
         </div>
         <div class="form_column">
             <label for="passwordReg">Password</label>
@@ -25,9 +24,16 @@
         </div>
         <div class="form_column">
             <label for="passwordConfirm">Retype Password</label>
-            <input type="password" placeholder="Password" id="passwordConfirm" name="passwordConfirm">
+            <input type="password" placeholder="Retype Password" id="passwordConfirm" name="passwordConfirm">
         </div>
-        <input type="submit" value="Sign-Up">
+        <div class="form_column">
+            <label for="isAdmin">Account Type</label>
+            <select id="isAdmin" name="isAdmin">
+                <option value="no">Staff</option>
+                <option value="yes">Admin</option>
+            </select>
+        </div>
+        <input type="submit" value="Register Account">
     </form>
 </body>
 

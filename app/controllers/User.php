@@ -17,9 +17,10 @@ class User extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['usernameLogin'];
+            $password = $_POST['passwordLogin'];
             $account = new \app\models\Account();
             $account = $account->getByUsername($username);
-            $password = $_POST['passwordLogin'];
+
             if ($account && $account->IsActive == 0 && password_verify($password, $account->Password_Hash)) {
                 $_SESSION['AccountId'] = $account->AccountId;
                 if ($account->IsAdmin === 1) {
@@ -29,15 +30,18 @@ class User extends \app\core\Controller
                     $_SESSION['isAdmin'] = false;
                     header('location:/Account/home_maid');
                 }
+                exit(); // Ensure no further code is executed after redirection
             } else {
-                header('location:/User/loginStaff');
+                $data = ['error' => 'Invalid username or password'];
+                $this->view('User/loginStaff', $data);
+                return;
             }
         } else {
             $this->view('User/loginStaff');
         }
     }
 
-    function loginCustomer()
+    function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['usernameLogin'];
@@ -48,10 +52,10 @@ class User extends \app\core\Controller
                 $_SESSION['CustomerId'] = $account->CustomerId;
                 header('location:/Customer/home');
             } else {
-                header('location:/User/loginCustomer');
+                header('location:/User/login');
             }
         } else {
-            $this->view('User/loginCustomer');
+            $this->view('User/login');
         }
     }
 
@@ -78,27 +82,26 @@ class User extends \app\core\Controller
         }
     }
 
+    #[\app\filters\Admin]
     function registerAdmin()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty(trim($_POST['usernameReg']))) {
-                header('location:/User/registerAdmin');
+                header('location:/User/registerAccount');
             }
             $account = new \app\models\Account();
             $account->Username = $_POST['usernameReg'];
             if ($_POST['passwordReg'] === $_POST['passwordConfirm'] && !empty(trim($_POST['passwordReg']))) {
                 $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
                 $account->IsActive = 0;
-                $account->IsAdmin = 0;
+                $account->IsAdmin = $_POST['isAdmin'] === 'yes' ? 1 : 0;
                 $account->insert();
-                $account = $account->getByUsername($account->Username);
-                $_SESSION['Id'] = $account->AccountId;
-                header('location:/Profile/create_Admin');
+                header('location:/Account/display/1');
             } else {
-                header('location:/User/registerAdmin');
+                header('location:/User/registerAccount');
             }
         } else {
-            $this->view('User/registerAdmin');
+            $this->view('User/registerAccount');
         }
     }
 }
