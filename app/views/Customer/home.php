@@ -17,77 +17,62 @@
     <div class="divider"></div>
 
     <div class="home_container">
-        <div class="home_container_left">
-            <?php if (isset($data['latestJob'])) : ?>
-                <div id="last_service">
-                    <p id="service_title">Latest Service</p>
-                    <p id="service_date"><?php echo date('Y/m/d', strtotime($data['latestJob']->Time_Of_Job)); ?></p>
+    <div class="home_container_left">
+        <?php if (isset($data['latestJob'])) : ?>
+            <div id="last_service">
+                <p id="service_title">Latest Service</p>
+                <p id="service_date"><?php echo date('Y/m/d', strtotime($data['latestJob']->Time_Of_Job)); ?></p>
+                <div id="maid_background">
+                    <p class="job_maids"><?php echo $data['latestJob']->MaidId; ?></p>
+                    <p id="title">Description</p>
+                    <div id="job_description_background">
+                        <p id="job_description"><?php echo $data['latestJob']->Description; ?></p>
+                    </div>
+                </div>
+            </div>
+            <div id="service_buttons">
+                <input type="button" id="service_rebook" value="Book">
+                <input type="button" id="service_review" value="Review">
+            </div>
+        <?php else : ?>
+            <p>No recent services found.</p>
+        <?php endif; ?>
+    </div>
 
-                    <div id="maid_background">
-                        <p class="job_maids"><?php echo $data['latestJob']->MaidId; ?></p>
-                        <p id="title">Description</p>
+    <div class="home_container_right">
+        <div id="service_history">
+            <p id="history_title"><a href="reservation_history" id="history_title_link">Service History</a></p>
+        </div>
 
-                        <div id="job_description_background">
-                            <p id="job_description"><?php echo $data['latestJob']->Description; ?></p>
+        <div id="pending">
+            <p id="pending_orders_title"><a href="/Job/display" id="pending_orders_link">Pending Orders</a></p>
+
+            <?php if (isset($data['earliestJob'])) : ?>
+                <div id="pending_information">
+                    <div id="pending_time">
+                        <p><?php echo date('Y/m/d', strtotime($data['earliestJob']->Time_Of_Job)); ?></p>
+                        <p><?php echo date('H:i A', strtotime($data['earliestJob']->Time_Of_Job)); ?> - Estimated End Time</p>
+                    </div>
+
+                    <div id="pending_first_background">
+                        <p id="pending_title">Description:</p>
+                        <div id="pending_second_background">
+                            <p id="notes_description"><?php echo $data['earliestJob']->Description; ?></p>
                         </div>
                     </div>
-
-                    <div id="service_buttons">
-                        <input type="button" id="service_rebook" value="Book">
-                        <input type="button" id="service_review" value="Review">
-                    </div>
+                </div>
+                <div id="pending_buttons">
+                    <a href="/Customer/support" class="button-style">Support</a>
+                    <a href='/Customer/cancel/<?= $data['earliestJob']->JobId ?>' class="button-style-red">Cancel</a>
                 </div>
             <?php else : ?>
-                <p>No recent services found.</p>
+                <p>No pending orders found.</p>
             <?php endif; ?>
         </div>
-
-        <div class="home_container_right">
-            <div class="home_container_right_column">
-                <div class="home_container_right_column_top_row">
-                    <div id="service_history">
-                        <p id="history_title"><a href="reservation_history" id="history_title_link">Service History</a></p>
-                        <!-- This section might be populated dynamically in a similar way if historical data is structured -->
-                    </div>
-                </div>
-
-                <div class="home_container_right_column_bottom_row">
-                    <div id="pending">
-                        <div id="pending_background">
-                            <p><a href="/Job/display" id="pending_orders_link">Pending Orders</a></p>
-                            <p></p> <!-- This line is for debugging; remove in production -->
-
-                            <?php if (isset($data['earliestJob'])) : ?>
-                                <div id="pending_information">
-                                    <div id="pending_buttons">
-                                        <div class="profile_buttons">
-                                            <a href="/Customer/support" class="button-style">Support</a>
-                                        </div>
-                                        <div class="profile_buttons">
-                                            <a href='/Customer/cancel/<?= $data['earliestJob']->JobId ?>' class="button-style-red">Cancel</a>
-                                        </div>
-                                    </div>
-
-                                    <div id="pending_time">
-                                        <p><?php echo date('Y/m/d', strtotime($data['earliestJob']->Time_Of_Job)); ?></p>
-                                        <p><?php echo date('H:i A', strtotime($data['earliestJob']->Time_Of_Job)); ?> - Estimated End Time</p>
-                                    </div>
-                                    <div id="pending_first_background">
-                                        <p id="pending_title">Description:</p>
-                                        <div id="pending_second_background">
-                                            <p id="notes_description"><?php echo $data['earliestJob']->Description ?></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
+</div>
+
+
 </body>
 
 </html>

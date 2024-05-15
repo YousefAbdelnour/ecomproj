@@ -14,35 +14,34 @@ class Message extends \app\core\Controller
 
     public function create()
     {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Check if required fields are set in $_POST
-        if (isset($_POST['receiver'], $_POST['title'], $_POST['dsc'])) {
-            // Get the customerId from the session
-            $customerId = $_SESSION['CustomerId'];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Check if required fields are set in $_POST
+            if (isset($_POST['receiver'], $_POST['title'], $_POST['dsc'])) {
+                // Get the customerId from the session
+                $customerId = $_SESSION['CustomerId'];
 
-            $message = new \app\models\Message();
-            // Set senderId to customerId
-            $message->SenderId = $customerId;
-            $message->ReceiverId = $_POST['receiver'];
-            $message->Message_Text = $_POST['dsc'];
-            $message->Title = $_POST['title'];
-            // No need to set TimeStamp manually, let the database handle it
-            $message->send_message();
+                $message = new \app\models\Message();
+                // Set senderId to customerId
+                $message->SenderId = $customerId;
+                $message->ReceiverId = $_POST['receiver'];
+                $message->Message_Text = $_POST['dsc'];
+                $message->Title = $_POST['title'];
+                // No need to set TimeStamp manually, let the database handle it
+                $message->send_message();
 
-            // Redirect after sending the message
-            header('Location: /message/index');
-            exit;
-        } else {
-            // Handle case where required fields are missing
-            echo "Required fields are missing.";
-            // You can redirect or display an error message here
+                // Display success message
+
+                // You can also reset the form fields here if needed
+                $this->view('Customer/home'); 
+                echo "<div id='success_message'>Message sent successfully!</div>";
+
+            } else {
+                // Handle case where required fields are missing
+                echo "Required fields are missing.";
+                // You can redirect or display an error message here
+            }
         }
     }
-
-    // Load the view for creating a message
-    $this->view('message/create');
-}
-
 
 
    
@@ -98,4 +97,6 @@ class Message extends \app\core\Controller
         
         $this->view('message/delete', ['id' => $id]);
     }
+
+    
 }

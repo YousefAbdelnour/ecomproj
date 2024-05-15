@@ -37,6 +37,8 @@
             calendar.render();
         });
     </script>
+    <div id="booking-info"></div>
+
 </body>
 
 </html>

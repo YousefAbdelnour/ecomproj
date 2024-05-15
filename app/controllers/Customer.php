@@ -10,7 +10,7 @@ class Customer extends \app\core\Controller
     function logout()
     {
         session_destroy();
-        header('location:/User/loginCustomer');
+        header('location:/User/login');
     }
 
     public function support()

@@ -36,3 +36,4 @@ $this->addRoute('Job/accept/{id}', 'Job,accept');
 
 //Messages 
 $this->addRoute('Message/create', 'Message,create');
+$this->addRoute('Message/sent', 'Message,sent');
