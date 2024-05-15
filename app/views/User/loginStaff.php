@@ -17,8 +17,8 @@ $locale = $_COOKIE['lang'] ?? 'fr';
 
 <body>
     <div class="title_div">
-        <h1>Login Staff</h1>
-        <h2>Not registered? Contact an admin!</h2>
+        <h1><?=__('Login Staff')?></h1>
+        <h2><?=__('Not registered? Contact an admin!')?></h2>
 
     </div>
     <form id="login_form" method="POST" action="/User/loginStaff">
@@ -26,15 +26,15 @@ $locale = $_COOKIE['lang'] ?? 'fr';
             <p style="color: red;"><?php echo $data['error']; ?></p>
         <?php endif; ?>
         <div class="form_column">
-            <label for="usernameLogin">Username</label>
+            <label for="usernameLogin"><?=__('Username')?></label>
             <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin" required>
         </div>
         <div class="form_column">
-            <label for="passwordLogin">Password</label>
+            <label for="passwordLogin"><?=__('Password')?></label>
             <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin" required>
         </div>
-        <p><a href="#">Forgot password?</a></p>
-        <p><a href="/User/login">Not a staff member?</a></p>
+        <p><a href="#"><?=__('Forgot password?')?></a></p>
+        <p><a href="/User/login"><?=__('Not a staff member?')?></a></p>
         <input type="submit" value="Log in">
     </form>
     <li>

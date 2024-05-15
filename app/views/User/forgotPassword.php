@@ -11,12 +11,12 @@
 <body>
     <?php include('../navbar.php'); ?>
     <div class="title_div">
-        <h1>Forgot Password</h1>
-        <h2>New Password</h2>
+        <h1><?=__('Forgot Password')?></h1>
+        <h2><?=__('New Password')?></h2>
     </div>
     <form>
         <div class="form_column">
-        <label for="usernameForgot">Username</label>
+        <label for="usernameForgot"><?=__('Username')?></label>
         <input type="text" placeholder="DonutMan" id="usernameForgot" name="usernameForgot">
         </div>
 

@@ -11,8 +11,8 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Pending orders</h1>
-        <h2>Monitor your acvtive orders!</h2>
+        <h1><?=__('Pending orders')?></h1>
+        <h2><?=__('Monitor your acvtive orders!')?></h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
@@ -20,8 +20,8 @@
             <!-- This is the template for a job-->
             <div id="pending">
                 <div id="pending_background">
-                    <p>Pending Orders</p>
-                    <p>4639 Buckhannan Avenue</p>
+                    <p><?=__('Pending Orders')?></p>
+                    <p><?=__('4639 Buckhannan Avenue')?></p>
 
                     <div id="pending_information">
                         <div id="pending_buttons">
@@ -38,9 +38,9 @@
 
                 </div>
                 <div id="pending_first_background">
-                    <p id="pending_title">Notes:</p>
+                    <p id="pending_title"><?=__('Notes:')?></p>
                     <div id="pending_second_background">
-                        <p id="notes_description">Change the bed sheets as well, please!</p>
+                        <p id="notes_description"><?=__('Change the bed sheets as well, please!')?></p>
                     </div>
                 </div>
             </div>

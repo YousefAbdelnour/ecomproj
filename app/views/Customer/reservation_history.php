@@ -11,8 +11,8 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Reservation History</h1>
-        <h2>View Details or Report</h2>
+        <h1><?=__('Reservation History')?></h1>
+        <h2><?=__('View Details or Report')?></h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="profile_buttons">
-                            <a href="/Customer/support" class="button-style">Report</a>
+                            <a href="/Customer/support" class="button-style"><?=__('Report')?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>

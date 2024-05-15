@@ -11,16 +11,16 @@
 <body>
     <?php include('app/views/navbarMaid.php'); ?>
     <div class="title_div">
-        <h1>Edit Profile</h1>
-        <h2>Change in life? Change it here! </h2>
+        <h1><?=__('Edit Profile')?></h1>
+        <h2><?=__('Change in life? Change it here!')?></h2>
     </div>
     <form id="profile_edit_form" method="POST" action="">
         <div class="form_column">
-            <label for="editName">Name</label>
+            <label for="editName"><?=__('Name')?></label>
             <input type="text" placeholder="First Last" id="editName" name="editName">
         </div>
         <div class="form_column">
-            <label for="editPhoneNumber">Phone Number</label>
+            <label for="editPhoneNumber"><?=__('Phone Number')?></label>
             <input type="password" placeholder="xxxxxxxxxx" id="editPhoneNumber" name="editPhoneNumber">
         </div>
         <div class="createButtons">

@@ -30,10 +30,10 @@
             ?>
                 <div class="task">
                     <div class="task_info">
-                        <p class="task_title"><?= $customer ?></p>
-                        <p class="task_location"><?= $address ?></p>
-                        <p class="task_date"><?= $booking->Time_Of_Job ?></p>
-                        <p class="task_size"><?= 'Spots left: ' . $booking->Spots_Left ?></p>
+                        <p class="task_title"><?= '' . $customer ?></p>
+                        <p class="task_location"><?= '' . $address ?></p>
+                        <p class="task_date"><?= __('Time of Job:') . $booking->Time_Of_Job ?></p>
+                        <p class="task_size"><?= __('Spots left:') . $booking->Spots_Left ?></p>
                     </div>
 
                     <div class="task_description">
@@ -44,7 +44,7 @@
 
                     <div class="task_buttons">
                         <div class="profile_buttons">
-                            <a href="/Job/accept/<?= $booking->JobId ?>" class="button-style">Accept</a>
+                            <a href="/Job/accept/<?= $booking->JobId ?>" class="button-style"> <?=__('Accept') ?> </a>
                         </div>
                     </div>
                 </div>

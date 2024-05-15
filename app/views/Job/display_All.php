@@ -11,12 +11,12 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Booking List</h1>
-        <h2>Your Scheduled Services</h2>
+        <h1><?=__('Booking List')?></h1>
+        <h2><?=__('Your Scheduled Services')?></h2>
     </div>
     <div class="divider"></div>
     <div class="booking_buttons">
-        <a href="/Job/book" class="button-style">Book a Service</a>
+        <a href="/Job/book" class="button-style"><?=__('Book a Service')?></a>
     </div>
     <div class="wrapper">
         <div id="task_container">

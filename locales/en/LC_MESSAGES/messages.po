@@ -17,6 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+
+
 #: app/views/Account/home_admin.php:8
 msgid "Admin Home"
 msgstr "Admin Home"
@@ -86,6 +88,8 @@ msgstr "Accept"
 msgid "Decline"
 msgstr "Decline"
 
+
+
 #: app/views/Account/schedule.php:14
 msgid "Schedule"
 msgstr "Schedule"
@@ -113,6 +117,8 @@ msgstr "Small"
 #: app/views/Account/schedule.php:32
 msgid "Cancel"
 msgstr "Cancel"
+
+
 
 #: app/views/Address/add.php:8 app/views/Address/add.php:14
 msgid "Address Creation"
@@ -166,6 +172,8 @@ msgstr "XXX XXX"
 msgid "Add"
 msgstr "Add"
 
+
+
 #: app/views/Address/display.php:14
 msgid "Address List"
 msgstr "Address List"
@@ -181,6 +189,8 @@ msgstr "ADD"
 #: app/views/Address/display.php:36
 msgid "Delete"
 msgstr "Delete"
+
+
 
 #: app/views/navbar.php:15 app/views/navbarAdmin.php:15
 msgid "Home"
@@ -201,3 +211,32 @@ msgstr "Profile"
 #: app/views/navbar.php:19 app/views/navbarAdmin.php:17
 msgid "Logout"
 msgstr "Logout"
+
+
+
+#: app/views/navbar.php:19 app/views/Account/home_maid.php:35
+
+msgid "Time of Job:"
+msgstr "Time of Job:"
+
+#: app/views/navbar.php:19 app/views/Account/home_maid.php:36
+
+msgid "Spots left:"
+msgstr "Spots left:"
+
+#: app/views/navbar.php:19 app/views/Account/home_maid.php:47
+
+msgid "Accept"
+msgstr "Accept"
+
+
+
+#: app/views/navbar.php:19 app/views/Account/schedule.php:15
+
+msgid "Schedule"
+msgstr "Schedule"
+
+#: app/views/navbar.php:19 app/views/Account/schedule.php:16
+
+msgid "Don't worry, we got you covered!"
+msgstr "Don't worry, we got you covered!"

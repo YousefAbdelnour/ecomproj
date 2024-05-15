@@ -9,17 +9,17 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Received Messages</h1>
+        <h1><?=__('Received Messages')?></h1>
     </div>
     <div class="divider"></div>
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Message Text</th>
-                <th>Sender</th>
-                <th>TimeStamp</th>
-                <th>Actions</th>
+                <th><?=__('Title')?></th>
+                <th><?=__('Message Text')?></th>
+                <th><?=__('Sender')?></th>
+                <th><?=__('TimeStamp')?></th>
+                <th><?=__('Actions')?></th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@
                     <td>
                         <form method="POST" action="/Message/support">
                             <input type="hidden" name="receiverId" value="<?= htmlspecialchars($message->SenderId) ?>">
-                            <button type="submit">Reply</button>
+                            <button type="submit"><?=__('Reply')?></button>
                         </form>
                     </td>
                 </tr>

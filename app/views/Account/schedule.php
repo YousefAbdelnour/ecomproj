@@ -12,8 +12,8 @@
 <body>
     <?php include('app/views/navbarMaid.php'); ?>
     <div class="title_div">
-        <h1>Schedule</h1>
-        <h2>Don't worry, we got you covered!</h2>
+        <h1><?=__('Schedule')?></h1>
+        <h2><?=__("Don't worry, we got you covered!")?></h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">

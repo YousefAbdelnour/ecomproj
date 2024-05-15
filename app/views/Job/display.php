@@ -11,12 +11,12 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Booking List</h1>
-        <h2>Your Scheduled Services</h2>
+        <h1><?=__('Booking List')?></h1>
+        <h2><?=__('Your Scheduled Services')?></h2>
     </div>
     <div class="divider"></div>
     <div class="booking_buttons">
-        <a href="/Job/book" class="button-style">Book a Service</a>
+        <a href="/Job/book" class="button-style"><?=__('Book a Service')?></a>
     </div>
     <div class="wrapper">
         <div id="task_container">
@@ -27,16 +27,16 @@
                     <div class="task">
                         <div class="view_booking">
                             <div class="view_booking_row">
-                                <p class="view_service">Scheduled Time: <?php echo date("Y-m-d H:i", strtotime($booking->Time_Of_Job)); ?></p>
-                                <p class="view_date">Status: <?php echo $booking->Status == 0 ? 'Pending' : 'Confirmed'; ?></p>
+                                <p class="view_service"><?=__('Scheduled Time:')?><?php echo date("Y-m-d H:i", strtotime($booking->Time_Of_Job)); ?></p>
+                                <p class="view_date"><?=__('Status:')?><?php echo $booking->Status == 0 ? 'Pending' : 'Confirmed'; ?></p>
                             </div>
                             <div class="view_booking_row">
-                                <p class="view_customer">House Size: <?php echo $booking->House_Size; ?> sqm</p>
-                                <p class="view_status">Spots Left: <?php echo $booking->Spots_Left; ?></p>
+                                <p class="view_customer"><?=__('House Size: ')?><?php echo $booking->House_Size; ?> sqm</p>
+                                <p class="view_status"><?=__('Spots Left: ')?><?php echo $booking->Spots_Left; ?></p>
                             </div>
                             <div class="view_booking_row">
-                                <p class="view_description">Description: <?php echo $booking->Description; ?></p>
-                                <p class="view_maid">Maid ID: <?php echo $booking->MaidId; ?></p>
+                                <p class="view_description"><?=__('Description:')?><?php echo $booking->Description; ?></p>
+                                <p class="view_maid"><?=__('Maid ID:')?><?php echo $booking->MaidId; ?></p>
                             </div>
                             <div class="booking_buttons">
                                 <a href="/Booking/cancel/<?php echo $booking->JobId; ?>" class="button-style-delete">Cancel</a>
@@ -46,7 +46,7 @@
                 <?php endforeach; ?>
             <?php else : ?>
                 <!-- Message to display if no bookings are found -->
-                <p>No bookings found. Please book a service to see it listed here.</p>
+                <p><?=__('No bookings found. Please book a service to see it listed here.')?></p>
             <?php endif; ?>
         </div>
     </div>

@@ -11,8 +11,8 @@
 <body>
     <?php include ('../navbar.php'); ?>
     <div class="title_div">
-        <h1>Reservation History</h1>
-        <h2>View Details or Report</h2>
+        <h1><?=__('Reservation History')?></h1>
+        <h2><?=__('View Details or Report')?></h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">

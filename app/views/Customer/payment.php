@@ -11,8 +11,8 @@
 <body>
     <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
-        <h1>Payments</h1>
-        <h2>Pay completed jobs</h2>
+        <h1><?=__('Payments')?></h1>
+        <h2><?=__('Pay completed jobs')?></h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="profile_buttons">
-                    <a href="/Customer/pay" class="button-style">PAY</a>
+                    <a href="/Customer/pay" class="button-style"><?=__('PAY')?></a>
                 </div>
 
             </div>

@@ -17,21 +17,21 @@ $locale = $_COOKIE['lang'] ?? 'fr';
 
 <body>
     <div class="title_div">
-        <h1>Login</h1>
-        <h2>Not registered? <a href="registerCustomer">Sign up</a> </h2>
+        <h1><?=__('Login')?></h1>
+        <h2><?=__('Not registered?')?> <a href="registerCustomer"><?=__('Sign up')?></a> </h2>
     </div>
     <form id="login_form" method="POST" action="">
         <div class="form_column">
-            <label for="usernameLogin">Username</label>
+            <label for="usernameLogin"><?=__('Username')?></label>
             <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin">
         </div>
         <div class="form_column">
-            <label for="passwordLogin">Password</label>
+            <label for="passwordLogin"><?=__('Password')?></label>
             <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin">
         </div>
-        <p><a href="">Forgot password?</a>
+        <p><a href=""><?=__('Forgot password?')?></a>
         <p>
-        <p><a href="loginStaff">Staff member?</a>
+        <p><a href="loginStaff"><?=__('Staff member?')?></a>
         <p>
             <input type="submit" value="Log in">
     </form>

@@ -11,8 +11,8 @@
 <body>
     <?php include('app/views/navbarAdmin.php'); ?>
     <div class="title_div">
-        <h1>Profile</h1>
-        <h2>This is you!</h2>
+        <h1><?=__('Profile')?></h1>
+        <h2><?=__('This is you!')?></h2>
     </div>
     <div class="divider"></div>
     <div class="wrapper">
