@@ -13,15 +13,7 @@ class Customer extends \app\core\Controller
         header('location:/User/login');
     }
 
-    public function support()
-    {
-        // Fetch related accounts
-        $messageModel = new \app\models\Message();
-        $relatedAccounts = $messageModel->getRelatedAccounts($_SESSION['CustomerId']);
-
-        // Render the view
-        $this->view('Customer/support', ['relatedAccounts' => $relatedAccounts]);
-    }
+    
 
     function payment()
     {

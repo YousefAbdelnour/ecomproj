@@ -12,6 +12,7 @@ class Message extends \app\core\Model
     public $Message_Text;
     public $Title;
     public $TimeStamp;
+    public $SenderUsername;
 
     public function send_message()
 {

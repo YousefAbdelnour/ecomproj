@@ -108,4 +108,20 @@ class Account extends \app\core\Model
         $data = ['AccountId' => $this->AccountId, 'IsActive' => 1];
         $STMT->execute($data);
     }
+    public function getRelatedAccountsForStaff($staffId)
+    {
+        $SQL = 'SELECT DISTINCT a.AccountId, a.Username 
+            FROM Account a
+            INNER JOIN Account_Job aj ON a.AccountId = aj.AccountId
+            INNER JOIN Job j ON aj.JobId = j.JobId
+            WHERE aj.AccountId = :staffId
+            UNION
+            SELECT AccountId, Username
+            FROM Account
+            WHERE IsAdmin = 1'; // Also include all admin accounts
+
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['staffId' => $staffId]);
+        return $STMT->fetchAll(PDO::FETCH_OBJ); // Fetch as associative array
+    }
 }

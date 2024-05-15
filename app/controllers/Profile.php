@@ -8,13 +8,12 @@ class Profile extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer_profile = new \app\models\Customer_Profile();
-            $customer_profile->CustomerId = $_SESSION['Id'];
+            $customer_profile->CustomerId = $_SESSION['CustomerId'];
             if (!empty($_POST['createName']) && !empty($_POST['createPhoneNumber'])) {
                 $customer_profile->Phone_Number = $_POST['createPhoneNumber'];
                 $customer_profile->Name = $_POST['createName'];
                 $customer_profile->insert();
-                session_destroy();
-                header('location:/User/loginCustomer');
+                header('location:/Account/display/1');
             } else {
                 header('location:/Profile/create_Customer');
             }

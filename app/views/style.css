@@ -884,6 +884,20 @@ input[type="submit"].profile_edit {
     animation: slideInAndOut 3s ease-in-out; /* Slide in/out animation */
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    background-color: white;
+
+}
 /* Define keyframes for the slide in/out animation */
 @keyframes slideInAndOut {
     0% { opacity: 0; transform: translate(-50%, 100%); }

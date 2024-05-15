@@ -20,7 +20,6 @@ $this->addRoute('Profile/create_Admin', 'Profile,create_Admin');
 $this->addRoute('Customer/payment', 'Customer,payment');
 $this->addRoute('Customer/cancel/{id}', 'Customer,cancel');
 $this->addRoute('Customer/pay', 'Customer,pay');
-$this->addRoute('Customer/support', 'Customer,support');
 $this->addRoute('Customer/logout', 'Customer,logout');
 
 $this->addRoute('Address/delete/{id}', 'Address,delete');
@@ -35,5 +34,9 @@ $this->addRoute('Job/display', 'Job,display');
 $this->addRoute('Job/accept/{id}', 'Job,accept');
 
 //Messages 
-$this->addRoute('Message/create', 'Message,create');
+$this->addRoute('Message/support', 'Message,support');
 $this->addRoute('Message/sent', 'Message,sent');
+$this->addRoute('', 'User,login');
+$this->addRoute('Message/receivedAccount', 'Message,receivedAccount');
+$this->addRoute('Message/sendMessageFromAccount', 'Message,sendMessageFromAccount');
+$this->addRoute('Message/receivedByCustomer', 'Message,receivedByCustomer');
