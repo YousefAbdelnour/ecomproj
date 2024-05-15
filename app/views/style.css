@@ -1,5 +1,20 @@
 /*Nav bar CSS*/
-body,
+body {
+    margin: 0;
+    padding: 0;
+    /* Set the background image and make it cover the entire viewport */
+    background-image: url('image.jpg');
+    background-size: cover;
+    background-position: center;
+    /* Ensure the background image doesn't repeat */
+    background-repeat: no-repeat;
+    /* Fix the background image to the viewport */
+    background-attachment: fixed;
+    z-index: 999;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
 ul {
     width: 100%;
     height: 100%;
@@ -71,7 +86,7 @@ ul {
 .title_div {
     width: 100%;
     height: 250px;
-    background-color: gray;
+    background-color: rgba(128, 128, 128, 0.8); /* Adjust the last value (alpha) for transparency */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,6 +95,7 @@ ul {
     padding: 20px;
     position: relative;
 }
+
 
 .divider {
     width: 100%;
@@ -542,6 +558,8 @@ input[type="submit"].profile_edit {
     width: 100%;
     padding: 20px;
     gap: 20px;
+    background-color: rgba(128, 128, 128, 0.0);
+
 }
 
 .home_container_left,
@@ -627,6 +645,57 @@ input[type="submit"].profile_edit {
 
 /*Home page CSS END*/
 
+/*Address add*/ 
+
+#address_add_form {
+    background-color: rgba(128, 128, 128, 0.5); /* Transparent grey background */
+    border: 2px solid black; /* Solid yellow border */
+    padding: 20px;
+    width: 75%; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -15%);
+}
+
+#address_add_form h1, #address_add_form h2 {
+    color: black; /* Set text color to black */
+    font-weight: bold; /* Set font weight to bold */
+}
+
+#address_add_form .form_column label {
+    color: black;
+    font-weight: bold;
+    font-size: large; /* Change label text color to white for better visibility */
+}
+
+#address_add_form .form_column input {
+    width: calc(100% - 16px); /* Adjust the width to accommodate padding and margin */
+    padding: 8px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.8); /* Light grey background for input fields */
+    box-sizing: border-box;
+}
+
+#address_add_form .createButtons input[type="submit"] {
+    background-color: yellowgreen; /* Yellow background for submit button */
+    color: black; /* Black text color for submit button */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
+
+
+/*Address*/
+
 /*Create Profile CSS*/
 .createButtons {
     display: flex;
@@ -635,6 +704,9 @@ input[type="submit"].profile_edit {
     align-items: center;
     text-align: center;
 }
+
+
+
 
 .address_add {
     width: 30%;

@@ -14,6 +14,7 @@
         <h1><?= __("Address Creation") ?></h1>
         <h2><?= __("Let us make booking easier for you!") ?></h2>
     </div>
+    <div class="divider"></div>
     <form id="address_add_form" method="POST" action="">
         <div class="form_column">
             <label for="addCountry"><?= __("Country") ?></label>
