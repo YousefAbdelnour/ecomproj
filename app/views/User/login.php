@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="/app/views/style.css">
     <title>Login</title>
 </head>
+<?php
+// Available languages
+$supportedLocales = ['fr', 'en'];
+
+// Current locale
+$locale = $_COOKIE['lang'] ?? 'fr';
+?>
 
 <body>
     <div class="title_div">
@@ -15,17 +22,31 @@
     </div>
     <form id="login_form" method="POST" action="">
         <div class="form_column">
-        <label for="usernameLogin">Username</label>
-        <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin">
+            <label for="usernameLogin">Username</label>
+            <input type="text" placeholder="DonutMan" id="usernameLogin" name="usernameLogin">
         </div>
         <div class="form_column">
-        <label for="passwordLogin">Password</label>
-        <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin">
+            <label for="passwordLogin">Password</label>
+            <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin">
         </div>
-        <p><a href="">Forgot password?</a><p>
-        <p><a href="loginStaff">Staff member?</a><p>
-        <input type="submit" value="Log in">
+        <p><a href="">Forgot password?</a>
+        <p>
+        <p><a href="loginStaff">Staff member?</a>
+        <p>
+            <input type="submit" value="Log in">
     </form>
+    <li>
+        <form action="/setLanguage.php" method="POST" id="language-form">
+            <select name="language" onchange="document.getElementById('language-form').submit()">
+                <?php foreach ($supportedLocales as $lang) : ?>
+                    <option value="<?php echo $lang; ?>" <?php echo $lang === $locale ? 'selected' : ''; ?>>
+                        <?php echo strtoupper($lang); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    </li>
+
 </body>
 
 </html>

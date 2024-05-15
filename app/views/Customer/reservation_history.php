@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<?php include('app/views/navbar.php'); ?>
+    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Reservation History</h1>
         <h2>View Details or Report</h2>
@@ -18,19 +18,37 @@
     <div class="wrapper">
         <div id="task_container">
             <!-- This is the template for a job-->
-            <div class="task">
-                <div class="task_info">
-                    <p class="res_title">Basic Cleaning</p>
-                    <p class="res_name">Maria Lastname</p>
-                    <p class="res_price">Cost: 153$</p>
-                </div>
+            <?php if (!empty($data['jobs'])) : // Check if jobs array is not empty 
+            ?>
+                <?php foreach ($data['jobs'] as $job) : ?>
+                    <?php
+                    $addressObject = $job->getAddressById();
+                    $address = $addressObject->Building_Number
+                        . ' ' . $addressObject->Street_Name
+                        . ' ' . $addressObject->ZipCode
+                        . ' ' . $addressObject->State
+                        . ' ' . $addressObject->Country;
+                    $maidList = $job->getMaidsForJob();
+                    $printMaid = '';
+                    foreach ($maidList as $maid) :
+                        $printMaid = $printMaid . ' ' . $maid->Username;
+                    endforeach;
+                    ?>
+                    <div class="task">
+                        <div class="task_info">
+                            <p class="res_title"><?= htmlspecialchars($address) ?></p>
+                            <p class="res_name"><?= htmlspecialchars($printMaid) ?></p>
+                            <p class="res_price"><?= htmlspecialchars($job->Time_Of_Job) ?></p>
+                        </div>
 
-                <div class="task_buttons">
-                    <input type="button" class="task_accept" value="Details">
-                    <input type="button" class="task_decline" value="Report">
-                </div>
-
-            </div>
+                        <div class="profile_buttons">
+                            <a href="/Customer/support" class="button-style">Report</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <p><?= htmlspecialchars($data['error']) ?></p>
+            <?php endif; ?>
             <!-- END OF TEMPLATE-->
         </div>
     </div>

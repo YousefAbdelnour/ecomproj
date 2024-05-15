@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="/app/views/style.css">
     <title>Register</title>
 </head>
+<?php
+// Available languages
+$supportedLocales = ['fr', 'en'];
+
+// Current locale
+$locale = $_COOKIE['lang'] ?? 'fr';
+?>
 
 <body>
-    <?php include('app/views/navbar.php'); ?>
     <div class="title_div">
         <h1>Register</h1>
-        <h2>Already Register? <a href="loginCustomer">Login</a> </h2>
+        <h2>Already Register? <a href="login">Login</a> </h2>
     </div>
     <form id="register_form" method="POST" action="">
         <div class="form_column">
@@ -29,6 +35,17 @@
         </div>
         <input type="submit" value="Sign-Up">
     </form>
+    <li>
+        <form action="/setLanguage.php" method="POST" id="language-form">
+            <select name="language" onchange="document.getElementById('language-form').submit()">
+                <?php foreach ($supportedLocales as $lang) : ?>
+                    <option value="<?php echo $lang; ?>" <?php echo $lang === $locale ? 'selected' : ''; ?>>
+                        <?php echo strtoupper($lang); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    </li>
 </body>
 
 </html>

@@ -22,6 +22,7 @@ $locale = $_COOKIE['lang'] ?? 'fr';
             <li><a href="/Account/display/1"><?= __("Home") ?></a></li>
             <li><a href="/Account/booking/1">Bookings</a></li>
             <li><a href="/Profile/show_Admin"><?= __("Profile") ?></a></li>
+            <li><a href="/User/registerAdmin"><?= __("Create acount") ?></a></li>
             <li><a href="/Account/logout"><?= __("Logout") ?></a></li>
             <li>
                 <form action="/setLanguage.php" method="POST" id="language-form">

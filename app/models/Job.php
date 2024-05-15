@@ -41,6 +41,18 @@ class Job extends \app\core\Model
         }
     }
 
+    public function getMaidsForJob()
+    {
+        $SQL = 'SELECT Account.* 
+                FROM Account 
+                JOIN Account_Job ON Account.AccountId = Account_Job.AccountId 
+                WHERE Account_Job.JobId = :job_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['job_id' => $this->JobId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Account');
+        return $STMT->fetchAll();
+    }
+
     public function getAddressById()
     {
         $SQL = 'SELECT * FROM Address WHERE AddressId = :address_id';

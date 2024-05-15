@@ -7,11 +7,18 @@
     <link rel="stylesheet" href="/app/views/style.css">
     <title>Login Staff</title>
 </head>
+<?php
+// Available languages
+$supportedLocales = ['fr', 'en'];
+
+// Current locale
+$locale = $_COOKIE['lang'] ?? 'fr';
+?>
 
 <body>
     <div class="title_div">
         <h1>Login Staff</h1>
-        <h2>Not registered? <a href="/User/registerAccount">Sign up</a> </h2>
+        <h2>Not registered? Contact an admin!</h2>
 
     </div>
     <form id="login_form" method="POST" action="/User/loginStaff">
@@ -30,6 +37,17 @@
         <p><a href="/User/login">Not a staff member?</a></p>
         <input type="submit" value="Log in">
     </form>
+    <li>
+        <form action="/setLanguage.php" method="POST" id="language-form">
+            <select name="language" onchange="document.getElementById('language-form').submit()">
+                <?php foreach ($supportedLocales as $lang) : ?>
+                    <option value="<?php echo $lang; ?>" <?php echo $lang === $locale ? 'selected' : ''; ?>>
+                        <?php echo strtoupper($lang); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </form>
+    </li>
 </body>
 
 </html>

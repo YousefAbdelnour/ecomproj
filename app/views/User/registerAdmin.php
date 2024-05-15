@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <?php include('app/views/navbar.php'); ?>
+    <?php include('app/views/navbarAdmin.php'); ?>
     <div class="title_div">
         <h1>Register Account</h1>
     </div>

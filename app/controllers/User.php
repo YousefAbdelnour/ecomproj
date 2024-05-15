@@ -87,7 +87,7 @@ class User extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (empty(trim($_POST['usernameReg']))) {
-                header('location:/User/registerAccount');
+                header('location:/User/registerAdmin');
             }
             $account = new \app\models\Account();
             $account->Username = $_POST['usernameReg'];
@@ -98,10 +98,10 @@ class User extends \app\core\Controller
                 $account->insert();
                 header('location:/Account/display/1');
             } else {
-                header('location:/User/registerAccount');
+                header('location:/User/registerAdmin');
             }
         } else {
-            $this->view('User/registerAccount');
+            $this->view('User/registerAdmin');
         }
     }
 }

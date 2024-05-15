@@ -122,14 +122,23 @@ class Customer extends \app\core\Controller
 
     function reservation_history()
     {
+        $data = [];
         $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
         if ($customerProfile) {
             $completedJobs = (new \app\models\Job())->getJobsByStatusAndProfileId($customerProfile->Customer_ProfileId, 1);
-            $this->view('Customer/reservation_history', ['jobs' => $completedJobs]);
+            $data['jobs'] = $completedJobs ? $completedJobs : [];
+
+            if (empty($data['jobs'])) {
+                $data['error'] = "No completed jobs found.";
+            }
+
+            $this->view('Customer/reservation_history', $data);
         } else {
-            $this->view('Customer/reservation_history', ['error' => 'No customer profile found.']);
+            $data['error'] = "No customer profile found.";
+            $this->view('Customer/reservation_history', $data);
         }
     }
+
     function pending_orders()
     {
         $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
@@ -142,6 +151,4 @@ class Customer extends \app\core\Controller
             $this->view('Customer/pending_orders', ['error' => 'No customer profile found.']);
         }
     }
-
-   
 }

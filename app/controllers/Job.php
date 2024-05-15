@@ -54,6 +54,11 @@ class Job extends \app\core\Controller
                 $accountJob->AccountId = $_SESSION['AccountId'];
                 $accountJob->JobId = $id;
                 $accountJob->insert();  // Link the account and the job
+
+                if ($job->Spots_Left === 0) {
+                    $job->Status = 1;
+                    $job->update();
+                }
             }
         }
         header('Location: /Account/schedule');
