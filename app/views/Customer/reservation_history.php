@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="profile_buttons">
-                            <a href="/Customer/support" class="button-style"><?=__('Report')?></a>
+                            <a href="/Message/support" class="button-style"><?=__('Report')?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>

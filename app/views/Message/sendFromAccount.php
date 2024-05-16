@@ -16,7 +16,7 @@
         include('app/views/navbarMaid.php');
     }
     ?>
-    <div class="title_div">
+     <div class="title_div">
         <h1><?= __('Send Message') ?></h1>
     </div>
     <div class="divider"></div>
@@ -24,8 +24,8 @@
         <form id="book_form" method="POST" action="/Message/sendMessageFromAccount">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="receiver"><?= __('To:') ?></label>
-                    <select id="receiver" name="receiver">
+                    <label for="receiverId"><?= __('To:') ?></label>
+                    <select id="receiverId" name="receiverId">
                         <?php foreach ($relatedAccounts as $account) : ?>
                             <option value="<?= htmlspecialchars($account->AccountId) ?>" <?= isset($selectedReceiver) && $selectedReceiver == $account->AccountId ? 'selected' : '' ?>>
                                 <?= htmlspecialchars($account->Username) ?>

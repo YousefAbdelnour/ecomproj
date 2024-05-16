@@ -33,7 +33,7 @@ $locale = $_COOKIE['lang'] ?? 'fr';
             <label for="passwordLogin"><?=__('Password')?></label>
             <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin" required>
         </div>
-        <p><a href="#"><?=__('Forgot password?')?></a></p>
+        <p><a href="/User/forgotPasswordStaff"><?=__('Forgot password?')?></a></p>
         <p><a href="/User/login"><?=__('Not a staff member?')?></a></p>
         <input type="submit" value="Log in">
     </form>
