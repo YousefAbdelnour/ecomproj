@@ -7,7 +7,6 @@ use chillerlan\QRCode\QRCode;
 
 class User extends \app\core\Controller
 {
-
     public function forgotPasswordCustomer()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,7 +18,8 @@ class User extends \app\core\Controller
                 if ($account) {
                     $options = new AuthenticatorOptions();
                     $authenticator = new Authenticator($options);
-                    $_SESSION['secret_setup'] = $authenticator->createSecret();
+                    $account->secret = $authenticator->createSecret();
+                    $account->add2FA(); // Save the secret to the database
                     $uri = $authenticator->getUri('Customer', 'YourAppName');
                     $QRCode = (new QRCode)->render($uri);
 
@@ -33,14 +33,17 @@ class User extends \app\core\Controller
                     $this->view('User/forgotPasswordCustomer', ['error' => 'Username not found']);
                 }
             } elseif (isset($_POST['totp'])) {
+                $username = $_POST['username'];
+                $account = new \app\models\Customer();
+                $account = $account->getByUsername($username);
+
                 $options = new AuthenticatorOptions();
                 $authenticator = new Authenticator($options);
-                $authenticator->setSecret($_SESSION['secret_setup']);
+                $authenticator->setSecret($account->secret); // Retrieve the secret from the database
 
                 // Verify TOTP
                 if ($authenticator->verify($_POST['totp'])) {
                     // Proceed to reset password step
-                    $username = $_POST['username'];
                     $this->view('User/resetPassword', [
                         'username' => $username,
                         'userType' => 'customer'
@@ -65,7 +68,8 @@ class User extends \app\core\Controller
                 if ($account) {
                     $options = new AuthenticatorOptions();
                     $authenticator = new Authenticator($options);
-                    $_SESSION['secret_setup'] = $authenticator->createSecret();
+                    $account->secret = $authenticator->createSecret();
+                    $account->add2FA(); // Save the secret to the database
                     $uri = $authenticator->getUri('Staff', 'YourAppName');
                     $QRCode = (new QRCode)->render($uri);
 
@@ -79,14 +83,17 @@ class User extends \app\core\Controller
                     $this->view('User/forgotPasswordStaff', ['error' => 'Username not found']);
                 }
             } elseif (isset($_POST['totp'])) {
+                $username = $_POST['username'];
+                $account = new \app\models\Account();
+                $account = $account->getByUsername($username);
+
                 $options = new AuthenticatorOptions();
                 $authenticator = new Authenticator($options);
-                $authenticator->setSecret($_SESSION['secret_setup']);
+                $authenticator->setSecret($account->secret); // Retrieve the secret from the database
 
                 // Verify TOTP
                 if ($authenticator->verify($_POST['totp'])) {
                     // Proceed to reset password step
-                    $username = $_POST['username'];
                     $this->view('User/resetPassword', [
                         'username' => $username,
                         'userType' => 'staff'
@@ -100,19 +107,27 @@ class User extends \app\core\Controller
         }
     }
 
-
-
     public function verifyForgotPassword2FA()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $userType = $_POST['userType'];
+
+            if ($userType === 'staff') {
+                $account = new \app\models\Account();
+            } else {
+                $account = new \app\models\Customer();
+            }
+
+            $account = $account->getByUsername($username);
+
             $options = new AuthenticatorOptions();
             $authenticator = new Authenticator($options);
-            $authenticator->setSecret($_SESSION['secret']);
+            $authenticator->setSecret($account->secret); // Retrieve the secret from the database
 
             $totp = $_POST['totp'];
             if ($authenticator->verify($totp)) {
                 // 2FA verified successfully
-                unset($_SESSION['secret']);
                 header('location:/User/resetPassword');
                 exit();
             } else {
@@ -147,7 +162,7 @@ class User extends \app\core\Controller
 
             if ($account) {
                 $account->Password_Hash = password_hash($newPassword, PASSWORD_DEFAULT);
-                $account->update();
+                $account->updatePassword(); // Use updatePassword() method to update the password
                 echo 'Password reset successfully';
                 header('location:/User/login');
             } else {
@@ -155,7 +170,6 @@ class User extends \app\core\Controller
             }
         }
     }
-
 
     function loginStaff()
     {

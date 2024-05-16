@@ -10,6 +10,14 @@ class Customer extends \app\core\Model
     public $Username;
     public $Password_Hash;
     public $IsActive;
+    public $secret;
+
+    public function add2FA()
+    {
+        $SQL = 'UPDATE Customer SET secret = :secret WHERE CustomerId = :customer_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_id' => $this->CustomerId, 'secret' => $this->secret]);
+    }
 
     public function updatePassword()
     {

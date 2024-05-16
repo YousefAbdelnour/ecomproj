@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2024 at 03:54 AM
+-- Generation Time: May 16, 2024 at 05:27 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -32,16 +32,17 @@ CREATE TABLE `Account` (
   `Username` varchar(255) NOT NULL,
   `Password_Hash` varchar(1000) NOT NULL,
   `IsActive` tinyint(1) NOT NULL DEFAULT 1,
-  `IsAdmin` tinyint(1) NOT NULL DEFAULT 0
+  `IsAdmin` tinyint(1) NOT NULL DEFAULT 0,
+  `secret` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Account`
 --
 
-INSERT INTO `Account` (`AccountId`, `Username`, `Password_Hash`, `IsActive`, `IsAdmin`) VALUES
-(1, 'RootAdmin', '$2y$10$hpuO0L3/HRKeSfCQfSPKGOoN18QxTldg9uEoz4a2FVEH04NkIGVhi', 0, 1),
-(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1);
+INSERT INTO `Account` (`AccountId`, `Username`, `Password_Hash`, `IsActive`, `IsAdmin`, `secret`) VALUES
+(1, 'RootAdmin', '$2y$10$y517Cs.weITHjOVyhMfbLOAPZeOwJexQML7DM43eLAu.SEFTTxaGu', 0, 1, NULL),
+(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -108,17 +109,18 @@ CREATE TABLE `Customer` (
   `CustomerId` int(11) NOT NULL,
   `Username` varchar(30) NOT NULL,
   `Password_Hash` varchar(60) NOT NULL,
-  `IsActive` tinyint(1) NOT NULL DEFAULT 1
+  `IsActive` tinyint(1) NOT NULL DEFAULT 1,
+  `secret` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Customer`
 --
 
-INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`) VALUES
-(2, 'DonutMan', '$2y$10$IrGYec1RR1MKa.aPIWb2u.gwvrdqurtVnjeT9ADkn0kpWRk/4pbje', 0),
-(3, 'DonutMan2', '$2y$10$9jFizh0i.uLwWaM0Yhm5bOKW4rc4wpV0X89zz.Z/tusQsJzewC91.', 0),
-(4, 'customeruzi', '$2y$10$BfQWDnl/MroZah603/xro.AT63Wuvj0Morc8AEoqGw4.Ga2b3wJvy', 0);
+INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`, `secret`) VALUES
+(2, 'DonutMan', '$2y$10$ranjfxqT81DPyJXxc6JxHexuEiZao1/Ry7MnXY4/C8uLYlz44pQLW', 0, NULL),
+(3, 'DonutMan2', '$2y$10$9jFizh0i.uLwWaM0Yhm5bOKW4rc4wpV0X89zz.Z/tusQsJzewC91.', 0, NULL),
+(4, 'customeruzi', '$2y$10$BfQWDnl/MroZah603/xro.AT63Wuvj0Morc8AEoqGw4.Ga2b3wJvy', 0, NULL);
 
 -- --------------------------------------------------------
 

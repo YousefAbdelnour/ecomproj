@@ -11,6 +11,15 @@ class Account extends \app\core\Model
     public $Password_Hash;
     public $IsActive;
     public $IsAdmin;
+    public $secret;
+
+    public function add2FA()
+    {
+        $SQL = 'UPDATE Account SET secret = :secret WHERE AccountId = :account_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['account_id' => $this->AccountId, 'secret' => $this->secret]);
+    }
+
     public function updatePassword()
     {
         $SQL = 'UPDATE Account SET Password_Hash = :password_hash WHERE Username = :username';
