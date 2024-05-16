@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="profile_buttons">
-                    <a href="/Customer/support" class="button-style"><?=__('Report')?></a>
+                    <a href="/Message/support" class="button-style-red"><?=__('Report')?></a>
                 </div>
             <?php else : ?>
                 <p><?=__('No recent services found.')?></p>

@@ -63,9 +63,7 @@ class Message extends \app\core\Controller
 
                 header('location:/Account/display/1');
                 exit;
-            } else {
-                echo "Required fields are missing.";
-            }
+            } 
         }
 
         $selectedReceiver = $_POST['receiver'] ?? null;

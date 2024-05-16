@@ -16,7 +16,6 @@
     </div>
     <div class="divider"></div>
     <div class="wrapper">
-        <div class="filter_div"></div>
         <div id="task_container">
             <?php foreach ($data as $booking) :
                 $addressObject = $booking->getAddressById();

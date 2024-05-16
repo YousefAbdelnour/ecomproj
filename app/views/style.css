@@ -236,20 +236,37 @@ ul {
 /*Task CSS*/
 #task_container {
     width: 90%;
-    margin-bottom: 20px;
+    margin: 20px auto; /* Center container and add margin-top */
+    justify-content: center;
+    align-items: center;
 }
 
-.task {
-    display: flex;
-    flex-direction: column;
-    background-color: #333;
-    border: solid 3px black;
-    border-radius: 20px;
-    color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+.input[type="text"] {
+    border: 2px solid black; /* Set border to solid black */
+    padding: 8px; /* Adjust padding */
 }
+
+
+.task {
+    font-size: x-large;
+    font-style: bold;
+    display: flex;
+    color: black;
+    flex-direction: column; /* Align items in a column */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    background-color: rgba(255, 255, 255, 0.8); /* Light grey background */
+    color: #333; /* Dark grey text color */
+    padding: 30px; /* Increased padding */
+    margin: 20px auto; /* Centering the container horizontally and setting margin */
+    border: 2px solid #ccc; /* Light grey border */
+    border-radius: 15px; /* Border radius */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    width: 80%; /* Adjusted width */
+    max-width: 600px; /* Maximum width for smaller screens */
+}
+
 
 .view_booking_row {
     display: flex;
@@ -298,23 +315,25 @@ ul {
 }
 
 .task_description {
-    margin: 2%;
+    margin: 0 2%; /* Margin on both sides */
     width: 40%;
     text-align: center;
     padding: 10px;
 }
 
 .task_description_frame {
-    background-color: #6c6b6b;
+    background-color: #dcdcdc; /* Light grey background for the description frame */
     width: auto;
     height: 100%;
     border: none;
     margin: 0;
-    border-radius: 30px;
+    border-radius: 15px; /* Border radius */
+    padding: 10px;
 }
 
 .task_description p {
-    padding: 2%;
+    padding: 0; /* Remove padding */
+    margin: 0;
 }
 
 .task_buttons {
@@ -340,6 +359,7 @@ input[type="button"].task_decline {
 input[type="button"].task_decline {
     background-color: #f44336;
 }
+
 
 /*Task CSS END*/
 
@@ -495,11 +515,40 @@ input[type="submit"].profile_edit {
 #register_form,
 #login_form,
 #profile_create_form,
-#profile_edit_form,
-#address_add_form {
+#profile_edit_form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15%; /* Set container background color to grey */
+    padding: 20px; /* Add padding to the form container */
+    font-weight: bold; /* Set text to bold */
+    color: black; /* Set text color to black */
+    z-index: 999;
+    width: 50%;
+    height: 40%;
+    text-align: center; /* Center-align text within the form */
+    
+}
+
+#profile_edit_form {
+    background-color: grey;
+    padding: 20px;
+    border-radius: 15px; /* Increase border-radius for smoother corners */
+    border: 5px solid #111; /* Use border shorthand for simplicity */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 4%;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%); /* Adjust translation to center both horizontally and vertically */
+    width: 80%; /* Increase width */
+    max-width: 500px; /* Limit maximum width */
+    height: auto; /* Let height adjust according to content */
 }
 
 .form_column {
@@ -522,7 +571,7 @@ input[type="submit"].profile_edit {
 #profile_create_form input[type="submit"],
 #profile_edit_form input[type="submit"],
 #address_add_form input[type="submit"] {
-    width: 30%;
+    width: 100%;
     padding: 8px;
     box-sizing: border-box;
     border: 1px solid #ccc;
@@ -582,10 +631,27 @@ input[type="submit"].profile_edit {
     padding-right: 20px;
     margin-right: 20px;  /* Add margin to the right container */
 }
+.home_container_left {
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 20px;
+    margin-right: 20px;  /* Add margin to the left container */
+}
 
 #service_history,
 #pending {
-    background-color: #333;
+    background-color: grey;
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#last_service {
+    background-color: grey;
     border: 3px solid black;
     border-radius: 20px;
     padding: 20px;
@@ -648,7 +714,7 @@ input[type="submit"].profile_edit {
 /*Address add*/ 
 
 #address_add_form {
-    background-color: rgba(128, 128, 128, 0.5); /* Transparent grey background */
+    background-color: rgba(255, 255, 255, 0.7); /* Transparent grey background */
     border: 2px solid black; /* Solid yellow border */
     padding: 20px;
     width: 75%; /* Adjust the width as needed */
