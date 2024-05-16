@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 00:00+0000\n"
+"POT-Creation-Date: 2024-05-16 01:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,7 +172,7 @@ msgid "Latest Service"
 msgstr ""
 
 #: app/views/Customer/home.php:27 app/views/Job/book.php:57
-#: app/views/Message/sendFromAccount.php:47 app/views/Message/support.php:43
+#: app/views/Message/sendFromAccount.php:44 app/views/Message/support.php:39
 msgid "Description"
 msgstr ""
 
@@ -200,7 +200,8 @@ msgstr ""
 msgid "Description:"
 msgstr ""
 
-#: app/views/Customer/home.php:64 app/views/navbar.php:27
+#: app/views/Customer/home.php:64 app/views/Message/support.php:8
+#: app/views/navbar.php:27
 msgid "Support"
 msgstr ""
 
@@ -338,48 +339,66 @@ msgstr ""
 msgid "No bookings found. Please book a service to see it listed here."
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:17
-#: app/views/Message/receivedbyCustomer.php:12
+#: app/views/Message/receivedAccount.php:8
+msgid "Received Messages - Account"
+msgstr ""
+
+#: app/views/Message/receivedAccount.php:19
+#: app/views/Message/receivedbyCustomer.php:14
 msgid "Received Messages"
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:21
-#: app/views/Message/receivedbyCustomer.php:18
-#: app/views/Message/sendFromAccount.php:42 app/views/Message/support.php:38
+#: app/views/Message/receivedAccount.php:27
+#: app/views/Message/receivedbyCustomer.php:22
+#: app/views/Message/sendFromAccount.php:39 app/views/Message/support.php:34
 msgid "Title"
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:22
-#: app/views/Message/receivedbyCustomer.php:19
-msgid "Message Text"
+#: app/views/Message/receivedAccount.php:28
+#: app/views/Message/receivedbyCustomer.php:23
+msgid "Message"
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:23
-#: app/views/Message/receivedbyCustomer.php:20
+#: app/views/Message/receivedAccount.php:29
+#: app/views/Message/receivedbyCustomer.php:24
 msgid "Sender"
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:24
-#: app/views/Message/receivedbyCustomer.php:21
-msgid "TimeStamp"
+#: app/views/Message/receivedAccount.php:30
+#: app/views/Message/receivedbyCustomer.php:25
+msgid "Timestamp"
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:25
-#: app/views/Message/receivedbyCustomer.php:22
+#: app/views/Message/receivedAccount.php:31
+#: app/views/Message/receivedbyCustomer.php:26
 msgid "Actions"
 msgstr ""
 
-#: app/views/Message/receivedAccount.php:38
-#: app/views/Message/receivedbyCustomer.php:35
+#: app/views/Message/receivedAccount.php:44
+#: app/views/Message/receivedbyCustomer.php:55
 msgid "Reply"
 msgstr ""
 
+#: app/views/Message/receivedAccount.php:52
+#: app/views/Message/receivedbyCustomer.php:63
+msgid "No messages received."
+msgstr ""
+
+#: app/views/Message/receivedbyCustomer.php:8
+msgid "Received Messages - Customer"
+msgstr ""
+
+#: app/views/Message/sendFromAccount.php:8
 #: app/views/Message/sendFromAccount.php:20
 msgid "Send Message"
 msgstr ""
 
-#: app/views/Message/sendFromAccount.php:30 app/views/Message/support.php:26
+#: app/views/Message/sendFromAccount.php:27 app/views/Message/support.php:22
 msgid "To:"
+msgstr ""
+
+#: app/views/Message/sendFromAccount.php:47 app/views/Message/support.php:42
+msgid "Send"
 msgstr ""
 
 #: app/views/Message/support.php:14
