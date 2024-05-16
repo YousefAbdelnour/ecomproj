@@ -33,7 +33,7 @@ $locale = $_COOKIE['lang'] ?? 'fr';
             <label for="passwordConfirm"><?=__('Retype Password')?></label>
             <input type="password" placeholder="Password" id="passwordConfirm" name="passwordConfirm">
         </div>
-        <input type="submit" value="Sign-Up">
+        <input type="submit" name="action" value="Sign-Up">
     </form>
     <li>
         <form action="/setLanguage.php" method="POST" id="language-form">

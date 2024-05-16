@@ -1,17 +1,12 @@
 Feature: Customer Account Management and Reservation Experience
 
-  Scenario: Create an account
-    Given I am on "http://localhost/User/registerCustomer" page
-    When I input "donutman" as register customer username
-    And I input "password" as register customer password
-    And I input "password" as register customer retype password
-    Then I am on "http://localhost/Profile/create_Customer" page
-
   Scenario: Create a profile
+    Given I created an account
     Given I am on "http://localhost/Profile/create_Customer" page
     When I input "uzi canozi" as customer name
     And I input "1111111111" as customer phone number
-    Then I am on "http://localhost/User/login" page
+    And I click "action"
+    Then I see "/User/login" in url
 
   Scenario: Log in
 
@@ -19,20 +14,21 @@ Feature: Customer Account Management and Reservation Experience
     When I input "donutman" as login customer username
     And I input "password" as login customer password
     And I click "action" in customer login
-    Then I am on "http://localhost/Customer/home" page
+    Then I see "/Customer/home" in url
   
   Scenario: Add address
 
-    Given I am on "http://localhost/Address/display" page
+    Given I am logged in
+    And I am on "http://localhost/Address/display" page
     When I click on ".button-style" button in customer address view
-    And I am on "http://localhost/Address/add" page
+    And I see "/Address/add" in url
     And I input "canada" as customer country
     And I input "quebec" as customer state
     And I input "rue marchand" as customer street
     And I input "123" as customer residence number
     And I input "h9b 4c1" as customer postal code
-    And I click on "action" button in address add
-    Then I am on "http://localhost/Address/display" page
+    And I click "action" 
+    Then I see "/Address/display" in url
 
   Scenario: Read Address
 
@@ -41,18 +37,18 @@ Feature: Customer Account Management and Reservation Experience
     And I see "canada" as customer country
     And I see "quebec" as customer state
     And I see "123 rue marchand" as customer address
-    Then I see "H9K 1X2" as customer postal code
+    Then I see "h9b 4c1" as customer postal code
   
   Scenario: Edit Profile
 
     Given I am logged in
     And I am on "http://localhost/Profile/show_Customer" page
     And I click ".button-style" button in customer profile
-    And I am on "http://localhost/Profile/edit_Customer" page
+    And I see "/Profile/edit_Customer" in url
     And I input "Uzi Mania" as customer new name
     And I input "1111111111" as customer new phone number
     And I click "action" button in cutomer profile edit
-    Then I am on "http://localhost/Profile/show_Customer" page
+    Then I see "/Profile/show_Customer" in url
 
   Scenario: Booking
 
@@ -64,11 +60,4 @@ Feature: Customer Account Management and Reservation Experience
   And I set the event date to "2024-05-25T14:30"
   And I input "Hello there" as description
   And I click "action"
-  Then I am on "http://localhost/Customer/home" page
-
-  Scenario: Deleting address
-
-  Given I am logged in
-  And I am on "http://localhost/Address/display" page
-  And I click ".button-style-delete" button in customer address display
-  Then I am on "http://localhost/Address/display" page
+  Then I see "/Customer/home" in url

@@ -26,6 +26,26 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * Define custom actions here
      */
+
+    /**
+     * @Then I see :arg1 in url
+     */
+    public function iSeeInUrl($arg1)
+    {
+        $this->seeInCurrentUrl($arg1);
+    }
+
+    /**
+     * @Given I created an account
+     */
+    public function iCreatedAccount(){
+        $this->iAmOnPage('http://localhost/User/registerCustomer');
+        $this->fillField('usernameReg', 'test');
+        $this->fillField('passwordReg', 'password');
+        $this->fillField('passwordConfirm', 'password');
+        $this->click('action');
+    }
+
     /**
      * @Given I am on :arg1 page
      */

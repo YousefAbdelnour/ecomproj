@@ -25,7 +25,7 @@
         </div>
         <div class="createButtons">
             <br>
-            <input type="submit" value="Create">
+            <input type="submit" name="action" value="Create">
         </div>
     </form>
 </body>
