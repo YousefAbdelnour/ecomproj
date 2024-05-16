@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 15, 2024 at 04:10 AM
+-- Generation Time: May 16, 2024 at 03:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -80,7 +80,9 @@ CREATE TABLE `Account_Profile` (
 --
 
 INSERT INTO `Account_Profile` (`ProfileId`, `Name`, `Phone_Number`, `AccountId`) VALUES
-(1, 'staff', '4388312030', 2);
+(1, 'staff', '4388312030', 2),
+(2, 'RootAdmin', '0000000000', 1),
+(3, 'another admin', '0000000000', 3);
 
 -- --------------------------------------------------------
 
@@ -146,7 +148,8 @@ CREATE TABLE `Customer_Profile` (
 
 INSERT INTO `Customer_Profile` (`Customer_ProfileId`, `Name`, `Phone_Number`, `CustomerId`) VALUES
 (1, 'Uzi Canozi', '1111111111', 3),
-(2, 'yousef', '4384381111', 4);
+(2, 'yousef', '4384381111', 4),
+(3, 'customer', '4388312030', 2);
 
 -- --------------------------------------------------------
 
@@ -184,8 +187,17 @@ CREATE TABLE `Message` (
   `ReceiverId` int(11) NOT NULL,
   `Message_Text` varchar(1000) NOT NULL,
   `Title` varchar(1000) NOT NULL,
-  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp()
+  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Receiver_Type` tinyint(4) NOT NULL,
+  `Sender_Type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Message`
+--
+
+INSERT INTO `Message` (`MessageId`, `SenderId`, `ReceiverId`, `Message_Text`, `Title`, `TimeStamp`, `Receiver_Type`, `Sender_Type`) VALUES
+(1, 2, 1, 'hi', 'from customer', '2024-05-16 02:59:44', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -284,7 +296,7 @@ ALTER TABLE `Account`
 -- AUTO_INCREMENT for table `Account_Profile`
 --
 ALTER TABLE `Account_Profile`
-  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Address`
@@ -302,7 +314,7 @@ ALTER TABLE `Customer`
 -- AUTO_INCREMENT for table `Customer_Profile`
 --
 ALTER TABLE `Customer_Profile`
-  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `Job`
@@ -314,7 +326,7 @@ ALTER TABLE `Job`
 -- AUTO_INCREMENT for table `Message`
 --
 ALTER TABLE `Message`
-  MODIFY `MessageId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `MessageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `Payment_Log`
