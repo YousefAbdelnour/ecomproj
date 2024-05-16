@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 01:56+0000\n"
-"PO-Revision-Date: 2024-05-16 01:56+0000\n"
+"POT-Creation-Date: 2024-05-16 03:04+0000\n"
+"PO-Revision-Date: 2024-05-16 03:05+0000\n"
 "Last-Translator: root <EMAIL@ADDRESS>\n"
 "Language-Team: English\n"
 "Language: en\n"
@@ -498,19 +498,27 @@ msgstr "Username:"
 msgid "Phone Number:"
 msgstr "Phone Number:"
 
-#: app/views/User/forgotPassword.php:14
-msgid "Forgot Password"
-msgstr "Forgot Password"
+#: app/views/User/forgotPasswordCustomer.php:8
+#: app/views/User/forgotPasswordCustomer.php:13
+msgid "Forgot Password - Customer"
+msgstr "Forgot Password - Customer"
 
-#: app/views/User/forgotPassword.php:15
-msgid "New Password"
-msgstr "New Password"
-
-#: app/views/User/forgotPassword.php:19 app/views/User/login.php:25
+#: app/views/User/forgotPasswordCustomer.php:20
+#: app/views/User/forgotPasswordStaff.php:20 app/views/User/login.php:25
 #: app/views/User/loginStaff.php:29 app/views/User/registerAdmin.php:18
 #: app/views/User/registerCustomer.php:25
 msgid "Username"
 msgstr "Username"
+
+#: app/views/User/forgotPasswordCustomer.php:23
+#: app/views/User/forgotPasswordStaff.php:23
+msgid "Submit"
+msgstr "Submit"
+
+#: app/views/User/forgotPasswordStaff.php:8
+#: app/views/User/forgotPasswordStaff.php:13
+msgid "Forgot Password - Staff"
+msgstr "Forgot Password - Staff"
 
 #: app/views/User/login.php:20 app/views/User/registerCustomer.php:21
 msgid "Login"
@@ -576,3 +584,54 @@ msgstr "Register"
 #: app/views/User/registerCustomer.php:21
 msgid "Already Register?"
 msgstr "Already Register?"
+
+#: app/views/User/resetPassword.php:8 app/views/User/resetPassword.php:13
+#: app/views/User/resetPassword.php:26
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#: app/views/User/resetPassword.php:19
+msgid "New Password"
+msgstr "New Password"
+
+#: app/views/User/resetPassword.php:23
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: app/views/User/setup2fa.php:8
+msgid "2FA Setup"
+msgstr "2FA Setup"
+
+#: app/views/User/setup2fa.php:13
+msgid ""
+"Scan the above QR-code with your mobile Authenticator app, such as Google "
+"Authenticator. The authenticator app will generate codes that are valid for "
+"30 seconds only. Enter such a code and submit it while it is\r\n"
+"        still valid to apply the 2-factor authentication protection to your "
+"account."
+msgstr ""
+"Scan the above QR-code with your mobile Authenticator app, such as Google "
+"Authenticator. The authenticator app will generate codes that are valid for "
+"30 seconds only. Enter such a code and submit it while it is\r\n"
+"        still valid to apply the 2-factor authentication protection to your "
+"account."
+
+#: app/views/User/setup2fa.php:18
+msgid "Current code:"
+msgstr "Current code:"
+
+#: app/views/User/setup2fa.php:19
+msgid "Verify code"
+msgstr "Verify code"
+
+#: app/views/User/verifyForgotPassword2FA.php:7
+msgid "Verify 2FA"
+msgstr "Verify 2FA"
+
+#: app/views/User/verifyForgotPassword2FA.php:16
+msgid "TOTP Code:"
+msgstr "TOTP Code:"
+
+#: app/views/User/verifyForgotPassword2FA.php:18
+msgid "Verify"
+msgstr "Verify"

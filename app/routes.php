@@ -40,3 +40,7 @@ $this->addRoute('', 'User,login');
 $this->addRoute('Message/receivedAccount', 'Message,receivedAccount');
 $this->addRoute('Message/sendMessageFromAccount', 'Message,sendMessageFromAccount');
 $this->addRoute('Message/receivedByCustomer', 'Message,receivedByCustomer');
+$this->addRoute('User/forgotPasswordCustomer', 'User,forgotPasswordCustomer');
+$this->addRoute('User/forgotPasswordStaff', 'User,forgotPasswordStaff');
+$this->addRoute('User/verifyForgotPassword2FA', 'User,verifyForgotPassword2FA');
+$this->addRoute('User/resetPassword', 'User,resetPassword');

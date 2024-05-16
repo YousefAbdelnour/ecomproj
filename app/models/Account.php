@@ -11,7 +11,15 @@ class Account extends \app\core\Model
     public $Password_Hash;
     public $IsActive;
     public $IsAdmin;
-
+    public function updatePassword()
+    {
+        $SQL = 'UPDATE Account SET Password_Hash = :password_hash WHERE Username = :username';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'password_hash' => $this->Password_Hash,
+            'username' => $this->Username
+        ]);
+    }
     public function insert()
     {
         $SQL = 'INSERT INTO Account (Username, Password_Hash, IsActive, IsAdmin) VALUES (:username, :password_hash, :is_active, :is_admin)';

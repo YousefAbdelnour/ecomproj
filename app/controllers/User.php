@@ -2,16 +2,160 @@
 
 namespace app\controllers;
 
+use chillerlan\Authenticator\{Authenticator, AuthenticatorOptions};
+use chillerlan\QRCode\QRCode;
+
 class User extends \app\core\Controller
 {
-    /*The reason I made a User controller is, when a user is not logged in or registered, we can not tell what 
-    type of user he is. It is much easier to asume he is anonymus and doesnt belong to any class that is why I
-    (Cristian) made the User controller, so everything regarded accessing the website is handeled here and then
-    depending on what type of user we have, we redirection them towards their proper controllers. One other big
-    change I made is in the views, I put both login pages and register page in a new folder separated from the 
-    Customer one and Account one. I will comment out the initial login and register methods in the Account controller.
-    In addition, I have realized that, making a User automatically register as a Customer would be a more secure way and
-    simple method to handle the permissions as the admin would change his account status to account. Maybe we find a etter solution.*/
+
+    public function forgotPasswordCustomer()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['username']) && !isset($_POST['totp'])) {
+                $username = $_POST['username'];
+                $account = new \app\models\Customer();
+                $account = $account->getByUsername($username);
+
+                if ($account) {
+                    $options = new AuthenticatorOptions();
+                    $authenticator = new Authenticator($options);
+                    $_SESSION['secret_setup'] = $authenticator->createSecret();
+                    $uri = $authenticator->getUri('Customer', 'YourAppName');
+                    $QRCode = (new QRCode)->render($uri);
+
+                    // Display the QR code and form for TOTP input
+                    $this->view('User/setup2fa', [
+                        'QRCode' => $QRCode,
+                        'username' => $username,
+                        'userType' => 'customer'
+                    ]);
+                } else {
+                    $this->view('User/forgotPasswordCustomer', ['error' => 'Username not found']);
+                }
+            } elseif (isset($_POST['totp'])) {
+                $options = new AuthenticatorOptions();
+                $authenticator = new Authenticator($options);
+                $authenticator->setSecret($_SESSION['secret_setup']);
+
+                // Verify TOTP
+                if ($authenticator->verify($_POST['totp'])) {
+                    // Proceed to reset password step
+                    $username = $_POST['username'];
+                    $this->view('User/resetPassword', [
+                        'username' => $username,
+                        'userType' => 'customer'
+                    ]);
+                } else {
+                    echo 'Invalid TOTP';
+                }
+            }
+        } else {
+            $this->view('User/forgotPasswordCustomer');
+        }
+    }
+
+    public function forgotPasswordStaff()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['username']) && !isset($_POST['totp'])) {
+                $username = $_POST['username'];
+                $account = new \app\models\Account();
+                $account = $account->getByUsername($username);
+
+                if ($account) {
+                    $options = new AuthenticatorOptions();
+                    $authenticator = new Authenticator($options);
+                    $_SESSION['secret_setup'] = $authenticator->createSecret();
+                    $uri = $authenticator->getUri('Staff', 'YourAppName');
+                    $QRCode = (new QRCode)->render($uri);
+
+                    // Display the QR code and form for TOTP input
+                    $this->view('User/setup2fa', [
+                        'QRCode' => $QRCode,
+                        'username' => $username,
+                        'userType' => 'staff'
+                    ]);
+                } else {
+                    $this->view('User/forgotPasswordStaff', ['error' => 'Username not found']);
+                }
+            } elseif (isset($_POST['totp'])) {
+                $options = new AuthenticatorOptions();
+                $authenticator = new Authenticator($options);
+                $authenticator->setSecret($_SESSION['secret_setup']);
+
+                // Verify TOTP
+                if ($authenticator->verify($_POST['totp'])) {
+                    // Proceed to reset password step
+                    $username = $_POST['username'];
+                    $this->view('User/resetPassword', [
+                        'username' => $username,
+                        'userType' => 'staff'
+                    ]);
+                } else {
+                    echo 'Invalid TOTP';
+                }
+            }
+        } else {
+            $this->view('User/forgotPasswordStaff');
+        }
+    }
+
+
+
+    public function verifyForgotPassword2FA()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $options = new AuthenticatorOptions();
+            $authenticator = new Authenticator($options);
+            $authenticator->setSecret($_SESSION['secret']);
+
+            $totp = $_POST['totp'];
+            if ($authenticator->verify($totp)) {
+                // 2FA verified successfully
+                unset($_SESSION['secret']);
+                header('location:/User/resetPassword');
+                exit();
+            } else {
+                $this->view('User/verifyForgotPassword2FA', ['error' => 'Invalid TOTP code']);
+            }
+        } else {
+            $this->view('User/verifyForgotPassword2FA');
+        }
+    }
+
+    public function resetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_POST['username'];
+            $newPassword = $_POST['new_password'];
+            $confirmPassword = $_POST['confirm_password'];
+            $userType = $_POST['userType'];
+
+            if ($newPassword !== $confirmPassword) {
+                echo 'Passwords do not match';
+                return;
+            }
+
+            // Determine user type and update password accordingly
+            if ($userType === 'staff') {
+                $account = new \app\models\Account();
+            } else {
+                $account = new \app\models\Customer();
+            }
+
+            $account = $account->getByUsername($username);
+
+            if ($account) {
+                $account->Password_Hash = password_hash($newPassword, PASSWORD_DEFAULT);
+                $account->update();
+                echo 'Password reset successfully';
+                header('location:/User/login');
+            } else {
+                echo 'User not found';
+            }
+        }
+    }
+
 
     function loginStaff()
     {

@@ -11,6 +11,16 @@ class Customer extends \app\core\Model
     public $Password_Hash;
     public $IsActive;
 
+    public function updatePassword()
+    {
+        $SQL = 'UPDATE Customer SET Password_Hash = :password_hash WHERE Username = :username';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'password_hash' => $this->Password_Hash,
+            'username' => $this->Username
+        ]);
+    }
+
     public function insert()
     {
         $SQL = 'INSERT INTO Customer (Username, Password_Hash, IsActive) VALUES (:username, :password_hash, :is_active)';
