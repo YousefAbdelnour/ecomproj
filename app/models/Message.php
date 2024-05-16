@@ -8,22 +8,26 @@ class Message extends \app\core\Model
 {
     public $MessageId;
     public $SenderId;
+    public $SenderType;
     public $ReceiverId;
+    public $ReceiverType;
     public $Message_Text;
     public $Title;
     public $TimeStamp;
     public $SenderUsername;
 
     public function send_message()
-{
-    $this->TimeStamp = date('Y-m-d H:i:s'); // Set current date and time
-        $SQL = 'INSERT INTO Message (SenderId, ReceiverId, Message_Text, Title, TimeStamp) 
-                VALUES (:sender_id, :receiver_id, :message_text, :title, :timestamp)';
+    {
+        $this->TimeStamp = date('Y-m-d H:i:s'); // Set current date and time
+        $SQL = 'INSERT INTO Message (SenderId, Sender_Type, ReceiverId, Receiver_Type, Message_Text, Title, TimeStamp) 
+                VALUES (:sender_id, :sender_type, :receiver_id, :receiver_type, :message_text, :title, :timestamp)';
 
         $STMT = self::$_conn->prepare($SQL);
         $data = [
             'sender_id' => $this->SenderId,
+            'sender_type' => $this->SenderType,
             'receiver_id' => $this->ReceiverId,
+            'receiver_type' => $this->ReceiverType,
             'message_text' => $this->Message_Text,
             'title' => $this->Title,
             'timestamp' => $this->TimeStamp
@@ -31,33 +35,26 @@ class Message extends \app\core\Model
         $STMT->execute($data);
     }
 
-
-
-    //Through an absolute cluster-fuck subquery I'm grabbing 
-    //which account are related to the user so that in the drop 
-    //down menu all the accounts with relationships are accessible
     public function getRelatedAccounts($customerId)
     {
-    $SQL = 'SELECT a.AccountId, a.Username 
-            FROM Account a
-            INNER JOIN Account_Job aj ON a.AccountId = aj.AccountId
-            INNER JOIN Job j ON aj.JobId = j.JobId
-            INNER JOIN Address ad ON j.AddressId = ad.AddressId
-            INNER JOIN Customer_Profile cp ON ad.Customer_ProfileId = cp.Customer_ProfileId
-            WHERE cp.CustomerId = :customerId
+        $SQL = 'SELECT a.AccountId, a.Username 
+                FROM Account a
+                INNER JOIN Account_Job aj ON a.AccountId = aj.AccountId
+                INNER JOIN Job j ON aj.JobId = j.JobId
+                INNER JOIN Address ad ON j.AddressId = ad.AddressId
+                INNER JOIN Customer_Profile cp ON ad.Customer_ProfileId = cp.Customer_ProfileId
+                WHERE cp.CustomerId = :customerId
 
-            UNION
+                UNION
 
-            SELECT AccountId, Username
-            FROM Account
-            WHERE AccountId = 1'; // Assuming admin's AccountId is always 1
+                SELECT AccountId, Username
+                FROM Account
+                WHERE AccountId = 1'; // Assuming admin's AccountId is always 1
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['customerId' => $customerId]);
         return $STMT->fetchAll(PDO::FETCH_OBJ); // Fetch as associative array
     }
-
-
 
     public function getAll()
     {
@@ -79,18 +76,18 @@ class Message extends \app\core\Model
 
     public function getBySenderId()
     {
-        $SQL = 'SELECT * FROM Message WHERE SenderId = :sender_id';
+        $SQL = 'SELECT * FROM Message WHERE SenderId = :sender_id AND Sender_Type = :sender_type';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['sender_id' => $this->SenderId]);
+        $STMT->execute(['sender_id' => $this->SenderId, 'sender_type' => $this->SenderType]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
 
     public function getByReceiverId()
     {
-        $SQL = 'SELECT * FROM Message WHERE ReceiverId = :receiver_id';
+        $SQL = 'SELECT * FROM Message WHERE ReceiverId = :receiver_id AND Receiver_Type = :receiver_type';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['receiver_id' => $this->ReceiverId]);
+        $STMT->execute(['receiver_id' => $this->ReceiverId, 'receiver_type' => $this->ReceiverType]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
@@ -106,19 +103,21 @@ class Message extends \app\core\Model
 
     public function update()
     {
-    $this->TimeStamp = date('Y-m-d H:i:s'); // Update current date and time
-    $SQL = 'UPDATE Message SET SenderId = :sender_id, ReceiverId = :receiver_id, Message_Text = :message_text, 
-            Title = :title, TimeStamp = :timestamp WHERE MessageId = :message_id';
+        $this->TimeStamp = date('Y-m-d H:i:s'); // Update current date and time
+        $SQL = 'UPDATE Message SET SenderId = :sender_id, Sender_Type = :sender_type, ReceiverId = :receiver_id, Receiver_Type = :receiver_type, Message_Text = :message_text, 
+                Title = :title, TimeStamp = :timestamp WHERE MessageId = :message_id';
 
-    $STMT = self::$_conn->prepare($SQL);
-    $STMT->execute([
-        'sender_id' => $this->SenderId,
-        'receiver_id' => $this->ReceiverId,
-        'message_text' => $this->Message_Text,
-        'title' => $this->Title,
-        'timestamp' => $this->TimeStamp,
-        'message_id' => $this->MessageId
-    ]);
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute([
+            'sender_id' => $this->SenderId,
+            'sender_type' => $this->SenderType,
+            'receiver_id' => $this->ReceiverId,
+            'receiver_type' => $this->ReceiverType,
+            'message_text' => $this->Message_Text,
+            'title' => $this->Title,
+            'timestamp' => $this->TimeStamp,
+            'message_id' => $this->MessageId
+        ]);
     }
 
     public function delete()

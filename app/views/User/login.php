@@ -31,7 +31,7 @@ $locale = $_COOKIE['lang'] ?? 'fr';
         </div>
         <p><a href=""><?=__('Forgot password?')?></a>
         <p>
-        <p><a href="loginStaff"><?=__('Staff member?')?></a>
+        <p><a href="/User/loginStaff"><?=__('Staff member?')?></a>
         <p>
             <input type="submit" value="Log in">
     </form>

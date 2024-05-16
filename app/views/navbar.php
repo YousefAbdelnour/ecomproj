@@ -23,8 +23,8 @@ $locale = $_COOKIE['lang'] ?? 'fr';
             <li><a href="/Job/book"><?= __("Book") ?></a></li>
             <li><a href="/Address/display"><?= __("Address") ?></a></li>
             <li><a href="/Profile/show_Customer"><?= __("Profile") ?></a></li>
-            <li><a href="/Customer/payment">Payments</a></li>
-            <li><a href="/Message/support">Support</a></li>
+            <li><a href="/Customer/payment"><?=__('Payment')?></a></li>
+            <li><a href="/Message/support"><?=__('Support')?></a></li>
             <li><a href="/Message/receivedByCustomer"><?= __("Messages") ?></a></li>
             <li><a href="/Customer/logout"><?= __("Logout") ?></a></li>
 

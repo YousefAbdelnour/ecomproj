@@ -20,7 +20,7 @@ $locale = $_COOKIE['lang'] ?? 'fr';
         <label for="menu-toggle" class="hamburger">&#9776;</label>
         <ul id="menu">
             <li><a href="/Account/display/1"><?= __("Home") ?></a></li>
-            <li><a href="/Account/booking/1">Bookings</a></li>
+            <li><a href="/Account/booking/1"><?=__('Bookings')?></a></li>
             <li><a href="/Profile/show_Admin"><?= __("Profile") ?></a></li>
             <li><a href="/User/registerAdmin"><?= __("Create acount") ?></a></li>
             <li><a href="/Message/receivedAccount"><?= __("Messages") ?></a></li>

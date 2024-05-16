@@ -39,7 +39,7 @@
                                 <p class="view_maid"><?=__('Maid ID:')?><?php echo $booking->MaidId; ?></p>
                             </div>
                             <div class="booking_buttons">
-                                <a href="/Booking/cancel/<?php echo $booking->JobId; ?>" class="button-style-delete">Cancel</a>
+                                <a href="/Booking/cancel/<?php echo $booking->JobId; ?>" class="button-style-delete"><?=__('Cancel')?></a>
                             </div>
                         </div>
                     </div>

@@ -28,7 +28,7 @@
                         <p id="view_phone"><?php echo $data['account_profile']->Phone_Number; ?></p>
                     </div>
                     <div class="profile_buttons">
-                        <a href="/Profile/edit_Maid" class="button-style">Edit</a>
+                        <a href="/Profile/edit_Maid" class="button-style"><?=__('Edit')?></a>
                     </div>
                 </div>
 
