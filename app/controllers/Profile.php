@@ -8,7 +8,7 @@ class Profile extends \app\core\Controller
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $customer_profile = new \app\models\Customer_Profile();
-            $customer_profile->CustomerId = $_SESSION['CustomerId'];
+            $customer_profile->CustomerId = $_SESSION['Id'];
             if (!empty($_POST['createName']) && !empty($_POST['createPhoneNumber'])) {
                 $customer_profile->Phone_Number = $_POST['createPhoneNumber'];
                 $customer_profile->Name = $_POST['createName'];

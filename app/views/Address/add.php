@@ -37,7 +37,7 @@
             <input type="text" placeholder="<?= __("XXX XXX") ?>" id="addZipCode" name="addZipCode">
         </div>
         <div class="createButtons">
-            <input type="submit" value="<?= __("Add") ?>">
+            <input type="submit" name="action" value="<?= __("Add") ?>">
         </div>
     </form>
 

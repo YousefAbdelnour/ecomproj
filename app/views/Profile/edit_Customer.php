@@ -25,7 +25,7 @@
         <input type="text" placeholder="123-456-7890" id="editPhoneNumber" name="editPhoneNumber" value="<?php echo isset($data['customer_profile']) ? htmlspecialchars($data['customer_profile']->Phone_Number) : ''; ?>">
     </div>
     <div class="form-group">
-        <input type="submit" value="Submit">
+        <input type="submit" name="action" value="Submit">
     </div>
     </div>
 </form>

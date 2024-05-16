@@ -18,7 +18,7 @@ namespace Tests\Support;
  * @method void pause($vars = [])
  *
  * @SuppressWarnings(PHPMD)
-*/
+ */
 class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
@@ -26,651 +26,262 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * Define custom actions here
      */
-/**
-     * @Given there are applications
-     */
-     public function thereAreApplications()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `there are applications` is not defined");
-     }
-
-    /**
-     * @When admin hires maid
-     */
-     public function adminHiresMaid()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin hires maid` is not defined");
-     }
-
-    /**
-     * @Then a new staff member will be created
-     */
-     public function aNewStaffMemberWillBeCreated()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `a new staff member will be created` is not defined");
-     }
-
-    /**
-     * @Given the problem has not yet been resolved
-     */
-     public function theProblemHasNotYetBeenResolved()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the problem has not yet been resolved` is not defined");
-     }
-
-    /**
-     * @When admin sends a response message
-     */
-     public function adminSendsAResponseMessage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin sends a response message` is not defined");
-     }
-
-    /**
-     * @Then the person who requested support should receive the message
-     */
-     public function thePersonWhoRequestedSupportShouldReceiveTheMessage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the person who requested support should receive the message` is not defined");
-     }
-
-    /**
-     * @Given admin is logged in and on the transactions screen
-     */
-     public function adminIsLoggedInAndOnTheTransactionsScreen()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin is logged in and on the transactions screen` is not defined");
-     }
-
-    /**
-     * @When admin selects a user of the application
-     */
-     public function adminSelectsAUserOfTheApplication()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin selects a user of the application` is not defined");
-     }
-
-    /**
-     * @Then all of the transactions related to that user will be displayed
-     */
-     public function allOfTheTransactionsRelatedToThatUserWillBeDisplayed()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `all of the transactions related to that user will be displayed` is not defined");
-     }
-
-    /**
-     * @Given admin is logged in and on the appointment view screen
-     */
-     public function adminIsLoggedInAndOnTheAppointmentViewScreen()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin is logged in and on the appointment view screen` is not defined");
-     }
-
-    /**
-     * @When admin selects an appointment
-     */
-     public function adminSelectsAnAppointment()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin selects an appointment` is not defined");
-     }
-
-    /**
-     * @Then all of the information related to that user will be displayed
-     */
-     public function allOfTheInformationRelatedToThatUserWillBeDisplayed()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `all of the information related to that user will be displayed` is not defined");
-     }
-
-    /**
-     * @Given the current pricing needs to be adjusted
-     */
-     public function theCurrentPricingNeedsToBeAdjusted()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the current pricing needs to be adjusted` is not defined");
-     }
-
-    /**
-     * @When admin updates the service pricing in the system
-     */
-     public function adminUpdatesTheServicePricingInTheSystem()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin updates the service pricing in the system` is not defined");
-     }
-
-    /**
-     * @Then the new pricing will be immediately applied to future bookings and displayed to users
-     */
-     public function theNewPricingWillBeImmediatelyAppliedToFutureBookingsAndDisplayedToUsers()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the new pricing will be immediately applied to future bookings and displayed to users` is not defined");
-     }
-
-    /**
-     * @Given new feedback submissions are available
-     */
-     public function newFeedbackSubmissionsAreAvailable()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `new feedback submissions are available` is not defined");
-     }
-
-    /**
-     * @When admin reviews the feedback section
-     */
-     public function adminReviewsTheFeedbackSection()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `admin reviews the feedback section` is not defined");
-     }
-
-    /**
-     * @Then all recent feedback from users will be displayed, allowing for immediate action or acknowledgment
-     */
-     public function allRecentFeedbackFromUsersWillBeDisplayedAllowingForImmediateActionOrAcknowledgment()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `all recent feedback from users will be displayed, allowing for immediate action or acknowledgment` is not defined");
-     }
-
-    /**
-     * @Given the customer is on the register screen
-     */
-     public function theCustomerIsOnTheRegisterScreen()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is on the register screen` is not defined");
-     }
-
-    /**
-     * @When they enter a unique username and strong password
-     */
-     public function theyEnterAUniqueUsernameAndStrongPassword()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they enter a unique username and strong password` is not defined");
-     }
-
-    /**
-     * @Then the account will be created
-     */
-     public function theAccountWillBeCreated()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the account will be created` is not defined");
-     }
-
-    /**
-     * @Given the customer is on the login screen and selects the :arg1 link
-     */
-     public function theCustomerIsOnTheLoginScreenAndSelectsTheLink($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is on the login screen and selects the :arg1 link` is not defined");
-     }
-
-    /**
-     * @When they enter their email address associated with the account
-     */
-     public function theyEnterTheirEmailAddressAssociatedWithTheAccount()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they enter their email address associated with the account` is not defined");
-     }
-
-    /**
-     * @When the email address format is valid
-     */
-     public function theEmailAddressFormatIsValid()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the email address format is valid` is not defined");
-     }
-
-    /**
-     * @Then they should receive a password reset link via email
-     */
-     public function theyShouldReceiveAPasswordResetLinkViaEmail()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they should receive a password reset link via email` is not defined");
-     }
-
     /**
-     * @Then see a confirmation message :arg1
+     * @Given I am on :arg1 page
      */
-     public function seeAConfirmationMessage($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `see a confirmation message :arg1` is not defined");
-     }
+    public function iAmOnPage($arg1)
+    {
+        $this->amOnPage($arg1);
+    }
 
     /**
-     * @Given the customer is on the login screen
+     * @When I input :arg1 as register customer username
      */
-     public function theCustomerIsOnTheLoginScreen()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is on the login screen` is not defined");
-     }
+    public function iInputAsRegisterCustomerUsername($arg1)
+    {
+        $this->fillField('usernameReg', $arg1);
+    }
 
     /**
-     * @When they click on the :arg1 link and provide their email
+     * @When I input :arg1 as register customer password
      */
-     public function theyClickOnTheLinkAndProvideTheirEmail($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they click on the :arg1 link and provide their email` is not defined");
-     }
+    public function iInputAsRegisterCustomerPassword($arg1)
+    {
+        $this->fillField('passwordReg', $arg1);
+    }
 
     /**
-     * @Given the customer is logged into their account and on the account settings page
+     * @When I input :arg1 as register customer retype password
      */
-     public function theCustomerIsLoggedIntoTheirAccountAndOnTheAccountSettingsPage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is logged into their account and on the account settings page` is not defined");
-     }
+    public function iInputAsRegisterCustomerRetypePassword($arg1)
+    {
+        $this->fillField('passwordConfirm', $arg1);
+    }
 
     /**
-     * @When they update their information and confirm
+     * @When I input :arg1 as customer name
      */
-     public function theyUpdateTheirInformationAndConfirm()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they update their information and confirm` is not defined");
-     }
+    public function iInputAsCustomerName($arg1)
+    {
+        $this->fillField('createName', $arg1);
+    }
 
     /**
-     * @Then the changes should be saved successfully
+     * @When I input :arg1 as customer phone number
      */
-     public function theChangesShouldBeSavedSuccessfully()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the changes should be saved successfully` is not defined");
-     }
+    public function iInputAsCustomerPhoneNumber($arg1)
+    {
+        $this->fillField('createPhoneNumber', $arg1);
+    }
 
     /**
-     * @Given the customer is logged in and navigates to the payment screen
+     * @When I input :arg1 as login customer username
      */
-     public function theCustomerIsLoggedInAndNavigatesToThePaymentScreen()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is logged in and navigates to the payment screen` is not defined");
-     }
+    public function iInputAsLoginCustomerUsername($arg1)
+    {
+        $this->fillField('usernameLogin', $arg1);
+    }
 
     /**
-     * @When they attempt to add a payment method by entering their credit card information
+     * @When I input :arg1 as login customer password
      */
-     public function theyAttemptToAddAPaymentMethodByEnteringTheirCreditCardInformation()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they attempt to add a payment method by entering their credit card information` is not defined");
-     }
-
-    /**
-     * @When the credit card is valid and not expired
-     */
-     public function theCreditCardIsValidAndNotExpired()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the credit card is valid and not expired` is not defined");
-     }
-
-    /**
-     * @Then the payment method should be successfully saved
-     */
-     public function thePaymentMethodShouldBeSuccessfullySaved()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the payment method should be successfully saved` is not defined");
-     }
-
-    /**
-     * @Then the customer receives a confirmation message :arg1
-     */
-     public function theCustomerReceivesAConfirmationMessage($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer receives a confirmation message :arg1` is not defined");
-     }
-
-    /**
-     * @Given the customer is logged in and on the payment method settings
-     */
-     public function theCustomerIsLoggedInAndOnThePaymentMethodSettings()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is logged in and on the payment method settings` is not defined");
-     }
-
-    /**
-     * @When the customer selects the payment method removal button
-     */
-     public function theCustomerSelectsThePaymentMethodRemovalButton()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer selects the payment method removal button` is not defined");
-     }
-
-    /**
-     * @Then the payment method should be removed
-     */
-     public function thePaymentMethodShouldBeRemoved()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the payment method should be removed` is not defined");
-     }
-
-    /**
-     * @Given the customer is on the reservation page
-     */
-     public function theCustomerIsOnTheReservationPage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is on the reservation page` is not defined");
-     }
-
-    /**
-     * @When the customer selects a maid, chooses a date, and valid payment method
-     */
-     public function theCustomerSelectsAMaidChoosesADateAndValidPaymentMethod()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer selects a maid, chooses a date, and valid payment method` is not defined");
-     }
-
-    /**
-     * @Then the reservation should be confirmed
-     */
-     public function theReservationShouldBeConfirmed()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the reservation should be confirmed` is not defined");
-     }
-
-    /**
-     * @Given the customer has a confirmed booking and is on the cancellation page
-     */
-     public function theCustomerHasAConfirmedBookingAndIsOnTheCancellationPage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer has a confirmed booking and is on the cancellation page` is not defined");
-     }
-
-    /**
-     * @When the customer selects the reservation they wish to cancel
-     */
-     public function theCustomerSelectsTheReservationTheyWishToCancel()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer selects the reservation they wish to cancel` is not defined");
-     }
-
-    /**
-     * @When confirms their intention to cancel by pressing the :arg1 button
-     */
-     public function confirmsTheirIntentionToCancelByPressingTheButton($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `confirms their intention to cancel by pressing the :arg1 button` is not defined");
-     }
-
-    /**
-     * @Then the reservation should be canceled without penalty if done :num1:num2 hours before the appointment
-     */
-     public function theReservationShouldBeCanceledWithoutPenaltyIfDoneHoursBeforeTheAppointment($num1, $num2)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the reservation should be canceled without penalty if done :num1:num2 hours before the appointment` is not defined");
-     }
-
-    /**
-     * @Then the customer should see a message :arg1
-     */
-     public function theCustomerShouldSeeAMessage($arg1)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer should see a message :arg1` is not defined");
-     }
-
-    /**
-     * @Given the customer is logged into their account and has a problem with the app or service
-     */
-     public function theCustomerIsLoggedIntoTheirAccountAndHasAProblemWithTheAppOrService()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is logged into their account and has a problem with the app or service` is not defined");
-     }
-
-    /**
-     * @When they navigate to the :arg1 section and select :arg2
-     */
-     public function theyNavigateToTheSectionAndSelect($arg1, $arg2)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they navigate to the :arg1 section and select :arg2` is not defined");
-     }
-
-    /**
-     * @When submit their query through the contact form
-     */
-     public function submitTheirQueryThroughTheContactForm()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `submit their query through the contact form` is not defined");
-     }
-
-    /**
-     * @Then they should receive an automated acknowledgment email
-     */
-     public function theyShouldReceiveAnAutomatedAcknowledgmentEmail()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they should receive an automated acknowledgment email` is not defined");
-     }
-
-    /**
-     * @Then a support representative should contact them within :num1:num2 hours:num3
-     */
-     public function aSupportRepresentativeShouldContactThemWithinHours($num1, $num2, $num3)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `a support representative should contact them within :num1:num2 hours:num3` is not defined");
-     }
-
-    /**
-     * @Given the customer is logged into their account
-     */
-     public function theCustomerIsLoggedIntoTheirAccount()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the customer is logged into their account` is not defined");
-     }
-
-    /**
-     * @When they navigate to the reservation history page
-     */
-     public function theyNavigateToTheReservationHistoryPage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they navigate to the reservation history page` is not defined");
-     }
-
-    /**
-     * @Then they should see a list of their past reservations
-     */
-     public function theyShouldSeeAListOfTheirPastReservations()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they should see a list of their past reservations` is not defined");
-     }
-
-    /**
-     * @Given the staff member applies as :arg1 :arg2 with good qualifications
-     */
-     public function theStaffMemberAppliesAsWithGoodQualifications($arg1, $arg2)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member applies as :arg1 :arg2 with good qualifications` is not defined");
-     }
-
-    /**
-     * @When they submit their application
-     */
-     public function theySubmitTheirApplication()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they submit their application` is not defined");
-     }
-
+    public function iInputAsLoginCustomerPassword($arg1)
+    {
+        $this->fillField('passwordLogin', $arg1);
+    }
     /**
-     * @Then the admin can see the request from :arg1 :arg2
+     * @When I click :arg1 in customer login
      */
-     public function theAdminCanSeeTheRequestFrom($arg1, $arg2)
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the admin can see the request from :arg1 :arg2` is not defined");
-     }
+    public function iClickInCustomerLogin($arg1)
+    {
+        $this->click('action');
+    }
 
     /**
-     * @Given the staff member is logged in
+     * @When I click on :arg1 button in customer address view
      */
-     public function theStaffMemberIsLoggedIn()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member is logged in` is not defined");
-     }
+    public function iClickOnButtonInCustomerAddressView($arg1)
+    {
+        $this->click($arg1);
+    }
 
     /**
-     * @When the staff member modifies their profile
+     * @When I input :arg1 as customer country
      */
-     public function theStaffMemberModifiesTheirProfile()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member modifies their profile` is not defined");
-     }
+    public function iInputAsCustomerCountry($arg1)
+    {
+        $this->fillField('addCountry', $arg1);
+    }
 
     /**
-     * @When hits save
+     * @When I input :arg1 as customer state
      */
-     public function hitsSave()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `hits save` is not defined");
-     }
+    public function iInputAsCustomerState($arg1)
+    {
+        $this->fillField('addState', $arg1);
+    }
 
     /**
-     * @Then the profile page will be updated
+     * @When I input :arg1 as customer street
      */
-     public function theProfilePageWillBeUpdated()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the profile page will be updated` is not defined");
-     }
+    public function iInputAsCustomerStreet($arg1)
+    {
+        $this->fillField('addStreet', $arg1);
+    }
 
     /**
-     * @Given the staff member has a new bank account
+     * @When I input :arg1 as customer residence number
      */
-     public function theStaffMemberHasANewBankAccount()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member has a new bank account` is not defined");
-     }
+    public function iInputAsCustomerResidenceNumber($arg1)
+    {
+        $this->fillField('addResidenceNumber', $arg1);
+    }
 
     /**
-     * @When they log in
+     * @When I input :arg1 as customer postal code
      */
-     public function theyLogIn()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they log in` is not defined");
-     }
+    public function iInputAsCustomerPostalCode($arg1)
+    {
+        $this->fillField('addZipCode', $arg1);
+    }
 
     /**
-     * @When navigate to the account settings
+     * @When I click on :arg1 button in address add
      */
-     public function navigateToTheAccountSettings()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `navigate to the account settings` is not defined");
-     }
+    public function iClickOnButtonInAddressAdd($arg1)
+    {
+        $this->click($arg1);
+    }
 
     /**
-     * @When update their payment information
+     * @Then I see :arg1 as customer country
      */
-     public function updateTheirPaymentInformation()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `update their payment information` is not defined");
-     }
+    public function iSeeAsCustomerCountry($arg1)
+    {
+        $this->see($arg1);
+    }
 
     /**
-     * @Then their payment details are updated, ensuring future earnings are deposited into the new account
+     * @Then I see :arg1 as customer state
      */
-     public function theirPaymentDetailsAreUpdatedEnsuringFutureEarningsAreDepositedIntoTheNewAccount()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `their payment details are updated, ensuring future earnings are deposited into the new account` is not defined");
-     }
+    public function iSeeAsCustomerState($arg1)
+    {
+        $this->see($arg1);
+    }
 
     /**
-     * @Given staff member selects booking
+     * @Then I see :arg1 as customer address
      */
-     public function staffMemberSelectsBooking()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `staff member selects booking` is not defined");
-     }
+    public function iSeeAsCustomerAddress($arg1)
+    {
+        $this->see($arg1);
+    }
 
     /**
-     * @Given agrees to time
+     * @Then I see :arg1 as customer postal code
      */
-     public function agreesToTime()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `agrees to time` is not defined");
-     }
+    public function iSeeAsCustomerPostalCode($arg1)
+    {
+        $this->see($arg1);
+    }
 
     /**
-     * @When staff hits accept booking button
+     * @Given I am logged in
      */
-     public function staffHitsAcceptBookingButton()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `staff hits accept booking button` is not defined");
-     }
+    public function iAmLoggedIn()
+    {
+        $this->amOnPage('http://localhost/User/login');
+        $this->fillField('usernameLogin', 'DonutMan2');
+        $this->fillField('passwordLogin', 'password');
+        $this->click('action');
+        $this->amOnPage('http://localhost/Customer/home');
+    }
 
     /**
-     * @Then the reservation should be created and displayed to both customer and staff
+     * @Given I click :arg1 button in customer profile
      */
-     public function theReservationShouldBeCreatedAndDisplayedToBothCustomerAndStaff()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the reservation should be created and displayed to both customer and staff` is not defined");
-     }
+    public function iClickButtonInCustomerProfile($arg1)
+    {
+        $this->click($arg1);
+    }
 
     /**
-     * @Given the staff member is logged into their account
+     * @Given I input :arg1 as customer new name
      */
-     public function theStaffMemberIsLoggedIntoTheirAccount()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member is logged into their account` is not defined");
-     }
+    public function iInputAsCustomerNewName($arg1)
+    {
+        $this->fillField('editName', $arg1);
+    }
 
     /**
-     * @When they navigate to the dashboard or reservation management page
+     * @Given I input :arg1 as customer new phone number
      */
-     public function theyNavigateToTheDashboardOrReservationManagementPage()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they navigate to the dashboard or reservation management page` is not defined");
-     }
+    public function iInputAsCustomerNewPhoneNumber($arg1)
+    {
+        $this->fillField('editPhoneNumber', $arg1);
+    }
 
     /**
-     * @Then they should see a list of upcoming reservations that they are assigned to handle
+     * @Given I click :arg1 button in cutomer profile edit
      */
-     public function theyShouldSeeAListOfUpcomingReservationsThatTheyAreAssignedToHandle()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they should see a list of upcoming reservations that they are assigned to handle` is not defined");
-     }
+    public function iClickButtonInCutomerProfileEdit($arg1)
+    {
+        $this->click($arg1);
+    }
 
     /**
-     * @Given the staff member is viewing a reservation
+     * @Given I select :arg1
      */
-     public function theStaffMemberIsViewingAReservation()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member is viewing a reservation` is not defined");
-     }
+    public function iSelect($arg1)
+    {
+        $this->selectOption('address', $arg1);
+    }
 
     /**
-     * @When they need to clarify details or confirm appointment times with the customer
+     * @Given I input :arg1 as size
      */
-     public function theyNeedToClarifyDetailsOrConfirmAppointmentTimesWithTheCustomer()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they need to clarify details or confirm appointment times with the customer` is not defined");
-     }
+    public function iInputAsSize($arg1)
+    {
+        $this->fillField('House_Size', $arg1);
+    }
 
     /**
-     * @Then they should be able to send a message or email to the customer through the system
+     * @Given I input :arg1 as number of maids
      */
-     public function theyShouldBeAbleToSendAMessageOrEmailToTheCustomerThroughTheSystem()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they should be able to send a message or email to the customer through the system` is not defined");
-     }
+    public function iInputAsNumberOfMaids($arg1)
+    {
+        $this->fillField('spots', $arg1);
+    }
 
     /**
-     * @Then they should see a list of past reservations they were involved with, including details and status
+     * @Given I set the event date to :arg1
      */
-     public function theyShouldSeeAListOfPastReservationsTheyWereInvolvedWithIncludingDetailsAndStatus()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they should see a list of past reservations they were involved with, including details and status` is not defined");
-     }
+    public function iSetTheEventDateTo($arg1)
+    {
+        $this->fillField('date', $arg1);
+    }
 
     /**
-     * @Given the staff member's schedule has changed
+     * @Given I input :arg1 as description
      */
-     public function theStaffMembersScheduleHasChanged()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `the staff member's schedule has changed` is not defined");
-     }
+    public function iInputAsDescription($arg1)
+    {
+        $this->fillField('dsc', $arg1);
+    }
 
     /**
-     * @When they log in and update their availability in the reservation system
+     * @Given I click :arg1
      */
-     public function theyLogInAndUpdateTheirAvailabilityInTheReservationSystem()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `they log in and update their availability in the reservation system` is not defined");
-     }
+    public function iClick($arg1)
+    {
+        $this->click($arg1);
+    }
 
     /**
-     * @Then their updated availability is reflected, and they can only be booked for times they are now available
+     * @Given I click :arg1 button in customer address display
      */
-     public function theirUpdatedAvailabilityIsReflectedAndTheyCanOnlyBeBookedForTimesTheyAreNowAvailable()
-     {
-         throw new \PHPUnit\Framework\IncompleteTestError("Step `their updated availability is reflected, and they can only be booked for times they are now available` is not defined");
-     }
+    public function iClickButtonInCustomerAddressDisplay($arg1)
+    {
+        $this->click($arg1);
+    }
 }

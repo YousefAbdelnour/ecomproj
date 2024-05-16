@@ -33,7 +33,7 @@ $locale = $_COOKIE['lang'] ?? 'fr';
         <p>
         <p><a href="/User/loginStaff"><?=__('Staff member?')?></a>
         <p>
-            <input type="submit" value="Log in">
+            <input type="submit" name="action" value="Log in">
     </form>
     <li>
         <form action="/setLanguage.php" method="POST" id="language-form">

@@ -1,59 +1,74 @@
 Feature: Customer Account Management and Reservation Experience
 
   Scenario: Create an account
-    Given the customer is on the register screen
-    When they enter a unique username and strong password
-    Then the account will be created
+    Given I am on "http://localhost/User/registerCustomer" page
+    When I input "donutman" as register customer username
+    And I input "password" as register customer password
+    And I input "password" as register customer retype password
+    Then I am on "http://localhost/Profile/create_Customer" page
 
-  Scenario: Update account information
-    Given the customer is logged into their account and on the account settings page
-    When they update their information and confirm
-    Then the changes should be saved successfully
+  Scenario: Create a profile
+    Given I am on "http://localhost/Profile/create_Customer" page
+    When I input "uzi canozi" as customer name
+    And I input "1111111111" as customer phone number
+    Then I am on "http://localhost/User/login" page
 
-  Scenario: Add payment method
-    Given the customer is logged in and navigates to the payment screen
-    When they attempt to add a payment method by entering their credit card information
-    And the credit card is valid and not expired
-    Then the payment method should be successfully saved
-    And the customer receives a confirmation message "Your payment method has been added successfully."
+  Scenario: Log in
 
-  Scenario: Successfully reserve a maid
-    Given the customer is on the reservation page
-    When the customer selects a maid, chooses a date, and valid payment method
-    Then the reservation should be confirmed
+    Given I am on "http://localhost/User/login" page
+    When I input "donutman" as login customer username
+    And I input "password" as login customer password
+    And I click "action" in customer login
+    Then I am on "http://localhost/Customer/home" page
+  
+  Scenario: Add address
 
-  Scenario: Cancel reservation
-    Given the customer has a confirmed booking and is on the cancellation page
-    When the customer selects the reservation they wish to cancel
-    And confirms their intention to cancel by pressing the "Confirm Cancellation" button
-    Then the reservation should be canceled without penalty if done 24 hours before the appointment
-    And the customer should see a message "Your reservation has been successfully canceled."
+    Given I am on "http://localhost/Address/display" page
+    When I click on ".button-style" button in customer address view
+    And I am on "http://localhost/Address/add" page
+    And I input "canada" as customer country
+    And I input "quebec" as customer state
+    And I input "rue marchand" as customer street
+    And I input "123" as customer residence number
+    And I input "h9b 4c1" as customer postal code
+    And I click on "action" button in address add
+    Then I am on "http://localhost/Address/display" page
 
-  Scenario: View reservation history
-    Given the customer is logged into their account
-    When they navigate to the reservation history page
-    Then they should see a list of their past reservations
+  Scenario: Read Address
 
-  Scenario: Forget password
-    Given the customer is on the login screen
-    When they click on the "Forgot Password" link and provide their email
-    Then they should receive a password reset link via email
+    Given I am logged in
+    And I am on "http://localhost/Address/display" page
+    And I see "canada" as customer country
+    And I see "quebec" as customer state
+    And I see "123 rue marchand" as customer address
+    Then I see "H9K 1X2" as customer postal code
+  
+  Scenario: Edit Profile
 
-  Scenario: Access account via Forgot Password
-    Given the customer is on the login screen and selects the "Forgot Password" link
-    When they enter their email address associated with the account
-    And the email address format is valid
-    Then they should receive a password reset link via email
-    And see a confirmation message "A password reset link has been sent to your email."
+    Given I am logged in
+    And I am on "http://localhost/Profile/show_Customer" page
+    And I click ".button-style" button in customer profile
+    And I am on "http://localhost/Profile/edit_Customer" page
+    And I input "Uzi Mania" as customer new name
+    And I input "1111111111" as customer new phone number
+    And I click "action" button in cutomer profile edit
+    Then I am on "http://localhost/Profile/show_Customer" page
 
-  Scenario: Remove payment method
-    Given the customer is logged in and on the payment method settings
-    When the customer selects the payment method removal button
-    Then the payment method should be removed
+  Scenario: Booking
 
-  Scenario: Contact support
-    Given the customer is logged into their account and has a problem with the app or service
-    When they navigate to the "Help & Support" section and select "Contact Support"
-    And submit their query through the contact form
-    Then they should receive an automated acknowledgment email
-    And a support representative should contact them within 24 hours.
+  Given I am logged in
+  And I am on "http://localhost/Job/book" page
+  And I select "13"
+  And I input "3" as size
+  And I input "2" as number of maids
+  And I set the event date to "2024-05-25T14:30"
+  And I input "Hello there" as description
+  And I click "action"
+  Then I am on "http://localhost/Customer/home" page
+
+  Scenario: Deleting address
+
+  Given I am logged in
+  And I am on "http://localhost/Address/display" page
+  And I click ".button-style-delete" button in customer address display
+  Then I am on "http://localhost/Address/display" page
