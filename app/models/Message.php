@@ -17,23 +17,45 @@ class Message extends \app\core\Model
     public $SenderUsername;
 
     public function send_message()
-    {
-        $this->TimeStamp = date('Y-m-d H:i:s'); // Set current date and time
-        $SQL = 'INSERT INTO Message (SenderId, Sender_Type, ReceiverId, Receiver_Type, Message_Text, Title, TimeStamp) 
-            VALUES (:sender_id, :sender_type, :receiver_id, :receiver_type, :message_text, :title, :timestamp)';
-
-        $STMT = self::$_conn->prepare($SQL);
-        $data = [
-            'sender_id' => $this->SenderId,
-            'sender_type' => $this->SenderType,
-            'receiver_id' => $this->ReceiverId,
-            'receiver_type' => $this->ReceiverType,
-            'message_text' => $this->Message_Text,
-            'title' => $this->Title,
-            'timestamp' => $this->TimeStamp
-        ];
-        $STMT->execute($data);
+{
+    // Check if ReceiverId is set and is a valid integer
+    if (!isset($this->ReceiverId) || !filter_var($this->ReceiverId, FILTER_VALIDATE_INT)) {
+        echo 'ReceiverId is not set or is not a valid integer';
+        return;
     }
+
+    // Set current date and time
+    $this->TimeStamp = date('Y-m-d H:i:s');
+
+    // Prepare SQL query
+    $SQL = 'INSERT INTO Message (SenderId, Sender_Type, ReceiverId, Receiver_Type, Message_Text, Title, TimeStamp) 
+        VALUES (:sender_id, :sender_type, :receiver_id, :receiver_type, :message_text, :title, :timestamp)';
+
+    // Prepare and execute SQL statement
+    $STMT = self::$_conn->prepare($SQL);
+    $data = [
+        'sender_id' => $this->SenderId,
+        'sender_type' => $this->SenderType,
+        'receiver_id' => $this->ReceiverId,
+        'receiver_type' => $this->ReceiverType,
+        'message_text' => $this->Message_Text,
+        'title' => $this->Title,
+        'timestamp' => $this->TimeStamp
+    ];
+
+    // Debugging output
+    var_dump($data); // Remove this line after debugging
+
+    if ($STMT->execute($data)) {
+        echo 'Message sent successfully';
+    } else {
+        echo 'Failed to send message';
+    }
+}
+
+    
+
+
 
 
     public function getRelatedAccounts($customerId)

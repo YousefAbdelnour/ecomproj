@@ -127,18 +127,22 @@ class Account extends \app\core\Model
     }
     public function getRelatedAccountsForStaff($staffId)
     {
-        $SQL = 'SELECT DISTINCT a.AccountId, a.Username 
-            FROM Account a
-            INNER JOIN Account_Job aj ON a.AccountId = aj.AccountId
-            INNER JOIN Job j ON aj.JobId = j.JobId
-            WHERE aj.AccountId = :staffId
-            UNION
-            SELECT AccountId, Username
-            FROM Account
-            WHERE IsAdmin = 1'; // Also include all admin accounts
+        $SQL = 'SELECT cu.CustomerId, cu.Username 
+        FROM Customer cu
+        INNER JOIN Customer_Profile cp ON cu.CustomerId = cp.CustomerId
+        INNER JOIN Address ad ON cp.Customer_ProfileId = ad.Customer_ProfileId
+        INNER JOIN Job j ON ad.AddressId = j.AddressId
+        INNER JOIN Account_Job aj ON j.JobId = aj.JobId
+        WHERE aj.AccountId = :maidid
+        UNION
+        SELECT acc.AccountId, acc.Username
+        FROM Account acc
+        WHERE acc.IsAdmin = 1;
+        '; // Also include all admin accounts
 
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['staffId' => $staffId]);
+        $STMT->execute(['maidid' => $staffId]); // Use 'maidid' instead of 'staffId'
         return $STMT->fetchAll(PDO::FETCH_OBJ); // Fetch as associative array
     }
+
 }

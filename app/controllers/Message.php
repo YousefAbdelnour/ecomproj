@@ -29,8 +29,6 @@ class Message extends \app\core\Controller
 
                 header('Location: /Customer/home');
                 exit;
-            } else {
-                echo "Required fields are missing.";
             }
         }
 
@@ -49,21 +47,29 @@ class Message extends \app\core\Controller
     public function sendMessageFromAccount()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['receiver'], $_POST['title'], $_POST['dsc'])) {
+
+            if (isset($_POST['receiverId'], $_POST['title'], $_POST['dsc'])) {
                 $accountId = $_SESSION['AccountId'];
+
+                // Validate receiver
+                $receiverId = $_POST['receiverId'];                
 
                 $message = new \app\models\Message();
                 $message->SenderId = $accountId;
                 $message->SenderType = 0; // 0 for staff or admin
-                $message->ReceiverId = $_POST['receiver'];
+                $message->ReceiverId = $receiverId;
                 $message->ReceiverType = 1; // Assuming customers are always type 1
                 $message->Message_Text = $_POST['dsc'];
                 $message->Title = $_POST['title'];
-                $message->send_message();
 
+                // Debugging output to check message object
+                var_dump($message);
+
+                // Send the message
+                $message->send_message();
                 header('location:/Account/display/1');
                 exit;
-            } 
+            }
         }
 
         $selectedReceiver = $_POST['receiver'] ?? null;
@@ -80,6 +86,9 @@ class Message extends \app\core\Controller
             'selectedReceiver' => $selectedReceiver,
         ]);
     }
+
+    
+    
 
 
 
