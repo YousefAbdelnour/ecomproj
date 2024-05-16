@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2024 at 03:19 AM
+-- Generation Time: May 16, 2024 at 03:54 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,7 +41,6 @@ CREATE TABLE `Account` (
 
 INSERT INTO `Account` (`AccountId`, `Username`, `Password_Hash`, `IsActive`, `IsAdmin`) VALUES
 (1, 'RootAdmin', '$2y$10$hpuO0L3/HRKeSfCQfSPKGOoN18QxTldg9uEoz4a2FVEH04NkIGVhi', 0, 1),
-(2, 'staff', '$2y$10$UvNtf8hfREJO.aBNPSL3uugtKRZH7i5eNZY1EES08VqD7aTX6Py3C', 0, 0),
 (3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1);
 
 -- --------------------------------------------------------
@@ -54,13 +53,6 @@ CREATE TABLE `Account_Job` (
   `AccountId` int(11) NOT NULL,
   `JobId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Account_Job`
---
-
-INSERT INTO `Account_Job` (`AccountId`, `JobId`) VALUES
-(2, 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +72,6 @@ CREATE TABLE `Account_Profile` (
 --
 
 INSERT INTO `Account_Profile` (`ProfileId`, `Name`, `Phone_Number`, `AccountId`) VALUES
-(1, 'staff', '4388312030', 2),
 (2, 'RootAdmin', '0000000000', 1),
 (3, 'another admin', '0000000000', 3);
 
@@ -197,7 +188,8 @@ CREATE TABLE `Message` (
 --
 
 INSERT INTO `Message` (`MessageId`, `SenderId`, `ReceiverId`, `Message_Text`, `Title`, `TimeStamp`, `Receiver_Type`, `Sender_Type`) VALUES
-(1, 2, 1, 'hi', 'from customer', '2024-05-16 02:59:44', 0, 1);
+(1, 2, 1, 'hi', 'from customer', '2024-05-16 02:59:44', 0, 1),
+(2, 2, 1, 'asd', 'from customer 2', '2024-05-16 03:25:03', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -326,7 +318,7 @@ ALTER TABLE `Job`
 -- AUTO_INCREMENT for table `Message`
 --
 ALTER TABLE `Message`
-  MODIFY `MessageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `MessageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `Payment_Log`

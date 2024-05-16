@@ -20,7 +20,7 @@ class Message extends \app\core\Model
     {
         $this->TimeStamp = date('Y-m-d H:i:s'); // Set current date and time
         $SQL = 'INSERT INTO Message (SenderId, Sender_Type, ReceiverId, Receiver_Type, Message_Text, Title, TimeStamp) 
-                VALUES (:sender_id, :sender_type, :receiver_id, :receiver_type, :message_text, :title, :timestamp)';
+            VALUES (:sender_id, :sender_type, :receiver_id, :receiver_type, :message_text, :title, :timestamp)';
 
         $STMT = self::$_conn->prepare($SQL);
         $data = [
@@ -34,6 +34,7 @@ class Message extends \app\core\Model
         ];
         $STMT->execute($data);
     }
+
 
     public function getRelatedAccounts($customerId)
     {
@@ -85,12 +86,13 @@ class Message extends \app\core\Model
 
     public function getByReceiverId()
     {
-        $SQL = 'SELECT * FROM Message WHERE ReceiverId = :receiver_id AND Receiver_Type = :receiver_type';
+        $SQL = 'SELECT MessageId, SenderId, Sender_Type AS SenderType, ReceiverId, Receiver_Type AS ReceiverType, Message_Text, Title, TimeStamp FROM Message WHERE ReceiverId = :receiver_id AND Receiver_Type = :receiver_type';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['receiver_id' => $this->ReceiverId, 'receiver_type' => $this->ReceiverType]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
+
 
     public function getByTitle($title)
     {

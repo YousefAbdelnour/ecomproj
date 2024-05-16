@@ -44,6 +44,7 @@ class Message extends \app\core\Controller
 
 
 
+
     #[\app\filters\AuthenticateAccount]
     public function sendMessageFromAccount()
     {
@@ -85,6 +86,7 @@ class Message extends \app\core\Controller
 
 
 
+
     #[\app\filters\AuthenticateAccount]
     public function receivedAccount()
     {
@@ -115,6 +117,8 @@ class Message extends \app\core\Controller
 
 
 
+
+
     #[\app\filters\AuthenticateCustomer]
     public function receivedByCustomer()
     {
@@ -142,6 +146,7 @@ class Message extends \app\core\Controller
 
         $this->view('message/receivedByCustomer', ['messages' => $messages]);
     }
+
     public function show($id)
     {
 
