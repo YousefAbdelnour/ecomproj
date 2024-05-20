@@ -44,26 +44,22 @@ class Message extends \app\core\Controller
 
 
     #[\app\filters\AuthenticateAccount]
-    public function sendMessageFromAccount()
+    public function sendMessageFromAccount($selectedReceiver = null, $receiverType = null)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-            if (isset($_POST['receiverId'], $_POST['title'], $_POST['dsc'])) {
+            if (isset($_POST['receiverId'], $_POST['receiverType'], $_POST['title'], $_POST['dsc'])) {
                 $accountId = $_SESSION['AccountId'];
-
-                // Validate receiver
-                $receiverId = $_POST['receiverId'];                
+                $receiverId = $_POST['receiverId'];
+                $receiverType = $_POST['receiverType'];
 
                 $message = new \app\models\Message();
                 $message->SenderId = $accountId;
                 $message->SenderType = 0; // 0 for staff or admin
                 $message->ReceiverId = $receiverId;
-                $message->ReceiverType = 1; // Assuming customers are always type 1
+                $message->ReceiverType = $receiverType; // 0 for account, 1 for customer
+
                 $message->Message_Text = $_POST['dsc'];
                 $message->Title = $_POST['title'];
-
-                // Debugging output to check message object
-                var_dump($message);
 
                 // Send the message
                 $message->send_message();
@@ -72,23 +68,33 @@ class Message extends \app\core\Controller
             }
         }
 
-        $selectedReceiver = $_POST['receiver'] ?? null;
+        $selectedReceiver = $_POST['receiver'] ?? $selectedReceiver;
 
         $accountModel = new \app\models\Account();
+        $customerModel = new \app\models\Customer();
+
         if ($_SESSION['isAdmin']) {
+            // Admin can get all accounts and customers
             $relatedAccounts = $accountModel->getAll();
+            $customers = $customerModel->getAll();
         } else {
-            $relatedAccounts = $accountModel->getRelatedAccountsForStaff($_SESSION['AccountId']);
+            // Staff can only get related accounts
+            $relatedAccounts = $accountModel->getAdminAccounts();
+            $customers = $accountModel->getRelatedAccountsForStaff($_SESSION['AccountId']);
         }
 
         $this->view('message/sendFromAccount', [
             'relatedAccounts' => $relatedAccounts,
+            'customers' => $customers,
             'selectedReceiver' => $selectedReceiver,
+            'receiverType' => $receiverType,
         ]);
     }
 
-    
-    
+
+
+
+
 
 
 

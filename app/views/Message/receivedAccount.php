@@ -40,7 +40,7 @@
                             <td><?= htmlspecialchars($message->TimeStamp) ?></td>
                             <td>
                                 <form method="POST" action="/Message/sendMessageFromAccount">
-                                    <input type="hidden" name="receiverId" value="<?= htmlspecialchars($message->SenderId) ?>">
+                                    <input type="hidden" name="receiver" id="receiver" value="<?= htmlspecialchars($message->SenderId) ?>">
                                     <button type="submit"><?= __('Reply') ?></button>
                                 </form>
                             </td>

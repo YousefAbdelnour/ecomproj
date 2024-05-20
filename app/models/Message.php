@@ -72,7 +72,7 @@ class Message extends \app\core\Model
 
                 SELECT AccountId, Username
                 FROM Account
-                WHERE AccountId = 1'; // Assuming admin's AccountId is always 1
+                WHERE IsAdmin = 1'; // Assuming admin's AccountId is always 1
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['customerId' => $customerId]);

@@ -84,7 +84,7 @@ class Account extends \app\core\Model
     }
     public function getAdminAccounts()
     {
-        $SQL = 'SELECT * FROM Account WHERE IsAdmin = 0';
+        $SQL = 'SELECT * FROM Account WHERE IsAdmin = 1';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -133,12 +133,7 @@ class Account extends \app\core\Model
         INNER JOIN Address ad ON cp.Customer_ProfileId = ad.Customer_ProfileId
         INNER JOIN Job j ON ad.AddressId = j.AddressId
         INNER JOIN Account_Job aj ON j.JobId = aj.JobId
-        WHERE aj.AccountId = :maidid
-        UNION
-        SELECT acc.AccountId, acc.Username
-        FROM Account acc
-        WHERE acc.IsAdmin = 1;
-        '; // Also include all admin accounts
+        WHERE aj.AccountId = :maidid'; // Also include all admin accounts
 
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['maidid' => $staffId]); // Use 'maidid' instead of 'staffId'
