@@ -36,9 +36,22 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
+     * @Then I remove all
+     */
+    public function iRemoveAll()
+    {
+        $modelObject = new \app\models\Customer;
+        $modelObject = $modelObject->getByUsername('test');
+        $modelObject->deleteCustomerBookings();
+        $modelObject->deleteCustomerAddress();
+        $modelObject->deleteCustomerProfile();
+    }
+
+    /**
      * @Given I created an account
      */
-    public function iCreatedAccount(){
+    public function iCreatedAccount()
+    {
         $this->iAmOnPage('http://localhost/User/registerCustomer');
         $this->fillField('usernameReg', 'test');
         $this->fillField('passwordReg', 'password');
@@ -211,7 +224,7 @@ class AcceptanceTester extends \Codeception\Actor
     public function iAmLoggedIn()
     {
         $this->amOnPage('http://localhost/User/login');
-        $this->fillField('usernameLogin', 'DonutMan2');
+        $this->fillField('usernameLogin', 'test');
         $this->fillField('passwordLogin', 'password');
         $this->click('action');
         $this->amOnPage('http://localhost/Customer/home');
@@ -250,11 +263,14 @@ class AcceptanceTester extends \Codeception\Actor
     }
 
     /**
-     * @Given I select :arg1
+     * @Given I select address
      */
-    public function iSelect($arg1)
+    public function iSelect()
     {
-        $this->selectOption('address', $arg1);
+        $modelObject2 = new \app\models\Customer;
+        $modelObject2 = $modelObject2->getByUsername('test');
+        $modelObject2 = $modelObject2->getAddressId();
+        $this->selectOption('address', $modelObject2[0]);
     }
 
     /**

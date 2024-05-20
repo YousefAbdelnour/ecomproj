@@ -29,6 +29,42 @@ class Customer extends \app\core\Model
         ]);
     }
 
+    public function deleteCustomerBookings()
+    {
+        $SQL = 'DELETE FROM Job WHERE AddressId IN (
+                    SELECT AddressId FROM Address WHERE Customer_ProfileId IN (
+                        SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :customer_id
+                    )
+                )';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_id' => $this->CustomerId]);
+    }
+
+    public function deleteCustomerAddress()
+    {
+        $SQL = 'DELETE FROM Address WHERE Customer_ProfileId IN (
+                    SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :customer_id
+                )';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_id' => $this->CustomerId]);
+    }
+
+    public function deleteCustomerProfile()
+    {
+        $SQL = 'DELETE FROM Customer_Profile WHERE CustomerId = :customer_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_id' => $this->CustomerId]);
+    }
+
+    public function getAddressId()
+    {
+        $SQL = 'SELECT * FROM Address WHERE Customer_ProfileId = (SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :customer_id)';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['customer_id' => $this->CustomerId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, '\app\models\Address');
+        return $STMT->fetchAll();
+    }
+
     public function insert()
     {
         $SQL = 'INSERT INTO Customer (Username, Password_Hash, IsActive) VALUES (:username, :password_hash, :is_active)';

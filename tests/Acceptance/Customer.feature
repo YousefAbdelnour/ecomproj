@@ -54,10 +54,11 @@ Feature: Customer Account Management and Reservation Experience
 
   Given I am logged in
   And I am on "http://localhost/Job/book" page
-  And I select "13"
+  And I select address
   And I input "3" as size
   And I input "2" as number of maids
   And I set the event date to "2024-05-25T14:30"
   And I input "Hello there" as description
   And I click "action"
   Then I see "/Customer/home" in url
+  And I remove all
