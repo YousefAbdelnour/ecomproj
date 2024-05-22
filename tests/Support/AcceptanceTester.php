@@ -44,8 +44,6 @@ class AcceptanceTester extends \Codeception\Actor
         $customer = $customer->getByUsername('test');
     
         if ($customer) {
-            $customer->deleteCustomerBookings();
-            $customer->deleteCustomerAddress();
             $customer->deleteCustomerProfile();
             $customer->deleteCustomerObject();
         } else {
@@ -336,5 +334,46 @@ class AcceptanceTester extends \Codeception\Actor
     public function iClickButtonInCustomerAddressDisplay($arg1)
     {
         $this->click($arg1);
+    }
+    /**
+     * @Given I click the delete address button
+     */
+    public function iClickTheDeleteAddressButton()
+    {
+        $customerObject = new \app\models\Customer();
+        $customerObject = $customerObject->getByUsername('test');
+        $address = $customerObject->getAddressId();
+        $customerObject->deleteCustomerBookings();
+        $this->click('#address' . $address[0]->AddressId);
+    }
+   /**
+    * @Given I do not see :arg1
+    */
+    public function iDoNotSee($arg1)
+    {
+        $this->dontSee($arg1);
+    }
+    /**
+     * @Given I see :arg1
+     */
+    public function iSee($arg1)
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I see :arg1` is not defined");
+    }
+
+   /**
+    * @Given job is completed
+    */
+    public function jobIsCompleted()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `job is completed` is not defined");
+    }
+
+   /**
+    * @Given I see addres id
+    */
+    public function iSeeAddresId()
+    {
+        throw new \PHPUnit\Framework\IncompleteTestError("Step `I see addres id` is not defined");
     }
 }

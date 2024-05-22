@@ -61,4 +61,31 @@ Feature: Customer Account Management and Reservation Experience
   And I input "Hello there" as description
   And I click "action"
   Then I see "/Customer/home" in url
-  And I remove all
+  
+  Scenario: View pending orders
+
+  Given I am logged in
+  And I am on "http://localhost/Customer/home" page
+  And I see "2024/05/25"
+  And I see "14:30 PM"
+  Then I see "Hello there"
+  
+  Scenario: View latest services
+
+  Given I am logged in
+  And I am on "http://localhost/Customer/home" page
+  And job is completed
+  And I see "2024/05/25"
+  And I see addres id
+  And I see "Hello there"
+
+  Scenario: Delete Address
+
+    Given I am logged in
+    And I am on "http://localhost/Address/display" page
+    And I click the delete address button
+    And I do not see "canada"
+    And I do not see "quebec"
+    And I do not see "123 rue marchand"
+    Then I do not see "h9b 4c1"
+    And I remove all

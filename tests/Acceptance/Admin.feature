@@ -1,31 +1,45 @@
-Feature: Admin Management Tasks
+Feature: Staff Account Management and Reservation Settings
 
-  Scenario: Hire more maids
-    Given there are applications
-    When admin hires maid
-    Then a new staff member will be created
+  Scenario: Create an account
+    Given the staff member applies as "Johnny" "Appleseed" with good qualifications
+    When they submit their application 
+    Then the admin can see the request from "Johnny" "Appleseed"
 
-  Scenario: View transaction history
-    Given admin is logged in and on the transactions screen
-    When admin selects a user of the application
-    Then all of the transactions related to that user will be displayed
+  Scenario: Modify profile
+    Given the staff member is logged in
+    When the staff member modifies their profile 
+    And hits save
+    Then the profile page will be updated
 
-  Scenario: View appointment history
-    Given admin is logged in and on the appointment view screen
-    When admin selects an appointment
-    Then all of the information related to that user will be displayed
+  Scenario: Update payment information
+    Given the staff member has a new bank account
+    When they log in 
+    And navigate to the account settings
+    And update their payment information
+    Then their payment details are updated, ensuring future earnings are deposited into the new account
 
-  Scenario: Respond to reports
-    Given the problem has not yet been resolved
-    When admin sends a response message
-    Then the person who requested support should receive the message
+  Scenario: Updates availability for reservations
+    Given the staff member's schedule has changed
+    When they log in and update their availability in the reservation system
+    Then their updated availability is reflected, and they can only be booked for times they are now available
 
-  Scenario: Manage service pricing
-    Given the current pricing needs to be adjusted
-    When admin updates the service pricing in the system
-    Then the new pricing will be immediately applied to future bookings and displayed to users
+  Scenario: Accepts booking
+    Given staff member selects booking 
+    And agrees to time
+    When staff hits accept booking button
+    Then the reservation should be created and displayed to both customer and staff
 
-  Scenario: Monitor user feedback
-    Given new feedback submissions are available
-    When admin reviews the feedback section
-    Then all recent feedback from users will be displayed, allowing for immediate action or acknowledgment 
+  Scenario: Views upcoming reservations
+    Given the staff member is logged into their account
+    When they navigate to the dashboard or reservation management page
+    Then they should see a list of upcoming reservations that they are assigned to handle
+
+  Scenario: Views past reservation history
+    Given the staff member is logged into their account
+    When they navigate to the reservation history page
+    Then they should see a list of past reservations they were involved with, including details and status
+
+  Scenario: Contacts customer regarding reservation
+    Given the staff member is viewing a reservation
+    When they need to clarify details or confirm appointment times with the customer
+    Then they should be able to send a message or email to the customer through the system

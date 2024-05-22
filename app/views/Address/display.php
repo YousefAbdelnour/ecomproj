@@ -33,7 +33,7 @@
                             <p class="view_zipcode"><?= $address->ZipCode ?></p>
                         </div>
                         <div class="address_buttons">
-                            <a href='/Address/delete/<?= $address->AddressId ?>' class='button-style-delete'><?= __("Delete") ?></a>
+                            <a href='/Address/delete/<?= $address->AddressId ?>' class='button-style-delete' id='address<?=$address->AddressId?>'><?= __("Delete") ?></a>
                         </div>
                     </div>
                 </div>

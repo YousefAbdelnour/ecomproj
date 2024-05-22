@@ -23,7 +23,7 @@
                     <p id="service_title"><?=__('Latest Service')?></p>
                     <p id="service_date"><?php echo date('Y/m/d', strtotime($data['latestJob']->Time_Of_Job)); ?></p>
                     <div id="maid_background">
-                        <p class="job_maids"><?php echo $data['latestJob']->MaidId; ?></p>
+                        <p class="job_maids"><?php echo $data['latestJob']->AddressId; ?></p>
                         <p id="title"><?=__('Description')?></p>
                         <div id="job_description_background">
                             <p id="job_description"><?php echo $data['latestJob']->Description; ?></p>
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div id="pending_buttons">
-                        <a href="/Customer/support" class="button-style"><?=__('Support')?></a>
+                        <a href="/Message/support" class="button-style"><?=__('Support')?></a>
                         <a href='/Customer/cancel/<?= $data['earliestJob']->JobId ?>' class="button-style-red"><?=__('Cancel')?></a>
                     </div>
                 <?php else : ?>
