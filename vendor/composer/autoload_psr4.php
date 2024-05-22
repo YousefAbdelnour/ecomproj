@@ -9,6 +9,7 @@ return array(
     'chillerlan\\Settings\\' => array($vendorDir . '/chillerlan/php-settings-container/src'),
     'chillerlan\\QRCode\\' => array($vendorDir . '/chillerlan/php-qrcode/src'),
     'chillerlan\\Authenticator\\' => array($vendorDir . '/chillerlan/php-authenticator/src'),
+    'app\\' => array($baseDir . '/app'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Intl\\Normalizer\\' => array($vendorDir . '/symfony/polyfill-intl-normalizer'),
     'Symfony\\Polyfill\\Intl\\Grapheme\\' => array($vendorDir . '/symfony/polyfill-intl-grapheme'),

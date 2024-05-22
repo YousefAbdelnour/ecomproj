@@ -40,13 +40,19 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function iRemoveAll()
     {
-        $modelObject = new \app\models\Customer;
-        $modelObject = $modelObject->getByUsername('test');
-        $modelObject->deleteCustomerBookings();
-        $modelObject->deleteCustomerAddress();
-        $modelObject->deleteCustomerProfile();
+        $customer = new \app\models\Customer;
+        $customer = $customer->getByUsername('test');
+    
+        if ($customer) {
+            $customer->deleteCustomerBookings();
+            $customer->deleteCustomerAddress();
+            $customer->deleteCustomerProfile();
+            $customer->deleteCustomerObject();
+        } else {
+            // Handle case where customer is not found
+            throw new \Exception('Customer not found.');
+        }
     }
-
     /**
      * @Given I created an account
      */
@@ -267,11 +273,22 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function iSelect()
     {
-        $modelObject2 = new \app\models\Customer;
-        $modelObject2 = $modelObject2->getByUsername('test');
-        $modelObject2 = $modelObject2->getAddressId();
-        $this->selectOption('address', $modelObject2[0]);
-    }
+        $customer = new \app\models\Customer();
+        $customer = $customer->getByUsername('test');
+    
+        if ($customer) {
+            $addresses = $customer->getAddressId();
+            if (!empty($addresses)) {
+                $addressId = (string)$addresses[0]->AddressId; // Ensure it is a string
+                $this->selectOption('address', $addressId);
+            } else {
+                throw new \Exception('No addresses found for the customer.');
+            }
+        } else {
+            throw new \Exception('Customer not found.');
+        }
+    }    
+    
 
     /**
      * @Given I input :arg1 as size

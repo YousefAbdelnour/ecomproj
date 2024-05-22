@@ -56,6 +56,14 @@ class Customer extends \app\core\Model
         $STMT->execute(['customer_id' => $this->CustomerId]);
     }
 
+    public function deleteCustomerObject()
+    {
+        $SQL = 'DELETE FROM Customer WHERE CustomerId = :customer_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $data = ['customer_id' => $this->CustomerId];
+        $STMT->execute($data);
+    }
+
     public function getAddressId()
     {
         $SQL = 'SELECT * FROM Address WHERE Customer_ProfileId = (SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :customer_id)';

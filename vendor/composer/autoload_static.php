@@ -30,6 +30,10 @@ class ComposerStaticInit3aa8807de7f4f7e79d809f17e0f890b4
             'chillerlan\\QRCode\\' => 18,
             'chillerlan\\Authenticator\\' => 25,
         ),
+        'a' => 
+        array (
+            'app\\' => 4,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -93,6 +97,10 @@ class ComposerStaticInit3aa8807de7f4f7e79d809f17e0f890b4
         'chillerlan\\Authenticator\\' => 
         array (
             0 => __DIR__ . '/..' . '/chillerlan/php-authenticator/src',
+        ),
+        'app\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (

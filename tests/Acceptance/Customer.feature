@@ -11,7 +11,7 @@ Feature: Customer Account Management and Reservation Experience
   Scenario: Log in
 
     Given I am on "http://localhost/User/login" page
-    When I input "donutman" as login customer username
+    When I input "test" as login customer username
     And I input "password" as login customer password
     And I click "action" in customer login
     Then I see "/Customer/home" in url

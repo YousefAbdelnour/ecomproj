@@ -208,7 +208,7 @@ class User extends \app\core\Controller
             $password = $_POST['passwordLogin'];
             if ($account && $account->IsActive == 0 && password_verify($password, $account->Password_Hash)) {
                 $_SESSION['CustomerId'] = $account->CustomerId;
-                header('location:/Customer/home');
+                header('location: /Customer/home');
             } else {
                 header('location:/User/login');
             }
