@@ -100,12 +100,12 @@ class Account extends \app\core\Controller
                 break;
             case 2:
                 // Fetch and display staff accounts
-                $user = $accountsModel->getStaffAccounts();
+                $user = $accountsModel->getAdminAccounts();
                 $type = 2;
                 break;
             case 3:
                 // Fetch and display admin accounts (assuming this method exists)
-                $user = $accountsModel->getAdminAccounts();
+                $user = $accountsModel->getStaffAccounts();
                 $type = 3;
                 break;
             default:

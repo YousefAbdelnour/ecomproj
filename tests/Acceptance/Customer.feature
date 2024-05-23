@@ -77,7 +77,48 @@ Feature: Customer Account Management and Reservation Experience
   And job is completed
   And I see "2024/05/25"
   And I see addres id
-  And I see "Hello there"
+  Then I see "Hello there"
+
+  Scenario: View service history
+
+    Given I am logged in
+    And I am on "http://localhost/Customer/reservation_history" page
+    And I see "2024/05/25"
+    And I see addres id
+    Then I see "Hello there"
+
+  Scenario: Cancel booking
+
+    Given I am logged in
+    And I am on "http://localhost/Customer/home" page
+    And I click "#cancelPending"
+    Then job status changes
+
+  Scenario: Contact support button
+
+    Given I am logged in
+    And I am on "http://localhost/Customer/home" page
+    And I click "#support"
+    Then I see "Customer/home" in url
+
+  Scenario: Send message
+
+    Given I am logged in
+    And I am on "http://localhost/Message/support" page
+    And I select "1"
+    And I input "Problem with job: 1" as customer support title
+    And I input "Maid did not do the job"
+    And I click ".submit-button"
+    Then I see "Customer/home" in url
+
+  Scenario: Read message
+
+    Given I am logged in
+    And I am on "http://localhost/Message/receivedByCustomer" page
+    And I have recieved a message
+    And I see "Understood"
+    And I see "Will contact maid"
+    Then I see "1"
 
   Scenario: Delete Address
 
@@ -88,4 +129,10 @@ Feature: Customer Account Management and Reservation Experience
     And I do not see "quebec"
     And I do not see "123 rue marchand"
     Then I do not see "h9b 4c1"
-    And I remove all
+
+  Scenario: Logout
+
+    Given I am logged in
+    And I click "#logout"
+    And I see "User/login" in url
+    Then I remove all

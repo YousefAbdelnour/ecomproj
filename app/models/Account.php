@@ -92,7 +92,7 @@ class Account extends \app\core\Model
     }
     public function getStaffAccounts()
     {
-        $SQL = 'SELECT * FROM Account WHERE IsAdmin = 1 AND IsActive = 0';
+        $SQL = 'SELECT * FROM Account WHERE IsAdmin = 0 AND IsActive = 0';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute();
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
