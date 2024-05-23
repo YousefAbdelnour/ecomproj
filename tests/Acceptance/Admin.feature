@@ -17,7 +17,7 @@ Feature: Staff Account Management and Reservation Settings
     And I input "testadmin" in "username"
     And I input "password" in "password"
     And I click on "action"
-    Then I see "Account/display/1" in url
+    Then I see "Profile/create_Admin" in url
 
   Scenario: Create profile
     
@@ -35,8 +35,8 @@ Feature: Staff Account Management and Reservation Settings
     And I click ".button-style"
     And I see "/Profile/edit_Admin" in url
     And I input "Uzi Mania" as "name"
-    And I input "1111111111" as "customer new "phone number"
-    And I click "action" button in cutomer profile edit
+    And I input "1111111111" as "admin new "phone number"
+    And I click "action" button in admin profile edit
     Then I see "/Profile/show_Admin" in url
 
   Scenario: Read customer information
@@ -115,7 +115,7 @@ Feature: Staff Account Management and Reservation Settings
     Given I am logged in as admin
     And I am on "http://localhost/Message/receivedAccount" page
     And I have recieved a message
-    And I see ""Problem with job: 1"
+    And I see "Problem with job: 1"
     And I see "Maid did not do the job"
     Then I see "1"
 
@@ -125,4 +125,4 @@ Feature: Staff Account Management and Reservation Settings
     And I am on "http://localhost/Address/display/1" page
     And I click "#logout"
     And I see "User/loginStaff" in url
-    Then I remove all
+    Then I remove all about admin

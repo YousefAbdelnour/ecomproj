@@ -1,31 +1,83 @@
 Feature: Admin Management Tasks
 
-  Scenario: Hire more maids
-    Given there are applications
-    When admin hires maid
-    Then a new staff member will be created
+  Scenario: Create an account
 
-  Scenario: View transaction history
-    Given admin is logged in and on the transactions screen
-    When admin selects a user of the application
-    Then all of the transactions related to that user will be displayed
+    Given I am logged in as root admin
+    When I am on "http://localhost/User/registerAdmin" page
+    And I input "teststaff" in "username"
+    And I input "password" in "password"
+    And I input "password" in "retypepassword"
+    And I select "Staff"
+    And I click on "action"
+    Then I see "Account/display/1" in url
 
-  Scenario: View appointment history
-    Given admin is logged in and on the appointment view screen
-    When admin selects an appointment
-    Then all of the information related to that user will be displayed
+  Scenario: Log in
+  
+    Given I am on "http://localhost/User/loginStaff" page
+    When I input "teststaff" in "username"
+    And I input "password" in "password"
+    And I click on "action"
+    Then I see "Profile/create_Admin" in url
 
-  Scenario: Respond to reports
-    Given the problem has not yet been resolved
-    When admin sends a response message
-    Then the person who requested support should receive the message
+  Scenario: Creatre profile
 
-  Scenario: Manage service pricing
-    Given the current pricing needs to be adjusted
-    When admin updates the service pricing in the system
-    Then the new pricing will be immediately applied to future bookings and displayed to users
+    Given I am logged in as staff
+    And I am see "Profile/create_Admin" in url
+    And I input "teststaff" in "name"
+    And I input "1111111111" in "phonenumber"
+    And I click on "action"
+    Then I see "User/loginStaff" in url
+  
+  Scenario: Profile edit
 
-  Scenario: Monitor user feedback
-    Given new feedback submissions are available
-    When admin reviews the feedback section
-    Then all recent feedback from users will be displayed, allowing for immediate action or acknowledgment
+    Given I am logged in as staff
+    And I am on "http://localhost/Profile/show_Maid"page
+    And I click ".button-style"
+    And I see "/Profile/edit_Maid" in url
+    And I input "Uzi Mania" as "name"
+    And I input "1111111111" as "staff new "phone number"
+    And I click "action" button in staff profile edit
+    Then I see "/Profile/show_Maid" in url
+
+  Scenario: Accept job
+
+    Given I am logged in as staff
+    When I am on "http://localhost/Account/home_maid" page
+    And there are active jobs
+    And I see job
+    And I click "#jobaccept"
+    Then I see "Account/schedule" in url
+
+  Scenario: View job in schedule
+
+    Given I am logged in as staff
+    When I am on "http://localhost/Account/schedule" page
+    Then I see "jacob pucked in my car"
+
+  Scenario: Send message
+
+    Given I am logged in as staff
+    And I am on "http://localhost/Message/sendMessageFromAccount" page
+    And I select "1"
+    And I input "Missunderstanding" as customer support title
+    And I input "We can fix it"
+    And I click ".submit-button"
+    Then I see "Account/home_maid" in url
+
+  Scenario: Read message
+
+    Given I am logged in as staff
+    And I am on "http://localhost/Message/receivedAccount" page
+    And I have recieved a message
+    And I see "Understood"
+    And I see "No problem"
+    Then I see "1"
+
+  Scenario: Logout
+
+    Given I am logged in as staff
+    And I am on "http://localhost/Account/home_maid" page
+    And I click "#logout"
+    And I see "User/loginStaff" in url
+    Then I remove all about staff
+
