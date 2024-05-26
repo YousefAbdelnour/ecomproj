@@ -61,5 +61,14 @@
         </form>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const dateTimeInput = document.getElementById('date');
+        const now = new Date();
+        now.setDate(now.getDate() + 1);
+        const formattedDateTime = now.toISOString().slice(0, 16);
+        dateTimeInput.min = formattedDateTime;
+    });
+</script>
 
 </html>
