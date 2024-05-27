@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css?v=20">
+    <link rel="stylesheet" href="/app/views/style.css?v=21">
     <title><?= __('Admin Home') ?></title>
 </head>
 

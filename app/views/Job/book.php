@@ -20,9 +20,9 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="address"><?= __('Address') ?></label>
-                    <select id="address" name="address" onchange="updateHouseSize(this.value);" required>
-                        <?php if (!empty($addresses)) : ?>
-                            <?php foreach ($addresses as $address) : ?>
+                    <select id="address" name="address" required>
+                        <?php if (!empty($data['addresses'])) : ?>
+                            <?php foreach ($data['addresses'] as $address) : ?>
                                 <option value="<?php echo $address->AddressId; ?>">
                                     <?php echo htmlspecialchars($address->Building_Number . ' ' . $address->Street_Name . ', ' . $address->State); ?>
                                 </option>
@@ -36,7 +36,31 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="maid"><?= __('Maid ID (Optional)') ?></label>
-                    <input type="text" id="maid" name="maid"> <!-- Removed 'required' attribute -->
+                    <select type="text" id="maid" name="maid">
+                        <option value="<?= null ?>">
+                            <?= __('No Maid') ?>
+                        </option>
+                        <?php if (!empty($data['latestFiveJobs'])) :
+                            $uniqueMaids = [];
+
+                            foreach ($data['latestFiveJobs'] as $job) :
+                                $jobMaids = $job->getMaidsByJob();
+
+                                foreach ($jobMaids as $maid) :
+                                    if (!isset($uniqueMaids[$maid->AccountId])) :
+                                        $uniqueMaids[$maid->AccountId] = true;
+
+                        ?>
+                                        <option value="<?= $maid->AccountId ?>">
+                                            <?php echo htmlspecialchars($maid->Username); ?>
+                                        </option>
+                        <?php endif;
+                                endforeach;
+                            endforeach;
+                        endif;
+                        ?>
+                    </select>
+                    <!-- Removed 'required' attribute -->
                 </div>
                 <div class="form-group">
                     <label for="spots"><?= __('Number of Maids Required') ?></label>

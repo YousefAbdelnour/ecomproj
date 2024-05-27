@@ -256,7 +256,7 @@ ul {
     flex-direction: column; /* Align items in a column */
     justify-content: center; /* Center items vertically */
     align-items: center; /* Center items horizontally */
-    background-color: rgba(255, 255, 255, 0.8); /* Light grey background */
+    background-color: rgba(254, 250, 250, 1); /* Light grey background */
     color: #333; /* Dark grey text color */
     padding: 30px; /* Increased padding */
     margin: 20px auto; /* Centering the container horizontally and setting margin */
@@ -520,7 +520,7 @@ input[type="submit"].profile_edit {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -25%);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 15%; /* Set container background color to grey */
     padding: 20px; /* Add padding to the form container */
     font-weight: bold; /* Set text to bold */
@@ -714,7 +714,7 @@ input[type="submit"].profile_edit {
 /*Address add*/ 
 
 #address_add_form {
-    background-color: rgba(255, 255, 255, 0.7); /* Transparent grey background */
+    background-color: rgba(255, 255, 255, 1); /* Transparent grey background */
     border: 2px solid black; /* Solid yellow border */
     padding: 20px;
     width: 75%; /* Adjust the width as needed */

@@ -123,6 +123,17 @@ class Job extends \app\core\Model
         ]);
     }
 
+    public function getJobsbyCustomer($CustomerId)
+    {
+        $SQL = 'SELECT * FROM Job WHERE AddressId = 
+                            (SELECT AddressId FROM Address WHERE Customer_ProfileId = 
+                            (SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :CustomerId))';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['CustomerId' => $CustomerId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
+        return $STMT->fetchAll();
+    }
+
     public function delete()
     {
         $SQL = 'DELETE FROM Job WHERE JobId = :job_id';
@@ -144,6 +155,18 @@ class Job extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));
         return $STMT->fetchAll();
     }
+
+    public function getMaidsByJob()
+    {
+        $SQL = 'SELECT A.* FROM Account A 
+                INNER JOIN Account_Job AJ ON A.AccountId = AJ.AccountId
+                WHERE AJ.JobId = :job_id';
+        $STMT = self::$_conn->prepare($SQL);
+        $STMT->execute(['job_id' => $this->JobId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Account');
+        return $STMT->fetchAll();
+    }
+
     public function getJobsByStatusAndProfileId($customer_profile_id, $status)
     {
         $SQL = 'SELECT Job.* 

@@ -70,7 +70,24 @@ class Job extends \app\core\Controller
         $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);
         if ($customerProfile) {
             $addresses = (new \app\models\Address())->getAllByCustomerProfileId($customerProfile->Customer_ProfileId);
-            $this->view('Job/book', ['addresses' => $addresses]);
+            $jobs = new \app\models\Job();
+            $jobs = $jobs->getJobsbyCustomer($_SESSION['CustomerId']);
+            //method for the maids
+            $filteredJobs = [];
+
+            foreach ($jobs as $job) {
+                if ($job->Status === 1) { // Adjust status check as needed
+                    $filteredJobs[] = $job;
+                }
+            }
+            usort($filteredJobs, function ($a, $b) {
+                return strtotime($b->Time_Of_Job) - strtotime($a->Time_Of_Job);
+            });
+
+            $latestFiveJobs = array_slice($filteredJobs, 0, 5);
+            $data['latestFiveJobs'] = $latestFiveJobs;
+            $data['addresses'] = $addresses;
+            $this->view('Job/book', $data);
         } else {
             $this->view('Job/book', ['error' => 'No customer profile found.']);
         }

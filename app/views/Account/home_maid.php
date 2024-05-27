@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css?v=19">
+    <link rel="stylesheet" href="/app/views/style.css?v=22">
     <title><?= __('Service Booking') ?></title>
 </head>
 
@@ -33,6 +33,10 @@
                         <p class="task_location"><?= '' . $address ?></p>
                         <p class="task_date"><?= __('Time of Job:') . $booking->Time_Of_Job ?></p>
                         <p class="task_size"><?= __('Spots left:') . $booking->Spots_Left ?></p>
+                        <?php if($booking->MaidId == $_SESSION['AccountId']) : 
+                            echo __('Our customer would love to book you again!');
+                        endif;
+                            ?>
                     </div>
 
                     <div class="task_description">
