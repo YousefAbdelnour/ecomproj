@@ -7,6 +7,7 @@ use \app\models\Message;
 
 class Customer extends \app\core\Controller
 {
+    #[\app\filters\AuthenticateCustomer]
     function logout()
     {
         session_destroy();
@@ -14,11 +15,12 @@ class Customer extends \app\core\Controller
     }
 
     
-
+    #[\app\filters\AuthenticateCustomer]
     function payment()
     {
         $this->view('Customer/payment');
     }
+    #[\app\filters\AuthenticateCustomer]
     function pay()
     {
         $this->view('Customer/pay');
@@ -34,6 +36,7 @@ class Customer extends \app\core\Controller
         header('location:/Customer/home');;
     }
 
+    #[\app\filters\AuthenticateCustomer]
     function home()
     {
         // Initialize data array for view
@@ -111,7 +114,7 @@ class Customer extends \app\core\Controller
     }
 
 
-
+    #[\app\filters\AuthenticateCustomer]
     function reservation_history()
     {
         $data = [];
@@ -131,6 +134,7 @@ class Customer extends \app\core\Controller
         }
     }
 
+    #[\app\filters\AuthenticateCustomer]
     function pending_orders()
     {
         $customerProfile = (new \app\models\Customer_Profile())->getByCustomerId($_SESSION['CustomerId']);

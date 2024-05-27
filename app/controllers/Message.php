@@ -4,6 +4,7 @@ namespace app\controllers;
 
 class Message extends \app\core\Controller
 {
+    #[\app\filters\AuthenticateCustomer]
     public function index()
     {
         $messageModel = new \app\models\Message();
@@ -160,6 +161,7 @@ class Message extends \app\core\Controller
         $this->view('message/receivedByCustomer', ['messages' => $messages]);
     }
 
+    
     public function show($id)
     {
 

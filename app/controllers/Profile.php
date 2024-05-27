@@ -81,7 +81,7 @@ class Profile extends \app\core\Controller
         $this->view('Profile/show_Maid', $data);
     }
 
-
+    #[\app\filters\AuthenticateCustomer]
     function edit_Customer()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -106,7 +106,7 @@ class Profile extends \app\core\Controller
         }
     }
 
-
+    #[\app\filters\Admin]
     function edit_Admin()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -124,7 +124,7 @@ class Profile extends \app\core\Controller
         }
         $this->view('Profile/edit_Admin');
     }
-
+    #[\app\filters\AuthenticateAccount]
     function edit_Maid()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

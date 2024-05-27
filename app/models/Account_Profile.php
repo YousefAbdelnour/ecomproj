@@ -49,7 +49,7 @@ class Account_Profile extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetch();
     }
-
+    #[\app\filters\AuthenticateAccount]
     public function update()
     {
         $SQL = 'UPDATE Account_Profile SET Name = :name, Phone_Number = :phone_number, AccountId = :account_id WHERE ProfileId = :profile_id';
@@ -61,7 +61,7 @@ class Account_Profile extends \app\core\Model
             'profile_id' => $this->ProfileId
         ]);
     }
-
+    #[\app\filters\AuthenticateAccount]
     public function delete()
     {
         $SQL = 'DELETE FROM Account_Profile WHERE ProfileId = :profile_id';

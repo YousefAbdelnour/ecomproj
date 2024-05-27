@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/views/style.css?v=16">
+    <link rel="stylesheet" href="/app/views/style.css?v=15">
     <title><?= __("Service Booking") ?></title>
 </head>
 
@@ -33,6 +33,7 @@
                             <p class="view_zipcode"><?= $address->ZipCode ?></p>
                         </div>
                         <div class="address_buttons">
+                            <a href='/Address/edit/<?= $address->AddressId ?>' class='submit-button'><?= __("Edit") ?></a>
                             <a href='/Address/delete/<?= $address->AddressId ?>' class='button-style-delete' id='address<?=$address->AddressId?>'><?= __("Delete") ?></a>
                         </div>
                     </div>

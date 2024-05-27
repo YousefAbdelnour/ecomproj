@@ -60,6 +60,15 @@ class Address extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_CLASS, self::class);
         return $STMT->fetchAll();
     }
+    public function getByAddressId($addressId)
+    {
+    $SQL = 'SELECT * FROM Address WHERE AddressId = :address_id';
+    $STMT = self::$_conn->prepare($SQL);
+    $STMT->execute(['address_id' => $addressId]);
+    $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Address');
+    return $STMT->fetch();
+    }
+
 
     public function getById()
     {

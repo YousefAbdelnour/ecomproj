@@ -23,6 +23,7 @@ $this->addRoute('Customer/pay', 'Customer,pay');
 $this->addRoute('Customer/logout', 'Customer,logout');
 
 $this->addRoute('Address/delete/{id}', 'Address,delete');
+$this->addRoute('Address/edit/{id}', 'Address,edit');
 $this->addRoute('Account/display/{type}', 'Account,display');
 $this->addRoute('Account/logout', 'Account,logout');
 $this->addRoute('Account/home_maid', 'Account,home_maid');
