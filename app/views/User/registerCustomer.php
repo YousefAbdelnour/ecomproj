@@ -23,15 +23,15 @@ $locale = $_COOKIE['lang'] ?? 'fr';
     <form id="register_form" method="POST" action="">
         <div class="form_column">
             <label for="usernameReg"><?=__('Username')?></label>
-            <input type="text" placeholder="DonutMan" id="usernameReg" name="usernameReg">
+            <input type="text" placeholder="DonutMan" id="usernameReg" name="usernameReg" minlength="4" maxlength="25" required>
         </div>
         <div class="form_column">
             <label for="passwordReg"><?=__('Password')?></label>
-            <input type="password" placeholder="Password" id="passwordReg" name="passwordReg">
+            <input type="password" placeholder="Password" id="passwordReg" name="passwordReg" minlength="6" maxlength="30" required>
         </div>
         <div class="form_column">
             <label for="passwordConfirm"><?=__('Retype Password')?></label>
-            <input type="password" placeholder="Password" id="passwordConfirm" name="passwordConfirm">
+            <input type="password" placeholder="Password" id="passwordConfirm" name="passwordConfirm" minlength="6" maxlength="30" required>
         </div>
         <input type="submit" name="action" value="Sign-Up">
     </form>

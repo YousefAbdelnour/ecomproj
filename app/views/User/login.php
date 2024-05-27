@@ -9,6 +9,9 @@
 </head>
 <?php
 // Available languages
+
+use function PHPUnit\Framework\isEmpty;
+
 $supportedLocales = ['fr', 'en'];
 
 // Current locale
@@ -29,7 +32,12 @@ $locale = $_COOKIE['lang'] ?? 'fr';
             <label for="passwordLogin"><?= __('Password') ?></label>
             <input type="password" placeholder="Password" id="passwordLogin" name="passwordLogin">
         </div>
-        <p><a href="/User/forgotPasswordCustomer"><?=__('Forgot password?')?></a></p>
+        <div class="form_column">
+            <?php if (!empty($error)) : ?>
+                <p><?= __(htmlspecialchars($error)) ?></p>
+            <?php endif; ?>
+        </div>
+        <p><a href="/User/forgotPasswordCustomer"><?= __('Forgot password?') ?></a></p>
         <p>
         <p><a href="/User/loginStaff"><?= __('Staff member?') ?></a>
         <p>

@@ -18,11 +18,11 @@
         <div class="form-container">
             <div class="form-group">
                 <label for="editName"><?= __('Name') ?></label>
-                <input type="text" placeholder="First Last" id="editName" name="editName" value="<?php echo isset($data['customer_profile']) ? htmlspecialchars($data['customer_profile']->Name) : ''; ?>">
+                <input type="text" placeholder="First Last" id="editName" minlength="4" maxlength="60" required name="editName" require value="<?php echo isset($data['customer_profile']) ? htmlspecialchars($data['customer_profile']->Name) : ''; ?>">
             </div>
             <div class="form-group">
                 <label for="editPhoneNumber"><?= __('Phone Number') ?></label>
-                <input type="text" placeholder="123-456-7890" id="editPhoneNumber" name="editPhoneNumber" value="<?php echo isset($data['customer_profile']) ? htmlspecialchars($data['customer_profile']->Phone_Number) : ''; ?>">
+                <input type="text" placeholder="123-456-7890" id="editPhoneNumber" minlength="12" maxlength="12" required name="editPhoneNumber" value="<?php echo isset($data['customer_profile']) ? htmlspecialchars($data['customer_profile']->Phone_Number) : ''; ?>">
             </div>
             <div class="form-group">
                 <input type="submit" name="action" value="Submit">

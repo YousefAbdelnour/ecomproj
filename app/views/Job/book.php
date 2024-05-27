@@ -41,13 +41,13 @@
                             <?= __('No Maid') ?>
                         </option>
                         <?php if (!empty($data['latestFiveJobs'])) :
-                            $uniqueMaids = [];
+                            $uniqueMaids = []; // Initialize an empty array to track added Maid IDs
 
                             foreach ($data['latestFiveJobs'] as $job) :
-                                $jobMaids = $job->getMaidsByJob();
+                                $jobMaids = $job->getMaidsByJob(); // Assuming this returns an array of maid objects
 
                                 foreach ($jobMaids as $maid) :
-                                    if (!isset($uniqueMaids[$maid->AccountId])) :
+                                    if (!isset($uniqueMaids[$maid->AccountId])) : // Check if the maid's ID is not in the uniqueMaids array
                                         $uniqueMaids[$maid->AccountId] = true;
 
                         ?>
@@ -55,7 +55,7 @@
                                             <?php echo htmlspecialchars($maid->Username); ?>
                                         </option>
                         <?php endif;
-                                endforeach;
+                                endforeach; 
                             endforeach;
                         endif;
                         ?>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group">
                     <label for="spots"><?= __('Number of Maids Required') ?></label>
-                    <input type="number" id="spots" name="spots" required>
+                    <input type="number" id="spots" name="spots"  max='10' required>
                 </div>
             </div>
             <div class="form-row">
@@ -75,7 +75,7 @@
             </div>
             <div id="textarea_div">
                 <label for="dsc"><?= __('Description') ?></label><br><br>
-                <textarea id="dsc" name="dsc" required></textarea>
+                <textarea id="dsc" name="dsc" minlength="10" required></textarea>
             </div>
             <input type="submit" name="action" value="Book" class="submit-button">
         </form>

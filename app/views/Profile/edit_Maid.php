@@ -17,11 +17,11 @@
     <form id="profile_edit_form" method="POST" action="">
         <div class="form_column">
             <label for="editName"><?= __('Name') ?></label>
-            <input type="text" placeholder="First Last" id="editName" name="editName">
+            <input type="text" placeholder="First Last" id="editName" name="editName" minlength="4" maxlength="60" required>
         </div>
         <div class="form_column">
             <label for="editPhoneNumber"><?= __('Phone Number') ?></label>
-            <input type="text" placeholder="xxxxxxxxxx" id="editPhoneNumber" name="editPhoneNumber">
+            <input type="text" placeholder="xxxxxxxxxx" id="editPhoneNumber" name="editPhoneNumber" minlength="12" maxlength="12" required>
         </div>
         <div class="createButtons">
             <input type="submit" value="Edit">

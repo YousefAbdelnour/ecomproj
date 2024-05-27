@@ -86,7 +86,7 @@ class Job extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_INTO, $this);
         return $STMT->fetch();
     }
-    
+
     public function getByAddressId()
     {
         $SQL = 'SELECT * FROM Job WHERE AddressId = :address_id';
@@ -125,9 +125,11 @@ class Job extends \app\core\Model
 
     public function getJobsbyCustomer($CustomerId)
     {
-        $SQL = 'SELECT * FROM Job WHERE AddressId = 
-                            (SELECT AddressId FROM Address WHERE Customer_ProfileId = 
-                            (SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :CustomerId))';
+        $SQL = 'SELECT * FROM Job WHERE AddressId IN (
+                    SELECT AddressId FROM Address WHERE Customer_ProfileId = (
+                        SELECT Customer_ProfileId FROM Customer_Profile WHERE CustomerId = :CustomerId
+                    )
+                )';
         $STMT = self::$_conn->prepare($SQL);
         $STMT->execute(['CustomerId' => $CustomerId]);
         $STMT->setFetchMode(PDO::FETCH_CLASS, get_class($this));

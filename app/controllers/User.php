@@ -210,10 +210,10 @@ class User extends \app\core\Controller
                 $_SESSION['CustomerId'] = $account->CustomerId;
                 header('location: /Customer/home');
             } else {
-                header('location:/User/login');
+                $this->view('User/login', ['error' => 'Please make sure all information is correct!']);
             }
         } else {
-            $this->view('User/login');
+            $this->view('User/login' , ['error' => '']);
         }
     }
 

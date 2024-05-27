@@ -18,19 +18,19 @@
     <form id="address_add_form" method="POST" action="">
         <div class="form_column">
             <label for="addCountry"><?= __("Country") ?></label>
-            <input type="text" placeholder="<?= __("Canada") ?>" id="addCountry" name="addCountry">
+            <input type="text" placeholder="<?= __("Canada") ?>" id="addCountry" required name="addCountry">
         </div>
         <div class="form_column">
             <label for="addState"><?= __("State") ?></label>
-            <input type="text" placeholder="<?= __("Quebec") ?>" id="addState" name="addState">
+            <input type="text" placeholder="<?= __("Quebec") ?>" id="addState" required name="addState">
         </div>
         <div class="form_column">
             <label for="addStreet"><?= __("Street") ?></label>
-            <input type="text" placeholder="<?= __("Street name") ?>" id="addStreet" name="addStreet">
+            <input type="text" placeholder="<?= __("Street name") ?>" id="addStreet" required name="addStreet">
         </div>
         <div class="form_column">
             <label for="addResidenceNumber"><?= __("Residence Number") ?></label>
-            <input type="text" placeholder="<?= __("000") ?>" id="addResidenceNumber" name="addResidenceNumber">
+            <input type="number" placeholder="<?= __("000") ?>" id="addResidenceNumber" required name="addResidenceNumber">
         </div>
         <div class="form_column">
             <label for="House_Size"><?= __("House Size") ?></label>
@@ -38,7 +38,11 @@
         </div>
         <div class="form_column">
             <label for="addZipCode"><?= __("Zip Code") ?></label>
-            <input type="text" placeholder="<?= __("XXX XXX") ?>" id="addZipCode" name="addZipCode">
+            <input type="text" placeholder="<?= __("XXX XXX") ?>" id="addZipCode" required minlength="7" maxlength="7" name="addZipCode">
+        </div>
+        <div class="form_column">
+            <p><?php if (!empty($error)) : echo __($error);
+                endif; ?></p>
         </div>
         <div class="createButtons">
             <input type="submit" name="action" value="<?= __("Add") ?>">

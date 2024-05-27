@@ -37,7 +37,7 @@
             </div>
             <div id="textarea_div">
                 <label for="dsc"><?= __('Description') ?></label><br><br>
-                <textarea id="dsc" name="dsc" required></textarea>
+                <textarea id="dsc" name="dsc" minlength="20" required></textarea>
             </div>
             <input type="submit" value="<?= __('Send') ?>" class="submit-button">
         </form>
