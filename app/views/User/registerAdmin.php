@@ -33,6 +33,10 @@
                 <option value="yes"><?= __('Admin') ?></option>
             </select>
         </div>
+        <div class="form_column">
+            <p><?php if (!empty($error)) : echo __($error);
+                endif; ?></p>
+        </div>
         <input type="submit" value="Register Account">
     </form>
 </body>

@@ -5,6 +5,8 @@ namespace app\controllers;
 use chillerlan\Authenticator\{Authenticator, AuthenticatorOptions};
 use chillerlan\QRCode\QRCode;
 
+use function PHPUnit\Framework\equalTo;
+
 class User extends \app\core\Controller
 {
     public function forgotPasswordCustomer()
@@ -213,7 +215,7 @@ class User extends \app\core\Controller
                 $this->view('User/login', ['error' => 'Please make sure all information is correct!']);
             }
         } else {
-            $this->view('User/login' , ['error' => '']);
+            $this->view('User/login', ['error' => '']);
         }
     }
 
@@ -224,16 +226,29 @@ class User extends \app\core\Controller
                 header('location:/User/registerCustomer');
             }
             $account = new \app\models\Customer();
-            $account->Username = $_POST['usernameReg'];
-            if ($_POST['passwordReg'] === $_POST['passwordConfirm'] && !empty(trim($_POST['passwordReg']))) {
-                $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
-                $account->IsActive = 0;
-                $account->insert();
-                $account = $account->getByUsername($account->Username);
-                $_SESSION['Id'] = $account->CustomerId;
-                header('location:/Profile/create_Customer');
+            $username = $_POST['usernameReg'];
+            $allCustomers = $account->getAll();
+            $flag = true;
+            foreach ($allCustomers as $testUsername) {
+                if ($testUsername->Username === $username) {
+                    $flag = false;
+                    break;
+                }
+            }
+            if ($flag) {
+                $account->Username = $username;
+                if ($_POST['passwordReg'] === $_POST['passwordConfirm'] && !empty(trim($_POST['passwordReg']))) {
+                    $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
+                    $account->IsActive = 0;
+                    $account->insert();
+                    $account = $account->getByUsername($account->Username);
+                    $_SESSION['Id'] = $account->CustomerId;
+                    header('location:/Profile/create_Customer');
+                } else {
+                    header('location:/User/registerCustomer');
+                }
             } else {
-                header('location:/User/registerCustomer');
+                $this->view('User/registerCustomer', ['error' => 'Username is already in use!']);
             }
         } else {
             $this->view('User/registerCustomer');
@@ -248,15 +263,29 @@ class User extends \app\core\Controller
                 header('location:/User/registerAdmin');
             }
             $account = new \app\models\Account();
-            $account->Username = $_POST['usernameReg'];
-            if ($_POST['passwordReg'] === $_POST['passwordConfirm'] && !empty(trim($_POST['passwordReg']))) {
-                $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
-                $account->IsActive = 0;
-                $account->IsAdmin = $_POST['isAdmin'] === 'yes' ? 1 : 0;
-                $account->insert();
-                header('location:/Account/display/1');
+            $username = $_POST['usernameReg'];
+            $allAccounts = $account->getAll();
+            $flag = true;
+            foreach ($allAccounts as $testUsername) {
+                if ($testUsername->Username === $username) {
+                    $flag = false;
+                    break;
+                }
+            }
+
+            if ($flag) {
+                $account->Username = $username;
+                if ($_POST['passwordReg'] === $_POST['passwordConfirm'] && !empty(trim($_POST['passwordReg']))) {
+                    $account->Password_Hash = password_hash($_POST['passwordReg'], PASSWORD_DEFAULT);
+                    $account->IsActive = 0;
+                    $account->IsAdmin = $_POST['isAdmin'] === 'yes' ? 1 : 0;
+                    $account->insert();
+                    header('location:/Account/display/1');
+                } else {
+                    header('location:/User/registerAdmin');
+                }
             } else {
-                header('location:/User/registerAdmin');
+                $this->view('User/registerAdmin', ['error' => 'Username is already in use!']);
             }
         } else {
             $this->view('User/registerAdmin');

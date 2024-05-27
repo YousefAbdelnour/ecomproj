@@ -17,11 +17,11 @@
     <form id="profile_create_form" method="POST" action="">
         <div class="form_column">
             <label for="createName"><?= __('Name') ?></label>
-            <input type="text" placeholder="First Last" id="createName" name="createName">
+            <input type="text" placeholder="First Last" id="createName" name="createName" onsubmit="return checkPhoneNumber()">
         </div>
         <div class="form_column">
             <label for="createPhoneNumber"><?= __('Phone Number') ?></label>
-            <input type="text" placeholder="xxxxxxxxxx" id="createPhoneNumber" name="createPhoneNumber">
+            <input type="text" placeholder="123-456-7890" id="createPhoneNumber" name="createPhoneNumber" oninput="formatPhoneNumber(this)">
         </div>
         <div class="createButtons">
             <br>
@@ -30,25 +30,24 @@
     </form>
 </body>
 <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const phoneInputFields = document.querySelectorAll('input[name="createPhoneNumber"], input[name="editPhoneNumber"]');
+    function formatPhoneNumber(input) {
+        let value = input.value.replace(/[^\d-]/g, '');
+        let numbers = value.replace(/-/g, '');
+        if (numbers.length > 10) {
+            numbers = numbers.substring(0, 10);
+        }
+        input.value = numbers.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');
+    }
 
-        phoneInputFields.forEach((field) => {
-            field.addEventListener('input', function() {
-                const input = this.value.replace(/\D/g, '').substring(0, 10); // First ten digits only
-                const areaCode = input.substring(0, 3);
-                const middle = input.substring(3, 6);
-                const last = input.substring(6, 10);
-                if (input.length > 6) {
-                    this.value = `${areaCode}-${middle}-${last}`;
-                } else if (input.length > 3) {
-                    this.value = `${areaCode}-${middle}`;
-                } else if (input.length > 0) {
-                    this.value = `${areaCode}`;
-                }
-            });
-        });
-    });
+    function checkPhoneNumber() {
+        const phoneNumber = document.getElementById('createPhoneNumber').value;
+        const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+        if (!phoneRegex.test(phoneNumber)) {
+            alert('Please enter a valid phone number in the format 123-456-7890.');
+            return false;
+        }
+        return true;
+    }
 </script>
 
 </html>

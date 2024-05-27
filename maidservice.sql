@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 27, 2024 at 05:41 AM
+-- Generation Time: May 28, 2024 at 01:11 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,8 +42,7 @@ CREATE TABLE `Account` (
 
 INSERT INTO `Account` (`AccountId`, `Username`, `Password_Hash`, `IsActive`, `IsAdmin`, `secret`) VALUES
 (1, 'RootAdmin', '$2y$10$y517Cs.weITHjOVyhMfbLOAPZeOwJexQML7DM43eLAu.SEFTTxaGu', 0, 1, NULL),
-(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1, NULL),
-(4, 'testmaid', '$2y$10$GStdAmBs7283qGNllDduT.67hba8X89KSoa4uw4wvmiy7H6GldO/.', 0, 0, NULL);
+(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -55,13 +54,6 @@ CREATE TABLE `Account_Job` (
   `AccountId` int(11) NOT NULL,
   `JobId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Account_Job`
---
-
-INSERT INTO `Account_Job` (`AccountId`, `JobId`) VALUES
-(4, 4);
 
 -- --------------------------------------------------------
 
@@ -81,9 +73,7 @@ CREATE TABLE `Account_Profile` (
 --
 
 INSERT INTO `Account_Profile` (`ProfileId`, `Name`, `Phone_Number`, `AccountId`) VALUES
-(2, 'RootAdmin', '0000000000', 1),
-(3, 'another admin', '0000000000', 3),
-(4, 'Uzi canozi', '1111111111', 4);
+(6, 'Cristian', '1231231231', 3);
 
 -- --------------------------------------------------------
 
@@ -102,13 +92,6 @@ CREATE TABLE `Address` (
   `size` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `Address`
---
-
-INSERT INTO `Address` (`AddressId`, `Customer_ProfileId`, `Building_Number`, `Street_Name`, `ZipCode`, `State`, `Country`, `size`) VALUES
-(13, 2, '111', 'fzvsDfSDfsF', '111 111', 'Quebec', 'Canada', 9);
-
 -- --------------------------------------------------------
 
 --
@@ -123,15 +106,6 @@ CREATE TABLE `Customer` (
   `secret` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `Customer`
---
-
-INSERT INTO `Customer` (`CustomerId`, `Username`, `Password_Hash`, `IsActive`, `secret`) VALUES
-(2, 'DonutMan', '$2y$10$ranjfxqT81DPyJXxc6JxHexuEiZao1/Ry7MnXY4/C8uLYlz44pQLW', 0, NULL),
-(3, 'DonutMan2', '$2y$10$9jFizh0i.uLwWaM0Yhm5bOKW4rc4wpV0X89zz.Z/tusQsJzewC91.', 0, NULL),
-(4, 'customeruzi', '$2y$10$BfQWDnl/MroZah603/xro.AT63Wuvj0Morc8AEoqGw4.Ga2b3wJvy', 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -144,15 +118,6 @@ CREATE TABLE `Customer_Profile` (
   `Phone_Number` varchar(10) NOT NULL,
   `CustomerId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Customer_Profile`
---
-
-INSERT INTO `Customer_Profile` (`Customer_ProfileId`, `Name`, `Phone_Number`, `CustomerId`) VALUES
-(1, 'Uzi Canozi', '1111111111', 3),
-(2, 'yousef', '4384381111', 4),
-(3, 'customer', '4388312030', 2);
 
 -- --------------------------------------------------------
 
@@ -170,15 +135,6 @@ CREATE TABLE `Job` (
   `MaidId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `Job`
---
-
-INSERT INTO `Job` (`JobId`, `AddressId`, `Time_Of_Job`, `Status`, `Spots_Left`, `Description`, `MaidId`) VALUES
-(2, 13, '2024-06-17 14:36:00', 2, 3, 'Hello', NULL),
-(3, 13, '2024-07-12 13:35:00', 0, 2, 'Hello again', NULL),
-(4, 13, '2024-07-03 15:34:00', 1, 0, 'hello', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -195,14 +151,6 @@ CREATE TABLE `Message` (
   `Receiver_Type` tinyint(4) NOT NULL,
   `Sender_Type` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `Message`
---
-
-INSERT INTO `Message` (`MessageId`, `SenderId`, `ReceiverId`, `Message_Text`, `Title`, `TimeStamp`, `Receiver_Type`, `Sender_Type`) VALUES
-(1, 2, 1, 'hi', 'from customer', '2024-05-16 02:59:44', 0, 1),
-(2, 2, 1, 'asd', 'from customer 2', '2024-05-16 03:25:03', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -295,43 +243,43 @@ ALTER TABLE `Payment_Log`
 -- AUTO_INCREMENT for table `Account`
 --
 ALTER TABLE `Account`
-  MODIFY `AccountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `AccountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `Account_Profile`
 --
 ALTER TABLE `Account_Profile`
-  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `Address`
 --
 ALTER TABLE `Address`
-  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `Customer`
 --
 ALTER TABLE `Customer`
-  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CustomerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `Customer_Profile`
 --
 ALTER TABLE `Customer_Profile`
-  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Customer_ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `Job`
 --
 ALTER TABLE `Job`
-  MODIFY `JobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `JobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `Message`
 --
 ALTER TABLE `Message`
-  MODIFY `MessageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `MessageId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `Payment_Log`
