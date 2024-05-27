@@ -21,12 +21,14 @@ class Account_Job extends \app\core\Model
 
     function getAllByAccountId()
     {
-        $SQL = 'SELECT * FROM Account_Job WHERE AccountId = :account_id';
+        // Updated SQL to handle multiple JobIds returned by the subquery
+        $SQL = 'SELECT * FROM Job WHERE JobId IN (SELECT JobId FROM Account_Job WHERE AccountId = :AccountId)';
         $STMT = self::$_conn->prepare($SQL);
-        $STMT->execute(['account_id' => $this->AccountId]);
-        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Account_Job');
+        $STMT->execute(['AccountId' => $this->AccountId]);
+        $STMT->setFetchMode(PDO::FETCH_CLASS, 'app\models\Job');
         return $STMT->fetchAll();
     }
+
 
     function deleteByAccountId()
     {

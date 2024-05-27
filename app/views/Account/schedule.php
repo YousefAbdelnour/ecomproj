@@ -18,6 +18,7 @@
     <div class="divider"></div>
     <div class="wrapper">
         <div id="calendar"></div>
+        
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.global.min.js"></script>

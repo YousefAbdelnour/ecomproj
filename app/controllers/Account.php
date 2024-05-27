@@ -67,22 +67,8 @@ class Account extends \app\core\Controller
     {
         $accountJobModel = new \app\models\Account_Job();
         $accountJobModel->AccountId = $_SESSION['AccountId'];
-        $accountJobs = $accountJobModel->getAllByAccountId();
-
-        $jobIds = array_map(function ($accountJob) {
-            return $accountJob->JobId;
-        }, $accountJobs);
-
-        $jobs = [];
-        if (!empty($jobIds)) {
-            $jobModel = new \app\models\Job();
-            foreach ($jobIds as $jobId) {
-                $jobModel->JobId = $jobId;
-                $jobs[] = $jobModel->getById();
-            }
-        }
-
-        $this->view('/Account/schedule', ['bookings' => $jobs]);
+        $accountJobs = $accountJobModel->getAllByAccountId(); 
+        $this->view('/Account/schedule', ['bookings' => $accountJobs]);
     }
 
     //Method that displays all information 

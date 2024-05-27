@@ -86,7 +86,7 @@ class Job extends \app\core\Model
         $STMT->setFetchMode(PDO::FETCH_INTO, $this);
         return $STMT->fetch();
     }
-
+    
     public function getByAddressId()
     {
         $SQL = 'SELECT * FROM Job WHERE AddressId = :address_id';
