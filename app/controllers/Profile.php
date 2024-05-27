@@ -96,11 +96,9 @@ class Profile extends \app\core\Controller
                 header('location:/Profile/show_Customer');
             }
         } else {
-            // Fetch customer details from the database
             $customer_profile = new \app\models\Customer_Profile();
             $customer_profile = $customer_profile->getByCustomerId($_SESSION['CustomerId']);
 
-            // Pass the customer details to the view
             $data['customer_profile'] = $customer_profile;
             $this->view('Profile/edit_Customer', $data);
         }

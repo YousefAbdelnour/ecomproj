@@ -190,7 +190,7 @@ class User extends \app\core\Controller
                     $_SESSION['isAdmin'] = false;
                     header('location:/Account/home_maid');
                 }
-                exit(); // Ensure no further code is executed after redirection
+                exit();
             } else {
                 $data = ['error' => 'Invalid username or password'];
                 $this->view('User/loginStaff', $data);

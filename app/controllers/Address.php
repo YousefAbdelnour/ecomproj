@@ -72,7 +72,7 @@ class Address extends \app\core\Controller
         }
 
         $address = new \app\models\Address();
-        $address = $address->getByAddressId($id); // Assuming you have a method to get address by its ID
+        $address = $address->getByAddressId($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $building_number = $_POST['addResidenceNumber'];
