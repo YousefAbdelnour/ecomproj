@@ -11,15 +11,14 @@ class Job extends \app\core\Model
     public $AddressId;
     public $Time_Of_Job;
     public $Status;
-    public $House_Size;
     public $Spots_Left;
     public $Description;
     public $MaidId;
 
     public function insert()
     {
-        $SQL = 'INSERT INTO Job (AddressId, Time_Of_Job, Status, House_Size, Spots_Left, Description, MaidId) 
-            VALUES (:address_id, :time_of_job, :status, :house_size, :spots_left, :description, :maid_id)';
+        $SQL = 'INSERT INTO Job (AddressId, Time_Of_Job, Status,  Spots_Left, Description, MaidId) 
+            VALUES (:address_id, :time_of_job, :status, :spots_left, :description, :maid_id)';
         $STMT = self::$_conn->prepare($SQL);
         // Convert empty string for MaidId to null
         $maidId = $this->MaidId !== '' ? $this->MaidId : null;
@@ -27,7 +26,6 @@ class Job extends \app\core\Model
             'address_id' => $this->AddressId,
             'time_of_job' => $this->Time_Of_Job,
             'status' => $this->Status,
-            'house_size' => $this->House_Size,
             'spots_left' => $this->Spots_Left,
             'description' => $this->Description,
             'maid_id' => $maidId  // Use the converted value
@@ -110,7 +108,7 @@ class Job extends \app\core\Model
     public function update()
     {
         $SQL = 'UPDATE Job SET AddressId = :address_id, Time_Of_Job = :time_of_job, Status = :status, 
-                House_Size = :house_size, Spots_Left = :spots_left, Description = :description, MaidId = :maid_id 
+                Spots_Left = :spots_left, Description = :description, MaidId = :maid_id 
                 WHERE JobId = :job_id';
 
         $STMT = self::$_conn->prepare($SQL);
@@ -118,7 +116,6 @@ class Job extends \app\core\Model
             'address_id' => $this->AddressId,
             'time_of_job' => $this->Time_Of_Job,
             'status' => $this->Status,
-            'house_size' => $this->House_Size,
             'spots_left' => $this->Spots_Left,
             'description' => $this->Description,
             'maid_id' => $this->MaidId,

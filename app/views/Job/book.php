@@ -20,7 +20,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="address"><?= __('Address') ?></label>
-                    <select id="address" name="address" required>
+                    <select id="address" name="address" onchange="updateHouseSize(this.value);" required>
                         <?php if (!empty($addresses)) : ?>
                             <?php foreach ($addresses as $address) : ?>
                                 <option value="<?php echo $address->AddressId; ?>">
@@ -31,10 +31,6 @@
                             <option value=""><?= __('No addresses available') ?></option>
                         <?php endif; ?>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="House_Size"><?= __('House size (in sq ft)') ?></label>
-                    <input type="number" id="House_Size" name="House_Size" required>
                 </div>
             </div>
             <div class="form-row">

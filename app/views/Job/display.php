@@ -31,10 +31,6 @@
                                 <p class="view_date"><?=__('Status:')?><?php echo $booking->Status == 0 ? 'Pending' : 'Confirmed'; ?></p>
                             </div>
                             <div class="view_booking_row">
-                                <p class="view_customer"><?=__('House Size: ')?><?php echo $booking->House_Size; ?> sqm</p>
-                                <p class="view_status"><?=__('Spots Left: ')?><?php echo $booking->Spots_Left; ?></p>
-                            </div>
-                            <div class="view_booking_row">
                                 <p class="view_description"><?=__('Description:')?><?php echo $booking->Description; ?></p>
                                 <p class="view_maid"><?=__('Maid ID:')?><?php echo $booking->MaidId; ?></p>
                             </div>

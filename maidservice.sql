@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 16, 2024 at 05:27 AM
+-- Generation Time: May 27, 2024 at 05:41 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -42,7 +42,8 @@ CREATE TABLE `Account` (
 
 INSERT INTO `Account` (`AccountId`, `Username`, `Password_Hash`, `IsActive`, `IsAdmin`, `secret`) VALUES
 (1, 'RootAdmin', '$2y$10$y517Cs.weITHjOVyhMfbLOAPZeOwJexQML7DM43eLAu.SEFTTxaGu', 0, 1, NULL),
-(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1, NULL);
+(3, 'another admin', '$2y$10$hqGwxnDGCJESqMuR3h5tiOX1rQQO6yvYZxLlHygpX7hQ6jnaXjyGm', 0, 1, NULL),
+(4, 'testmaid', '$2y$10$GStdAmBs7283qGNllDduT.67hba8X89KSoa4uw4wvmiy7H6GldO/.', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -54,6 +55,13 @@ CREATE TABLE `Account_Job` (
   `AccountId` int(11) NOT NULL,
   `JobId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Account_Job`
+--
+
+INSERT INTO `Account_Job` (`AccountId`, `JobId`) VALUES
+(4, 4);
 
 -- --------------------------------------------------------
 
@@ -74,7 +82,8 @@ CREATE TABLE `Account_Profile` (
 
 INSERT INTO `Account_Profile` (`ProfileId`, `Name`, `Phone_Number`, `AccountId`) VALUES
 (2, 'RootAdmin', '0000000000', 1),
-(3, 'another admin', '0000000000', 3);
+(3, 'another admin', '0000000000', 3),
+(4, 'Uzi canozi', '1111111111', 4);
 
 -- --------------------------------------------------------
 
@@ -89,15 +98,16 @@ CREATE TABLE `Address` (
   `Street_Name` varchar(50) NOT NULL,
   `ZipCode` varchar(10) NOT NULL,
   `State` varchar(50) NOT NULL,
-  `Country` varchar(50) NOT NULL
+  `Country` varchar(50) NOT NULL,
+  `size` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `Address`
 --
 
-INSERT INTO `Address` (`AddressId`, `Customer_ProfileId`, `Building_Number`, `Street_Name`, `ZipCode`, `State`, `Country`) VALUES
-(12, 2, '1', '136, Rue Renaud', 'J7V 6C2', 'Québec', 'Canada');
+INSERT INTO `Address` (`AddressId`, `Customer_ProfileId`, `Building_Number`, `Street_Name`, `ZipCode`, `State`, `Country`, `size`) VALUES
+(13, 2, '111', 'fzvsDfSDfsF', '111 111', 'Quebec', 'Canada', 9);
 
 -- --------------------------------------------------------
 
@@ -155,7 +165,6 @@ CREATE TABLE `Job` (
   `AddressId` int(11) NOT NULL,
   `Time_Of_Job` timestamp NOT NULL DEFAULT current_timestamp(),
   `Status` tinyint(4) NOT NULL,
-  `House_Size` tinyint(4) NOT NULL,
   `Spots_Left` int(11) NOT NULL,
   `Description` text NOT NULL,
   `MaidId` int(11) DEFAULT NULL
@@ -165,8 +174,10 @@ CREATE TABLE `Job` (
 -- Dumping data for table `Job`
 --
 
-INSERT INTO `Job` (`JobId`, `AddressId`, `Time_Of_Job`, `Status`, `House_Size`, `Spots_Left`, `Description`, `MaidId`) VALUES
-(1, 12, '2024-05-24 12:20:00', 0, 6, 0, 'jacob puked in my car', NULL);
+INSERT INTO `Job` (`JobId`, `AddressId`, `Time_Of_Job`, `Status`, `Spots_Left`, `Description`, `MaidId`) VALUES
+(2, 13, '2024-06-17 14:36:00', 2, 3, 'Hello', NULL),
+(3, 13, '2024-07-12 13:35:00', 0, 2, 'Hello again', NULL),
+(4, 13, '2024-07-03 15:34:00', 1, 0, 'hello', NULL);
 
 -- --------------------------------------------------------
 
@@ -284,19 +295,19 @@ ALTER TABLE `Payment_Log`
 -- AUTO_INCREMENT for table `Account`
 --
 ALTER TABLE `Account`
-  MODIFY `AccountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `AccountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Account_Profile`
 --
 ALTER TABLE `Account_Profile`
-  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ProfileId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Address`
 --
 ALTER TABLE `Address`
-  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `AddressId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `Customer`
@@ -314,7 +325,7 @@ ALTER TABLE `Customer_Profile`
 -- AUTO_INCREMENT for table `Job`
 --
 ALTER TABLE `Job`
-  MODIFY `JobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `JobId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `Message`

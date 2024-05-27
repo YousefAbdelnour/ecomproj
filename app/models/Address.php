@@ -13,11 +13,12 @@ class Address extends \app\core\Model
     public $ZipCode;
     public $State;
     public $Country;
+    public $Size;
 
     public function insert()
     {
-        $SQL = 'INSERT INTO Address (Customer_ProfileId, Building_Number, Street_Name, ZipCode, State, Country) 
-                VALUES (:customer_profile_id, :building_number, :street_name, :zipcode, :state, :country)';
+        $SQL = 'INSERT INTO Address (Customer_ProfileId, Building_Number, Street_Name, ZipCode, State, Country, Size) 
+                VALUES (:customer_profile_id, :building_number, :street_name, :zipcode, :state, :country, :Size)';
 
         $STMT = self::$_conn->prepare($SQL);
         $data = [
@@ -26,7 +27,8 @@ class Address extends \app\core\Model
             'street_name' => $this->Street_Name,
             'zipcode' => $this->ZipCode,
             'state' => $this->State,
-            'country' => $this->Country
+            'country' => $this->Country,
+            'Size' => $this->Size
         ];
         $STMT->execute($data);
     }
@@ -79,7 +81,7 @@ class Address extends \app\core\Model
 
     public function update()
     {
-        $SQL = 'UPDATE Address SET Building_Number = :building_number, Street_Name = :street_name, ZipCode = :zipcode, 
+        $SQL = 'UPDATE Address SET Building_Number = :building_number, Street_Name = :street_name, ZipCode = :zipcode, Size = :Size, 
                 State = :state, Country = :country WHERE AddressId = :address_id';
 
         $STMT = self::$_conn->prepare($SQL);
@@ -89,7 +91,8 @@ class Address extends \app\core\Model
             'zipcode' => $this->ZipCode,
             'state' => $this->State,
             'country' => $this->Country,
-            'address_id' => $this->AddressId
+            'address_id' => $this->AddressId,
+            'Size' => $this->Size
         ]);
     }
 

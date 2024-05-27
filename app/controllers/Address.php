@@ -32,12 +32,14 @@ class Address extends \app\core\Controller
             $zip_code = $_POST['addZipCode'];
             $state = $_POST['addState'];
             $country = $_POST['addCountry'];
-            if (!empty($building_number) && !empty($street_name) && !empty($zip_code) && !empty($state) && !empty($country)) {
+            $size = $_POST['House_Size'];
+            if (!empty($building_number) && !empty($street_name) && !empty($zip_code) && !empty($state) && !empty($country) && !empty($size)) {
                 $address->Building_Number = $building_number;
                 $address->Street_Name = $street_name;
                 $address->ZipCode = $zip_code;
                 $address->State = $state;
                 $address->Country = $country;
+                $address->Size = $size;
                 var_dump($address);
                 $address->insert();
                 header('location:/Address/display');

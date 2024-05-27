@@ -33,6 +33,10 @@
             <input type="text" placeholder="<?= __("000") ?>" id="addResidenceNumber" name="addResidenceNumber">
         </div>
         <div class="form_column">
+            <label for="House_Size"><?= __("House Size") ?></label>
+            <input type="number" id="House_Size" name="House_Size" min="1" max="9" required>
+        </div>
+        <div class="form_column">
             <label for="addZipCode"><?= __("Zip Code") ?></label>
             <input type="text" placeholder="<?= __("XXX XXX") ?>" id="addZipCode" name="addZipCode">
         </div>
