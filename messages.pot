@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 03:04+0000\n"
+"POT-Creation-Date: 2024-05-28 00:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,15 +70,19 @@ msgstr ""
 msgid "Accept or Deny"
 msgstr ""
 
-#: app/views/Account/home_maid.php:35
+#: app/views/Account/home_maid.php:34
 msgid "Time of Job:"
 msgstr ""
 
-#: app/views/Account/home_maid.php:36
+#: app/views/Account/home_maid.php:35
 msgid "Spots left:"
 msgstr ""
 
-#: app/views/Account/home_maid.php:47
+#: app/views/Account/home_maid.php:37
+msgid "Our customer would love to book you again!"
+msgstr ""
+
+#: app/views/Account/home_maid.php:50
 msgid "Accept"
 msgstr ""
 
@@ -98,7 +102,7 @@ msgstr ""
 msgid "Let us make booking easier for you!"
 msgstr ""
 
-#: app/views/Address/add.php:20
+#: app/views/Address/add.php:20 app/views/Address/edit.php:20
 msgid "Country"
 msgstr ""
 
@@ -106,7 +110,7 @@ msgstr ""
 msgid "Canada"
 msgstr ""
 
-#: app/views/Address/add.php:24
+#: app/views/Address/add.php:24 app/views/Address/edit.php:24
 msgid "State"
 msgstr ""
 
@@ -114,7 +118,7 @@ msgstr ""
 msgid "Quebec"
 msgstr ""
 
-#: app/views/Address/add.php:28
+#: app/views/Address/add.php:28 app/views/Address/edit.php:28
 msgid "Street"
 msgstr ""
 
@@ -122,7 +126,7 @@ msgstr ""
 msgid "Street name"
 msgstr ""
 
-#: app/views/Address/add.php:32
+#: app/views/Address/add.php:32 app/views/Address/edit.php:32
 msgid "Residence Number"
 msgstr ""
 
@@ -130,15 +134,19 @@ msgstr ""
 msgid "000"
 msgstr ""
 
-#: app/views/Address/add.php:36
+#: app/views/Address/add.php:36 app/views/Address/edit.php:36
+msgid "House Size"
+msgstr ""
+
+#: app/views/Address/add.php:40 app/views/Address/edit.php:40
 msgid "Zip Code"
 msgstr ""
 
-#: app/views/Address/add.php:37
+#: app/views/Address/add.php:41
 msgid "XXX XXX"
 msgstr ""
 
-#: app/views/Address/add.php:40
+#: app/views/Address/add.php:48
 msgid "Add"
 msgstr ""
 
@@ -154,8 +162,25 @@ msgstr ""
 msgid "ADD"
 msgstr ""
 
-#: app/views/Address/display.php:36
+#: app/views/Address/display.php:36 app/views/Profile/show_Admin.php:31
+#: app/views/Profile/show_Customer.php:32 app/views/Profile/show_Maid.php:31
+msgid "Edit"
+msgstr ""
+
+#: app/views/Address/display.php:37
 msgid "Delete"
+msgstr ""
+
+#: app/views/Address/edit.php:8 app/views/Address/edit.php:14
+msgid "Edit Address"
+msgstr ""
+
+#: app/views/Address/edit.php:15
+msgid "Update your address details!"
+msgstr ""
+
+#: app/views/Address/edit.php:48
+msgid "Update"
 msgstr ""
 
 #: app/views/Customer/home.php:14 app/views/navbar.php:22
@@ -171,8 +196,8 @@ msgstr ""
 msgid "Latest Service"
 msgstr ""
 
-#: app/views/Customer/home.php:27 app/views/Job/book.php:57
-#: app/views/Message/sendFromAccount.php:44 app/views/Message/support.php:39
+#: app/views/Customer/home.php:27 app/views/Job/book.php:77
+#: app/views/Message/sendFromAccount.php:63 app/views/Message/support.php:39
 msgid "Description"
 msgstr ""
 
@@ -196,7 +221,7 @@ msgstr ""
 msgid "- Estimated Time"
 msgstr ""
 
-#: app/views/Customer/home.php:57 app/views/Job/display.php:38
+#: app/views/Customer/home.php:57 app/views/Job/display.php:34
 msgid "Description:"
 msgstr ""
 
@@ -205,7 +230,7 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: app/views/Customer/home.php:65 app/views/Job/display.php:42
+#: app/views/Customer/home.php:65 app/views/Job/display.php:38
 msgid "Cancel"
 msgstr ""
 
@@ -287,19 +312,19 @@ msgstr ""
 msgid "No addresses available"
 msgstr ""
 
-#: app/views/Job/book.php:36
-msgid "House size (in sq ft)"
-msgstr ""
-
-#: app/views/Job/book.php:42
+#: app/views/Job/book.php:38
 msgid "Maid ID (Optional)"
 msgstr ""
 
-#: app/views/Job/book.php:46
+#: app/views/Job/book.php:41
+msgid "No Maid"
+msgstr ""
+
+#: app/views/Job/book.php:66
 msgid "Number of Maids Required"
 msgstr ""
 
-#: app/views/Job/book.php:52
+#: app/views/Job/book.php:72
 msgid "Date and Time"
 msgstr ""
 
@@ -323,19 +348,11 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
-#: app/views/Job/display.php:34
-msgid "House Size: "
-msgstr ""
-
 #: app/views/Job/display.php:35
-msgid "Spots Left: "
-msgstr ""
-
-#: app/views/Job/display.php:39
 msgid "Maid ID:"
 msgstr ""
 
-#: app/views/Job/display.php:49
+#: app/views/Job/display.php:45
 msgid "No bookings found. Please book a service to see it listed here."
 msgstr ""
 
@@ -350,7 +367,7 @@ msgstr ""
 
 #: app/views/Message/receivedAccount.php:27
 #: app/views/Message/receivedbyCustomer.php:22
-#: app/views/Message/sendFromAccount.php:39 app/views/Message/support.php:34
+#: app/views/Message/sendFromAccount.php:58 app/views/Message/support.php:34
 msgid "Title"
 msgstr ""
 
@@ -389,15 +406,23 @@ msgid "Received Messages - Customer"
 msgstr ""
 
 #: app/views/Message/sendFromAccount.php:8
-#: app/views/Message/sendFromAccount.php:20
+#: app/views/Message/sendFromAccount.php:27
 msgid "Send Message"
 msgstr ""
 
-#: app/views/Message/sendFromAccount.php:27 app/views/Message/support.php:22
+#: app/views/Message/sendFromAccount.php:35 app/views/Message/support.php:22
 msgid "To:"
 msgstr ""
 
-#: app/views/Message/sendFromAccount.php:47 app/views/Message/support.php:42
+#: app/views/Message/sendFromAccount.php:37
+msgid "Accounts"
+msgstr ""
+
+#: app/views/Message/sendFromAccount.php:45
+msgid "Customers"
+msgstr ""
+
+#: app/views/Message/sendFromAccount.php:66 app/views/Message/support.php:42
 msgid "Send"
 msgstr ""
 
@@ -414,8 +439,10 @@ msgid "Book"
 msgstr ""
 
 #: app/views/navbar.php:25 app/views/navbarAdmin.php:24
-#: app/views/navbarMaid.php:24 app/views/Profile/show_Admin.php:14
-#: app/views/Profile/show_Customer.php:14 app/views/Profile/show_Maid.php:14
+#: app/views/navbarMaid.php:24 app/views/Profile/show_Admin.php:8
+#: app/views/Profile/show_Admin.php:14 app/views/Profile/show_Customer.php:8
+#: app/views/Profile/show_Customer.php:14 app/views/Profile/show_Maid.php:8
+#: app/views/Profile/show_Maid.php:14
 msgid "Profile"
 msgstr ""
 
@@ -423,13 +450,13 @@ msgstr ""
 msgid "Payment"
 msgstr ""
 
-#: app/views/navbar.php:28 app/views/navbarAdmin.php:26
-#: app/views/navbarMaid.php:25
+#: app/views/navbar.php:28 app/views/navbarAdmin.php:27
+#: app/views/navbarMaid.php:26
 msgid "Messages"
 msgstr ""
 
-#: app/views/navbar.php:29 app/views/navbarAdmin.php:27
-#: app/views/navbarMaid.php:26
+#: app/views/navbar.php:29 app/views/navbarAdmin.php:28
+#: app/views/navbarMaid.php:27
 msgid "Logout"
 msgstr ""
 
@@ -441,33 +468,39 @@ msgstr ""
 msgid "Create acount"
 msgstr ""
 
+#: app/views/navbarAdmin.php:26 app/views/navbarMaid.php:25
+msgid "Send a message"
+msgstr ""
+
+#: app/views/Profile/create_Admin.php:8 app/views/Profile/create_Customer.php:8
+msgid "Create Profile"
+msgstr ""
+
 #: app/views/Profile/create_Admin.php:14
-#: app/views/Profile/create_Customer.php:14
+#: app/views/Profile/create_Customer.php:13
 msgid "Profile Creation"
 msgstr ""
 
 #: app/views/Profile/create_Admin.php:15
+#: app/views/Profile/create_Customer.php:14
 msgid "Describe yourself! Don't be shy!"
 msgstr ""
 
 #: app/views/Profile/create_Admin.php:19
-#: app/views/Profile/create_Customer.php:19 app/views/Profile/edit_Admin.php:20
+#: app/views/Profile/create_Customer.php:18 app/views/Profile/edit_Admin.php:20
 #: app/views/Profile/edit_Customer.php:20 app/views/Profile/edit_Maid.php:19
 msgid "Name"
 msgstr ""
 
 #: app/views/Profile/create_Admin.php:23
-#: app/views/Profile/create_Customer.php:23 app/views/Profile/edit_Admin.php:24
+#: app/views/Profile/create_Customer.php:22 app/views/Profile/edit_Admin.php:24
 #: app/views/Profile/edit_Customer.php:24 app/views/Profile/edit_Maid.php:23
 msgid "Phone Number"
 msgstr ""
 
-#: app/views/Profile/create_Customer.php:15
-msgid "Describe yourself! Don't be shy! "
-msgstr ""
-
-#: app/views/Profile/edit_Admin.php:14 app/views/Profile/edit_Customer.php:14
-#: app/views/Profile/edit_Maid.php:14
+#: app/views/Profile/edit_Admin.php:8 app/views/Profile/edit_Admin.php:14
+#: app/views/Profile/edit_Customer.php:8 app/views/Profile/edit_Customer.php:14
+#: app/views/Profile/edit_Maid.php:8 app/views/Profile/edit_Maid.php:14
 msgid "Edit Profile"
 msgstr ""
 
@@ -479,11 +512,6 @@ msgstr ""
 #: app/views/Profile/show_Admin.php:15 app/views/Profile/show_Customer.php:15
 #: app/views/Profile/show_Maid.php:15
 msgid "This is you!"
-msgstr ""
-
-#: app/views/Profile/show_Admin.php:31 app/views/Profile/show_Customer.php:32
-#: app/views/Profile/show_Maid.php:31
-msgid "Edit"
 msgstr ""
 
 #: app/views/Profile/show_Customer.php:20
@@ -504,7 +532,7 @@ msgid "Forgot Password - Customer"
 msgstr ""
 
 #: app/views/User/forgotPasswordCustomer.php:20
-#: app/views/User/forgotPasswordStaff.php:20 app/views/User/login.php:25
+#: app/views/User/forgotPasswordStaff.php:20 app/views/User/login.php:28
 #: app/views/User/loginStaff.php:29 app/views/User/registerAdmin.php:18
 #: app/views/User/registerCustomer.php:25
 msgid "Username"
@@ -520,28 +548,28 @@ msgstr ""
 msgid "Forgot Password - Staff"
 msgstr ""
 
-#: app/views/User/login.php:20 app/views/User/registerCustomer.php:21
+#: app/views/User/login.php:23 app/views/User/registerCustomer.php:21
 msgid "Login"
 msgstr ""
 
-#: app/views/User/login.php:21
+#: app/views/User/login.php:24
 msgid "Not registered?"
 msgstr ""
 
-#: app/views/User/login.php:21
+#: app/views/User/login.php:24
 msgid "Sign up"
 msgstr ""
 
-#: app/views/User/login.php:29 app/views/User/loginStaff.php:33
+#: app/views/User/login.php:32 app/views/User/loginStaff.php:33
 #: app/views/User/registerAdmin.php:22 app/views/User/registerCustomer.php:29
 msgid "Password"
 msgstr ""
 
-#: app/views/User/login.php:32 app/views/User/loginStaff.php:36
+#: app/views/User/login.php:40 app/views/User/loginStaff.php:36
 msgid "Forgot password?"
 msgstr ""
 
-#: app/views/User/login.php:34
+#: app/views/User/login.php:42
 msgid "Staff member?"
 msgstr ""
 

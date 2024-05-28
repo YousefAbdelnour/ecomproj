@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-16 03:04+0000\n"
-"PO-Revision-Date: 2024-05-16 03:04+0000\n"
+"POT-Creation-Date: 2024-05-28 00:14+0000\n"
+"PO-Revision-Date: 2024-05-28 00:14+0000\n"
 "Last-Translator: root <EMAIL@ADDRESS>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -64,31 +64,35 @@ msgstr "Réservation de Service"
 
 #: app/views/Account/home_maid.php:14
 msgid "Maid Tasks"
-msgstr "Tâches de Femme de Chambre"
+msgstr "Tâches de la Femme de Ménage"
 
 #: app/views/Account/home_maid.php:15
 msgid "Accept or Deny"
 msgstr "Accepter ou Refuser"
 
-#: app/views/Account/home_maid.php:35
+#: app/views/Account/home_maid.php:34
 msgid "Time of Job:"
 msgstr "Heure du Travail :"
 
-#: app/views/Account/home_maid.php:36
+#: app/views/Account/home_maid.php:35
 msgid "Spots left:"
 msgstr "Places restantes :"
 
-#: app/views/Account/home_maid.php:47
+#: app/views/Account/home_maid.php:37
+msgid "Our customer would love to book you again!"
+msgstr "Notre client aimerait vous réserver à nouveau !"
+
+#: app/views/Account/home_maid.php:50
 msgid "Accept"
 msgstr "Accepter"
 
 #: app/views/Account/schedule.php:15 app/views/navbarMaid.php:23
 msgid "Schedule"
-msgstr "Horaire"
+msgstr "Programme"
 
 #: app/views/Account/schedule.php:16
 msgid "Don't worry, we got you covered!"
-msgstr "Ne vous inquiétez pas, nous vous couvrons !"
+msgstr "Ne vous inquiétez pas, nous vous avons couvert !"
 
 #: app/views/Address/add.php:8 app/views/Address/add.php:14
 msgid "Address Creation"
@@ -96,9 +100,9 @@ msgstr "Création d'Adresse"
 
 #: app/views/Address/add.php:15
 msgid "Let us make booking easier for you!"
-msgstr "Laissez-nous faciliter votre réservation !"
+msgstr "Laissez-nous rendre la réservation plus facile pour vous !"
 
-#: app/views/Address/add.php:20
+#: app/views/Address/add.php:20 app/views/Address/edit.php:20
 msgid "Country"
 msgstr "Pays"
 
@@ -106,7 +110,7 @@ msgstr "Pays"
 msgid "Canada"
 msgstr "Canada"
 
-#: app/views/Address/add.php:24
+#: app/views/Address/add.php:24 app/views/Address/edit.php:24
 msgid "State"
 msgstr "État"
 
@@ -114,7 +118,7 @@ msgstr "État"
 msgid "Quebec"
 msgstr "Québec"
 
-#: app/views/Address/add.php:28
+#: app/views/Address/add.php:28 app/views/Address/edit.php:28
 msgid "Street"
 msgstr "Rue"
 
@@ -122,7 +126,7 @@ msgstr "Rue"
 msgid "Street name"
 msgstr "Nom de la rue"
 
-#: app/views/Address/add.php:32
+#: app/views/Address/add.php:32 app/views/Address/edit.php:32
 msgid "Residence Number"
 msgstr "Numéro de Résidence"
 
@@ -130,21 +134,25 @@ msgstr "Numéro de Résidence"
 msgid "000"
 msgstr "000"
 
-#: app/views/Address/add.php:36
+#: app/views/Address/add.php:36 app/views/Address/edit.php:36
+msgid "House Size"
+msgstr "Taille de la Maison"
+
+#: app/views/Address/add.php:40 app/views/Address/edit.php:40
 msgid "Zip Code"
 msgstr "Code Postal"
 
-#: app/views/Address/add.php:37
+#: app/views/Address/add.php:41
 msgid "XXX XXX"
 msgstr "XXX XXX"
 
-#: app/views/Address/add.php:40
+#: app/views/Address/add.php:48
 msgid "Add"
 msgstr "Ajouter"
 
 #: app/views/Address/display.php:14
 msgid "Address List"
-msgstr "Liste d'Adresses"
+msgstr "Liste des Adresses"
 
 #: app/views/Address/display.php:15
 msgid "Is this where you live?"
@@ -154,9 +162,26 @@ msgstr "Est-ce ici que vous habitez ?"
 msgid "ADD"
 msgstr "AJOUTER"
 
-#: app/views/Address/display.php:36
+#: app/views/Address/display.php:36 app/views/Profile/show_Admin.php:31
+#: app/views/Profile/show_Customer.php:32 app/views/Profile/show_Maid.php:31
+msgid "Edit"
+msgstr "Modifier"
+
+#: app/views/Address/display.php:37
 msgid "Delete"
 msgstr "Supprimer"
+
+#: app/views/Address/edit.php:8 app/views/Address/edit.php:14
+msgid "Edit Address"
+msgstr "Modifier l'Adresse"
+
+#: app/views/Address/edit.php:15
+msgid "Update your address details!"
+msgstr "Mettez à jour vos coordonnées !"
+
+#: app/views/Address/edit.php:48
+msgid "Update"
+msgstr "Mettre à jour"
 
 #: app/views/Customer/home.php:14 app/views/navbar.php:22
 #: app/views/navbarAdmin.php:22 app/views/navbarMaid.php:22
@@ -171,8 +196,8 @@ msgstr "Bienvenue, mettez-vous à l'aise !"
 msgid "Latest Service"
 msgstr "Dernier Service"
 
-#: app/views/Customer/home.php:27 app/views/Job/book.php:57
-#: app/views/Message/sendFromAccount.php:44 app/views/Message/support.php:39
+#: app/views/Customer/home.php:27 app/views/Job/book.php:77
+#: app/views/Message/sendFromAccount.php:63 app/views/Message/support.php:39
 msgid "Description"
 msgstr "Description"
 
@@ -196,7 +221,7 @@ msgstr "Commandes en Attente"
 msgid "- Estimated Time"
 msgstr "- Temps Estimé"
 
-#: app/views/Customer/home.php:57 app/views/Job/display.php:38
+#: app/views/Customer/home.php:57 app/views/Job/display.php:34
 msgid "Description:"
 msgstr "Description :"
 
@@ -205,7 +230,7 @@ msgstr "Description :"
 msgid "Support"
 msgstr "Support"
 
-#: app/views/Customer/home.php:65 app/views/Job/display.php:42
+#: app/views/Customer/home.php:65 app/views/Job/display.php:38
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -247,7 +272,7 @@ msgstr "PAYER"
 
 #: app/views/Customer/pending_orders.php:14
 msgid "Pending orders"
-msgstr "Commandes en attente"
+msgstr "Commandes en Attente"
 
 #: app/views/Customer/pending_orders.php:15
 msgid "Monitor your active orders!"
@@ -255,7 +280,7 @@ msgstr "Surveillez vos commandes actives !"
 
 #: app/views/Customer/pending_orders.php:24
 msgid "4639 Buckhannan Avenue"
-msgstr "4639 Buckhannan Avenue"
+msgstr "4639 Avenue Buckhannan"
 
 #: app/views/Customer/pending_orders.php:41
 msgid "Notes:"
@@ -263,7 +288,7 @@ msgstr "Notes :"
 
 #: app/views/Customer/pending_orders.php:43
 msgid "Change the bed sheets as well, please!"
-msgstr "Changez aussi les draps, s'il vous plaît !"
+msgstr "Veuillez également changer les draps du lit, s'il vous plaît !"
 
 #: app/views/Customer/reservation_history.php:14
 #: app/views/Customer/transaction.php:14
@@ -273,7 +298,7 @@ msgstr "Historique des Réservations"
 #: app/views/Customer/reservation_history.php:15
 #: app/views/Customer/transaction.php:15
 msgid "View Details or Report"
-msgstr "Voir les Détails ou Signaler"
+msgstr "Voir les Détails ou le Rapport"
 
 #: app/views/Job/book.php:15
 msgid "Ready to serve"
@@ -287,29 +312,29 @@ msgstr "Adresse"
 msgid "No addresses available"
 msgstr "Aucune adresse disponible"
 
-#: app/views/Job/book.php:36
-msgid "House size (in sq ft)"
-msgstr "Taille de la maison (en pieds carrés)"
-
-#: app/views/Job/book.php:42
+#: app/views/Job/book.php:38
 msgid "Maid ID (Optional)"
-msgstr "ID de la Femme de Chambre (Optionnel)"
+msgstr "ID de la Femme de Ménage (Optionnel)"
 
-#: app/views/Job/book.php:46
+#: app/views/Job/book.php:41
+msgid "No Maid"
+msgstr "Pas de Femme de Ménage"
+
+#: app/views/Job/book.php:66
 msgid "Number of Maids Required"
-msgstr "Nombre de Femmes de Chambre Requises"
+msgstr "Nombre de Femmes de Ménage Requises"
 
-#: app/views/Job/book.php:52
+#: app/views/Job/book.php:72
 msgid "Date and Time"
 msgstr "Date et Heure"
 
 #: app/views/Job/display.php:14 app/views/Job/display_All.php:14
 msgid "Booking List"
-msgstr "Liste de Réservations"
+msgstr "Liste des Réservations"
 
 #: app/views/Job/display.php:15 app/views/Job/display_All.php:15
 msgid "Your Scheduled Services"
-msgstr "Vos Services Planifiés"
+msgstr "Vos Services Prévus"
 
 #: app/views/Job/display.php:19 app/views/Job/display_All.php:19
 msgid "Book a Service"
@@ -317,25 +342,17 @@ msgstr "Réserver un Service"
 
 #: app/views/Job/display.php:30
 msgid "Scheduled Time:"
-msgstr "Heure Planifiée :"
+msgstr "Heure Prévue :"
 
 #: app/views/Job/display.php:31
 msgid "Status:"
 msgstr "Statut :"
 
-#: app/views/Job/display.php:34
-msgid "House Size: "
-msgstr "Taille de la Maison : "
-
 #: app/views/Job/display.php:35
-msgid "Spots Left: "
-msgstr "Places Restantes : "
-
-#: app/views/Job/display.php:39
 msgid "Maid ID:"
-msgstr "ID de la Femme de Chambre :"
+msgstr "ID de la Femme de Ménage :"
 
-#: app/views/Job/display.php:49
+#: app/views/Job/display.php:45
 msgid "No bookings found. Please book a service to see it listed here."
 msgstr "Aucune réservation trouvée. Veuillez réserver un service pour le voir listé ici."
 
@@ -350,7 +367,7 @@ msgstr "Messages Reçus"
 
 #: app/views/Message/receivedAccount.php:27
 #: app/views/Message/receivedbyCustomer.php:22
-#: app/views/Message/sendFromAccount.php:39 app/views/Message/support.php:34
+#: app/views/Message/sendFromAccount.php:58 app/views/Message/support.php:34
 msgid "Title"
 msgstr "Titre"
 
@@ -389,15 +406,23 @@ msgid "Received Messages - Customer"
 msgstr "Messages Reçus - Client"
 
 #: app/views/Message/sendFromAccount.php:8
-#: app/views/Message/sendFromAccount.php:20
+#: app/views/Message/sendFromAccount.php:27
 msgid "Send Message"
 msgstr "Envoyer un Message"
 
-#: app/views/Message/sendFromAccount.php:27 app/views/Message/support.php:22
+#: app/views/Message/sendFromAccount.php:35 app/views/Message/support.php:22
 msgid "To:"
 msgstr "À :"
 
-#: app/views/Message/sendFromAccount.php:47 app/views/Message/support.php:42
+#: app/views/Message/sendFromAccount.php:37
+msgid "Accounts"
+msgstr "Comptes"
+
+#: app/views/Message/sendFromAccount.php:45
+msgid "Customers"
+msgstr "Clients"
+
+#: app/views/Message/sendFromAccount.php:66 app/views/Message/support.php:42
 msgid "Send"
 msgstr "Envoyer"
 
@@ -414,8 +439,10 @@ msgid "Book"
 msgstr "Réserver"
 
 #: app/views/navbar.php:25 app/views/navbarAdmin.php:24
-#: app/views/navbarMaid.php:24 app/views/Profile/show_Admin.php:14
-#: app/views/Profile/show_Customer.php:14 app/views/Profile/show_Maid.php:14
+#: app/views/navbarMaid.php:24 app/views/Profile/show_Admin.php:8
+#: app/views/Profile/show_Admin.php:14 app/views/Profile/show_Customer.php:8
+#: app/views/Profile/show_Customer.php:14 app/views/Profile/show_Maid.php:8
+#: app/views/Profile/show_Maid.php:14
 msgid "Profile"
 msgstr "Profil"
 
@@ -423,13 +450,13 @@ msgstr "Profil"
 msgid "Payment"
 msgstr "Paiement"
 
-#: app/views/navbar.php:28 app/views/navbarAdmin.php:26
-#: app/views/navbarMaid.php:25
+#: app/views/navbar.php:28 app/views/navbarAdmin.php:27
+#: app/views/navbarMaid.php:26
 msgid "Messages"
 msgstr "Messages"
 
-#: app/views/navbar.php:29 app/views/navbarAdmin.php:27
-#: app/views/navbarMaid.php:26
+#: app/views/navbar.php:29 app/views/navbarAdmin.php:28
+#: app/views/navbarMaid.php:27
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -438,53 +465,54 @@ msgid "Bookings"
 msgstr "Réservations"
 
 #: app/views/navbarAdmin.php:25
-msgid "Create acount"
+msgid "Create account"
 msgstr "Créer un compte"
 
+#: app/views/navbarAdmin.php:26 app/views/navbarMaid.php:25
+msgid "Send a message"
+msgstr "Envoyer un message"
+
+#: app/views/Profile/create_Admin.php:8 app/views/Profile/create_Customer.php:8
+msgid "Create Profile"
+msgstr "Créer un Profil"
+
 #: app/views/Profile/create_Admin.php:14
-#: app/views/Profile/create_Customer.php:14
+#: app/views/Profile/create_Customer.php:13
 msgid "Profile Creation"
 msgstr "Création de Profil"
 
 #: app/views/Profile/create_Admin.php:15
+#: app/views/Profile/create_Customer.php:14
 msgid "Describe yourself! Don't be shy!"
 msgstr "Décrivez-vous ! Ne soyez pas timide !"
 
 #: app/views/Profile/create_Admin.php:19
-#: app/views/Profile/create_Customer.php:19 app/views/Profile/edit_Admin.php:20
+#: app/views/Profile/create_Customer.php:18 app/views/Profile/edit_Admin.php:20
 #: app/views/Profile/edit_Customer.php:20 app/views/Profile/edit_Maid.php:19
 msgid "Name"
 msgstr "Nom"
 
 #: app/views/Profile/create_Admin.php:23
-#: app/views/Profile/create_Customer.php:23 app/views/Profile/edit_Admin.php:24
+#: app/views/Profile/create_Customer.php:22 app/views/Profile/edit_Admin.php:24
 #: app/views/Profile/edit_Customer.php:24 app/views/Profile/edit_Maid.php:23
 msgid "Phone Number"
 msgstr "Numéro de Téléphone"
 
-#: app/views/Profile/create_Customer.php:15
-msgid "Describe yourself! Don't be shy! "
-msgstr "Décrivez-vous ! Ne soyez pas timide ! "
-
-#: app/views/Profile/edit_Admin.php:14 app/views/Profile/edit_Customer.php:14
-#: app/views/Profile/edit_Maid.php:14
+#: app/views/Profile/edit_Admin.php:8 app/views/Profile/edit_Admin.php:14
+#: app/views/Profile/edit_Customer.php:8 app/views/Profile/edit_Customer.php:14
+#: app/views/Profile/edit_Maid.php:8 app/views/Profile/edit_Maid.php:14
 msgid "Edit Profile"
 msgstr "Modifier le Profil"
 
 #: app/views/Profile/edit_Admin.php:15 app/views/Profile/edit_Customer.php:15
 #: app/views/Profile/edit_Maid.php:15
 msgid "Change in life? Change it here!"
-msgstr "Un changement dans la vie ? Changez-le ici !"
+msgstr "Un changement dans votre vie ? Changez-le ici !"
 
 #: app/views/Profile/show_Admin.php:15 app/views/Profile/show_Customer.php:15
 #: app/views/Profile/show_Maid.php:15
 msgid "This is you!"
 msgstr "C'est vous !"
-
-#: app/views/Profile/show_Admin.php:31 app/views/Profile/show_Customer.php:32
-#: app/views/Profile/show_Maid.php:31
-msgid "Edit"
-msgstr "Modifier"
 
 #: app/views/Profile/show_Customer.php:20
 msgid "Name:"
@@ -504,7 +532,7 @@ msgid "Forgot Password - Customer"
 msgstr "Mot de Passe Oublié - Client"
 
 #: app/views/User/forgotPasswordCustomer.php:20
-#: app/views/User/forgotPasswordStaff.php:20 app/views/User/login.php:25
+#: app/views/User/forgotPasswordStaff.php:20 app/views/User/login.php:28
 #: app/views/User/loginStaff.php:29 app/views/User/registerAdmin.php:18
 #: app/views/User/registerCustomer.php:25
 msgid "Username"
@@ -520,38 +548,38 @@ msgstr "Soumettre"
 msgid "Forgot Password - Staff"
 msgstr "Mot de Passe Oublié - Personnel"
 
-#: app/views/User/login.php:20 app/views/User/registerCustomer.php:21
+#: app/views/User/login.php:23 app/views/User/registerCustomer.php:21
 msgid "Login"
 msgstr "Connexion"
 
-#: app/views/User/login.php:21
+#: app/views/User/login.php:24
 msgid "Not registered?"
 msgstr "Pas encore inscrit ?"
 
-#: app/views/User/login.php:21
+#: app/views/User/login.php:24
 msgid "Sign up"
 msgstr "S'inscrire"
 
-#: app/views/User/login.php:29 app/views/User/loginStaff.php:33
+#: app/views/User/login.php:32 app/views/User/loginStaff.php:33
 #: app/views/User/registerAdmin.php:22 app/views/User/registerCustomer.php:29
 msgid "Password"
-msgstr "Mot de Passe"
+msgstr "Mot de passe"
 
-#: app/views/User/login.php:32 app/views/User/loginStaff.php:36
+#: app/views/User/login.php:40 app/views/User/loginStaff.php:36
 msgid "Forgot password?"
 msgstr "Mot de passe oublié ?"
 
-#: app/views/User/login.php:34
+#: app/views/User/login.php:42
 msgid "Staff member?"
 msgstr "Membre du personnel ?"
 
 #: app/views/User/loginStaff.php:20
 msgid "Login Staff"
-msgstr "Connexion Personnel"
+msgstr "Connexion du Personnel"
 
 #: app/views/User/loginStaff.php:21
 msgid "Not registered? Contact an admin!"
-msgstr "Pas encore inscrit ? Contactez un administrateur !"
+msgstr "Pas encore inscrit ? Contactez un admin !"
 
 #: app/views/User/loginStaff.php:37
 msgid "Not a staff member?"
@@ -563,7 +591,7 @@ msgstr "Créer un Compte"
 
 #: app/views/User/registerAdmin.php:26 app/views/User/registerCustomer.php:33
 msgid "Retype Password"
-msgstr "Retaper le Mot de Passe"
+msgstr "Retapez le Mot de Passe"
 
 #: app/views/User/registerAdmin.php:30
 msgid "Account Type"
@@ -600,7 +628,7 @@ msgstr "Confirmer le Mot de Passe"
 
 #: app/views/User/setup2fa.php:8
 msgid "2FA Setup"
-msgstr "Configuration 2FA"
+msgstr "Configuration de la 2FA"
 
 #: app/views/User/setup2fa.php:13
 msgid ""
@@ -610,11 +638,11 @@ msgid ""
 "        still valid to apply the 2-factor authentication protection to your "
 "account."
 msgstr ""
-"Scannez le code QR ci-dessus avec votre application Authenticator mobile, telle que Google "
-"Authenticator. L'application Authenticator générera des codes valables pendant "
-"30 secondes seulement. Entrez un tel code et soumettez-le tant qu'il est\r\n"
-"        encore valide pour appliquer la protection d'authentification à 2 facteurs à votre "
-"compte."
+"Scannez le code QR ci-dessus avec votre application Authenticator mobile, "
+"comme Google Authenticator. L'application d'authentification générera des codes "
+"qui ne sont valables que pendant 30 secondes. Entrez un tel code et soumettez-le "
+"pendant qu'il est encore valable pour appliquer la protection d'authentification à "
+"deux facteurs à votre compte."
 
 #: app/views/User/setup2fa.php:18
 msgid "Current code:"
